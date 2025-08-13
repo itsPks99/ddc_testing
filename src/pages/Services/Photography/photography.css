@@ -1,0 +1,783 @@
+.photography-page {
+  background-color: #f3f3f3;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, #d4a574 0%, #e6c2a6 100%);
+  color: #2d3748;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.hero-section h1 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  animation: fadeInUp 0.8s ease-out;
+  color: #2d3748;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  opacity: 0.8;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.cta-button {
+  background: #8b4513;
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.cta-button:hover {
+  background: #a0522d;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(139, 69, 19, 0.3);
+}
+
+.hero-visual {
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.photography-studio {
+  position: relative;
+  width: 300px;
+  height: 280px;
+}
+
+.camera-setup {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.main-camera {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+.camera-body {
+  width: 100px;
+  height: 70px;
+  background: linear-gradient(135deg, #2d3748, #1a202c);
+  border-radius: 12px;
+  position: relative;
+  animation: photo-focus 4s ease-in-out infinite;
+}
+
+.lens-ring {
+  position: absolute;
+  top: 50%;
+  left: -15px;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #4a5568, #2d3748);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: photo-rotate 8s linear infinite;
+}
+
+.lens-center {
+  width: 35px;
+  height: 35px;
+  background: radial-gradient(circle, #1a202c, #4a5568);
+  border-radius: 50%;
+  position: relative;
+}
+
+.lens-center::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: photo-glint 3s ease-in-out infinite;
+}
+
+.camera-details {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 8px;
+}
+
+.viewfinder {
+  width: 12px;
+  height: 8px;
+  background: #1a202c;
+  border-radius: 2px;
+}
+
+.flash {
+  width: 8px;
+  height: 8px;
+  background: #f7fafc;
+  border-radius: 2px;
+  animation: photo-flash 5s ease-in-out infinite;
+}
+
+.photo-gallery {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.photo-frame {
+  position: absolute;
+  width: 60px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 4px;
+  animation: photo-float 6s ease-in-out infinite;
+}
+
+.frame-1 {
+  top: 20px;
+  left: 20px;
+  animation-delay: 0s;
+}
+
+.frame-2 {
+  top: 30px;
+  right: 30px;
+  animation-delay: 2s;
+}
+
+.frame-3 {
+  bottom: 40px;
+  left: 30px;
+  animation-delay: 4s;
+}
+
+.photo-content {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #d4a574, #8b4513);
+  border-radius: 4px;
+}
+
+.studio-lights {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.light-beam {
+  position: absolute;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  animation: photo-light-sweep 4s ease-in-out infinite;
+}
+
+.beam-1 {
+  width: 2px;
+  height: 120px;
+  top: 20px;
+  left: 50px;
+  transform: rotate(15deg);
+  animation-delay: 0s;
+}
+
+.beam-2 {
+  width: 2px;
+  height: 100px;
+  bottom: 30px;
+  right: 60px;
+  transform: rotate(-20deg);
+  animation-delay: 2s;
+}
+
+/* Services Section */
+.services-section {
+  padding: 100px 0;
+  background: white;
+}
+
+.services-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 60px;
+  color: #8b4513;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.service-card {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid #f0f0f0;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.service-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.service-card h3 {
+  color: #8b4513;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+.service-card p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Portfolio Section */
+.portfolio-section {
+  padding: 100px 0;
+  background: #f8f9fa;
+}
+
+.portfolio-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #8b4513;
+}
+
+.portfolio-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 60px;
+}
+
+.tab-button {
+  background: transparent;
+  border: 2px solid #d4a574;
+  color: #8b4513;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-button.active,
+.tab-button:hover {
+  background: #d4a574;
+  color: white;
+}
+
+.portfolio-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  height: 250px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #d4a574, #8b4513);
+  position: relative;
+}
+
+.gallery-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  padding: 30px 20px 20px;
+  transform: translateY(100%);
+  transition: all 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+  transform: translateY(0);
+}
+
+.gallery-overlay h3 {
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+}
+
+.gallery-overlay p {
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+/* Process Section */
+.process-section {
+  padding: 100px 0;
+  background: white;
+}
+
+.process-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 60px;
+  color: #8b4513;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+.step {
+  text-align: center;
+  position: relative;
+}
+
+.step-number {
+  width: 60px;
+  height: 60px;
+  background: #d4a574;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin: 0 auto 20px;
+  font-family: "Gilroy-Bold", sans-serif;
+}
+
+.step h3 {
+  color: #8b4513;
+  margin-bottom: 15px;
+}
+
+.step p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Equipment Section */
+.equipment-section {
+  padding: 100px 0;
+  background: #f8f9fa;
+}
+
+.equipment-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 60px;
+  color: #8b4513;
+}
+
+.equipment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.equipment-item {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.equipment-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.equipment-item h3 {
+  color: #8b4513;
+  margin-bottom: 15px;
+}
+
+.equipment-item p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* CTA Section */
+.photography-cta-section {
+  padding: 100px 0;
+  background: #8b4513;
+  color: white;
+  text-align: center;
+}
+
+.photography-cta-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.photography-cta-section p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+
+.cta-button-secondary {
+  background: transparent;
+  color: white;
+  padding: 15px 30px;
+  border: 2px solid white;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cta-button-secondary:hover {
+  background: white;
+  color: #8b4513;
+  transform: translateY(-2px);
+}
+
+/* Photography Portfolio Section */
+.photography-portfolio {
+  padding: 100px 0;
+  background: white;
+}
+
+.portfolio-categories {
+  margin-bottom: 40px;
+}
+
+.category-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.category-tab {
+  background: transparent;
+  border: 2px solid #d4a574;
+  color: #8b4513;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: "Gilroy-Medium", sans-serif;
+  transition: all 0.3s ease;
+}
+
+.category-tab.active,
+.category-tab:hover {
+  background: #d4a574;
+  color: white;
+}
+
+.photography-showcase {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 32px;
+}
+
+.photo-project {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f1f5f9;
+  transition: all 0.3s ease;
+}
+
+.photo-project:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.project-featured {
+  background: linear-gradient(135deg, #fef7f0, #fed7aa);
+  border: 1px solid #fdba74;
+}
+
+.project-gallery {
+  margin-bottom: 20px;
+}
+
+.main-photo {
+  height: 120px;
+  background: linear-gradient(135deg, #d4a574, #8b4513);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  padding: 20px 16px 16px;
+}
+
+.photo-overlay h3 {
+  font-family: "Gilroy-Medium", sans-serif;
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.photo-overlay p {
+  font-family: "Gilroy-Light", sans-serif;
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+.project-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.project-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.spec {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.spec-label {
+  font-family: "Gilroy-Light", sans-serif;
+  color: #64748b;
+  font-size: 0.8rem;
+}
+
+.spec-value {
+  font-family: "Gilroy-Medium", sans-serif;
+  color: #1a202c;
+  font-size: 0.8rem;
+}
+
+.project-result {
+  background: #fef7f0;
+  color: #ea580c;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-family: "Gilroy-Medium", sans-serif;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.project-icon {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.photo-project h4 {
+  font-family: "Gilroy-Medium", sans-serif;
+  color: #1a202c;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.photo-project p {
+  font-family: "Gilroy-Light", sans-serif;
+  color: #64748b;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.project-metric {
+  background: #fef7f0;
+  color: #ea580c;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-family: "Gilroy-Medium", sans-serif;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* New Animations */
+@keyframes photo-focus {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+}
+
+@keyframes photo-rotate {
+  from {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
+
+@keyframes photo-glint {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes photo-flash {
+  0%,
+  90%,
+  100% {
+    background: #f7fafc;
+  }
+  95% {
+    background: #fbbf24;
+    box-shadow: 0 0 10px #fbbf24;
+  }
+}
+
+@keyframes photo-float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(2deg);
+  }
+}
+
+@keyframes photo-light-sweep {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-visual {
+    display: none;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-tabs {
+    flex-wrap: wrap;
+  }
+
+  .process-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .equipment-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .photography-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .category-tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,559 @@
+@import url(/src/index.css);
+
+/* Main Container */
+.connect-with-us-container {
+  width: 100%;
+}
+
+/* Main Split Section */
+.contact-main-section {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Left Side - Company Details */
+.company-details-section {
+  flex: 1;
+  background-color: #5bb5cf;
+  color: white;
+  padding: 60px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.company-info {
+  max-width: 500px;
+  width: 100%;
+}
+
+.company-heading {
+  font-family: "Gilroy-Heavy", sans-serif;
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: white;
+}
+
+.company-description {
+  font-family: "Gilroy-Medium", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  color: #e9dcc3;
+}
+
+/* Contact Details */
+.contact-details {
+  margin-bottom: 50px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(233, 220, 195, 0.2);
+}
+
+.contact-icon {
+  width: 50px;
+  height: 50px;
+  background-color: #e9dcc3;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  color: #2d4d7d;
+  flex-shrink: 0;
+}
+
+.contact-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-label {
+  font-family: "Gilroy-Medium", sans-serif;
+  font-size: 0.9rem;
+  color: #e9dcc3;
+  margin-bottom: 5px;
+}
+
+.contact-value {
+  font-family: "Gilroy-SemiBold", sans-serif;
+  font-size: 1.1rem;
+  color: white;
+}
+
+/* Social Media Section */
+.social-media-section {
+  margin-top: 30px;
+}
+
+.social-heading {
+  font-family: "Gilroy-SemiBold", sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+  color: white;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  background-color: rgba(233, 220, 195, 0.1);
+  border-radius: 30px;
+  text-decoration: none;
+  color: white;
+  font-family: "Gilroy-Medium", sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(233, 220, 195, 0.2);
+}
+
+.social-link:hover {
+  background-color: #e9dcc3;
+  color: #2d4d7d;
+  transform: translateX(10px);
+}
+
+.social-link svg {
+  margin-right: 15px;
+  width: 24px;
+  height: 24px;
+}
+
+/* Right Side - Contact Form */
+.contact-form-section {
+  flex: 1;
+  background-color: #e9dcc3;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-heading {
+  font-family: "Gilroy-Heavy", sans-serif;
+  color: black;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  text-align: center;
+  font-weight: 400 !important;
+}
+
+.contact-form {
+  font-family: "Gilroy-Heavy", sans-serif;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.input-wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.form-row .input-wrapper {
+  flex: 1;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  border: 1px solid white;
+  color: black;
+  padding: 15px 25px;
+  width: 100%;
+  border-radius: 30px;
+  font-size: 18px;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.contact-form input::placeholder,
+.contact-form select::placeholder,
+.contact-form textarea::placeholder {
+  color: #666;
+}
+
+.contact-form textarea {
+  min-height: 120px;
+  resize: vertical;
+  border-radius: 20px;
+}
+
+/* Phone input with country code */
+.phone-input-container {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.country-code-select {
+  width: 40%;
+  position: relative;
+}
+
+.selected-country {
+  width: 100%;
+  border-radius: 30px;
+  background-color: white;
+  font-family: "Gilroy-Medium", sans-serif;
+  font-size: 16px;
+  padding: 15px 20px;
+  border: 1px solid white;
+  color: black;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.dropdown-arrow {
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+  transform: rotate(45deg);
+  margin-top: -6px;
+}
+
+.country-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  margin-top: 5px;
+  max-height: 300px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.country-search {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 2;
+}
+
+.country-search input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-size: 14px;
+  outline: none;
+}
+
+.country-list {
+  overflow-y: auto;
+  max-height: 240px;
+  padding: 5px 0;
+}
+
+.country-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.2s;
+  font-size: 14px;
+}
+
+.country-item:hover {
+  background-color: #f5f5f5;
+}
+
+.country-item.selected {
+  background-color: #e9dcc3;
+  font-weight: bold;
+}
+
+.country-code {
+  font-weight: 500;
+  margin-right: 10px;
+  min-width: 50px;
+}
+
+.country-name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.no-results {
+  padding: 15px;
+  text-align: center;
+  color: #888;
+}
+
+.phone-input-wrapper {
+  flex: 1;
+  position: relative;
+}
+
+/* Error styling */
+.error {
+  border: 1px solid #ff3b30 !important;
+}
+
+.error-message {
+  color: #ff3b30;
+  font-size: 14px;
+  margin-top: 5px;
+  padding-left: 15px;
+  font-family: "Gilroy-Medium", sans-serif;
+  font-weight: 500;
+}
+
+/* Submit Button */
+.contact-form-submit-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  align-self: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  z-index: 1;
+  border-radius: 50px;
+  font-family: "Gilroy-SemiBold", sans-serif;
+}
+
+.contact-form-submit-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #2d4d7d;
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+
+.contact-form-submit-button:hover {
+  color: white;
+  transform: translateY(-2px);
+}
+
+.contact-form-submit-button:hover::before {
+  left: 0;
+}
+
+.contact-form-submit-button .icon-arr {
+  transform: rotate(-45deg);
+  transition: transform 0.3s ease;
+}
+
+.contact-form-submit-button:hover .icon-arr {
+  transform: rotate(0deg);
+}
+
+/* WhatsApp CTA Section */
+.cta-section {
+  padding: 60px 20px;
+  text-align: center;
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.connect-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #25d366;
+  color: white;
+  padding: 15px 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.2rem;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  z-index: 1;
+  border-radius: 50px;
+  font-family: "Gilroy-SemiBold", sans-serif;
+}
+
+.connect-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #128c7e;
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+
+.connect-button:hover {
+  color: white;
+  transform: scale(1.05);
+}
+
+.connect-button:hover::before {
+  left: 0;
+}
+
+.whatsapp-icon {
+  display: inline-flex;
+  margin-right: 10px;
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .contact-main-section {
+    flex-direction: column;
+  }
+
+  .company-details-section,
+  .contact-form-section {
+    flex: none;
+    padding: 40px 30px;
+  }
+
+  .company-heading {
+    font-size: 2.5rem;
+  }
+
+  .form-heading {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .phone-input-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .country-code-select {
+    width: 100%;
+  }
+
+  .company-details-section,
+  .contact-form-section {
+    padding: 30px 20px;
+  }
+
+  .company-heading {
+    font-size: 2rem;
+  }
+
+  .form-heading {
+    font-size: 1.8rem;
+  }
+
+  .social-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .social-link {
+    flex: 1;
+    min-width: calc(50% - 5px);
+    justify-content: center;
+    padding: 10px 15px;
+  }
+
+  .social-link span {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .company-heading {
+    font-size: 1.8rem;
+  }
+
+  .form-heading {
+    font-size: 1.5rem;
+  }
+
+  .connect-button,
+  .contact-form-submit-button {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea,
+  .selected-country {
+    font-size: 16px;
+    padding: 12px 20px;
+  }
+
+  .error-message {
+    font-size: 12px;
+  }
+
+  .country-dropdown {
+    max-height: 250px;
+  }
+
+  .country-list {
+    max-height: 190px;
+  }
+
+  .contact-item {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .contact-icon {
+    margin-bottom: 10px;
+    margin-right: 0;
+  }
+}

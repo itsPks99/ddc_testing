@@ -1,0 +1,382 @@
+@import url(/src/index.css);
+
+.knowledge-section {
+  font-family: "Gilroy", sans-serif;
+  width: 100%;
+  padding: 60px 0px;
+  background-color: #ffffff;
+}
+
+.knowledge-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.knowledge-header h2 {
+  font-size: clamp(4rem, 5vw, 5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.discover-button {
+  background-color: #e9dcc3;
+  color: #000;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 30px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.discover-button:hover {
+  background-color: #ebd095;
+  transform: scale(1.05);
+}
+
+.knowledge-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-bottom: 4rem;
+  max-width: 1400px;
+  /* Center the grid in desktop mode */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 2rem;
+}
+
+.grid-item {
+  position: relative;
+  height: auto;
+  min-height: 400px;
+}
+
+.sticky-card {
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+}
+
+.card {
+  padding: 2.5rem 1.5rem ;
+  border-radius: 1.5rem;
+  height: auto;
+  min-height: 35rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  position: relative;
+  /* Ensure card is above other elements */
+  z-index: 1;
+}
+
+/* Base card styles */
+.blue-card {
+  background-color: #5bb5cf;
+  color: white;
+}
+
+.gold-card {
+  background-color: #deb887;
+  color: white;
+}
+
+/* Base tag styles */
+.tag {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(1rem, 3vw, 1.8rem);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background-color: rgba(255, 255, 255, 0.825);
+  width: fit-content;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 5px;
+  padding-top: 10px;
+  border-radius: 100px;
+  margin-bottom: 2rem;
+  box-sizing: border-box;
+}
+
+/* Specific tag colors for each card type */
+.blue-card .tag {
+  color: #5bb5cf;
+}
+
+.gold-card .tag {
+  color: #deb887;
+}
+
+.card h1 {
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin: 0 0 1rem 0;
+  max-width: 90%;
+  color: #ffffffd4;
+}
+
+.card h3 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  margin: 0;
+  padding-left: 3px;
+  color: #ffffff94;
+}
+
+.card-subtitle {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 1rem;
+}
+
+/* Arrow icon styling */
+.homeArrow-icon {
+  position: absolute;
+  right: 2.5rem;
+  bottom: 2.5rem;
+  width: 44px;
+  height: 44px;
+  background-color: #ffffffd4;
+  border-radius: 50%;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+/* Color the arrow based on card type */
+.blue-card .homeArrow-icon {
+  color: #5bb5cf;
+}
+
+.gold-card .homeArrow-icon {
+  color: #deb887;
+}
+
+.card:hover .homeArrow-icon {
+  transform: scale(1.1) rotate(45deg);
+}
+
+.knowledge-image-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.grid-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.newsletter-section {
+  background-color: #e9dcc3;
+  border-radius: 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.newsletter-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.newsletter-content h2 {
+  font-size: clamp(1.8rem, 5vw, 3rem);           
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.newsletter-content p {
+  color: #666;
+  margin-bottom: 2rem;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 1rem;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: white;
+}
+
+.newsletter-form button {
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.newsletter-form button svg {
+  width: 24px;
+  height: 24px;
+}
+
+
+
+/* Mobile breakpoint */
+@media (max-width: 768px) {
+  .knowledge-section {
+    padding: 25px 0px; /* Reduced from 40px */
+  }
+
+  
+  .knowledge-header h2 {
+    font-size: clamp(3rem, 5vw, 5rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+  .knowledge-grid {
+    gap: 0.75rem; /* Reduced from 1rem */
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+  }
+  
+  /* Add this to reduce vertical spacing between grid items */
+  .grid-item {
+    margin-bottom: 0.75rem; /* Add smaller margin between items */
+    min-height: auto; /* Remove any minimum height constraints */
+  }
+
+  /* Reduce any margins that might be causing extra space */
+  .knowledge-grid > * {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+  }
+
+  .card {
+    padding: 2.5rem 1.5rem 5.5rem;
+    min-height: auto;
+    margin-top: 20px;
+    margin-bottom: 0; /* Ensure no extra margin on cards */
+  }
+
+  .homeArrow-icon {
+    width: 36px;
+    height: 36px;
+    right: 1.5rem;
+    bottom: 1.5rem;
+  }
+
+  .newsletter-section {
+    margin: 0.75rem 1rem; /* Slightly reduced top/bottom margin */
+    padding: 1.75rem 1rem; /* Slightly reduced padding */
+  }
+  
+  /* If you're using flex or grid layout, ensure items are tightly packed */
+  .knowledge-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* Small gap between flex items */
+  }
+  
+  /* If you have image containers, make sure they don't have extra space */
+  .knowledge-image-container {
+    margin: 0;
+  }
+
+
+  .grid-item:nth-child(1) { order: 1; } /* Blue card */
+.grid-item:nth-child(3) { order: 2; } /* First image */
+.grid-item:nth-child(3) { order: 3; } /* Gold card */
+.grid-item:nth-child(4) { order: 4; } /* Second image */
+
+}
+
+/* Small mobile breakpoint */
+@media (max-width: 480px) {
+  .knowledge-section {
+    padding: 15px 0px; /* Reduced from 30px */
+  }
+
+  .knowledge-grid {
+    gap: 0.5rem; /* Reduced from 1rem */
+    padding: 0 1rem;
+  }
+
+  .knowledge-header h2 {
+    font-size: clamp(2rem, 5vw, 5rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+
+  
+  /* Add this to reduce vertical spacing between grid items */
+  .grid-item {
+    margin-bottom: 0.5rem; /* Add small margin between items */
+    min-height: auto; /* Remove any minimum height constraints */
+  }
+
+  /* Reduce any margins that might be causing extra space */
+  .knowledge-grid > * {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .card {
+    padding: 2.5rem 1.5rem ;
+    min-height: auto; /* Remove any minimum height that might be causing extra space */
+  }
+
+  .tag {
+    padding: 5px 15px;
+    margin-bottom: 0.75rem; /* Reduced from 1rem */
+  }
+
+  .homeArrow-icon {
+    width: 32px;
+    height: 32px;
+    right: 1rem;
+    bottom: 1rem;
+    padding: 0.3rem;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+  }
+
+  .newsletter-form button {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .newsletter-section {
+    margin: 0;
+    border-radius: 0;
+    padding-top: 1.5rem; /* Reduced padding */
+    padding-bottom: 1.5rem; /* Reduced padding */
+  }
+  
+  /* If you're using flex or grid layout, ensure items are tightly packed */
+  .knowledge-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* Small gap between flex items */
+  }
+}

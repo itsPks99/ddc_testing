@@ -1,0 +1,217 @@
+@import url(/src/index.css);
+
+.expertise-container {
+  background-color: #171717;
+  color: #ffffff;
+  width: 100%;
+  padding: 60px 0px;
+  font-family: "Gilroy", sans-serif;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.expertise-title {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.expertise-title h1 {
+  font-size: 5rem;
+  font-weight: 800;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.title-our {
+  opacity: 1;
+}
+
+.title-expertise {
+  opacity: 0.6;
+  color: #a0a0a0;
+}
+
+.expertise-sections {
+  max-width: 1700px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.expertise-section {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 1.3s ease;
+  cursor: pointer;
+  position: relative;
+  background-color: #3a3a3a99;
+}
+
+/* Hover state styling */
+.expertise-section:hover {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #3b82f6;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15);
+}
+
+.section-header {
+  padding: 25px 30px;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  
+  margin: 0;
+}
+
+.section-expanded-content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  transition: all .3s ease;
+}
+
+/* Show content on hover */
+.expertise-section:hover .section-expanded-content {
+  max-height: 1000px; /* Large enough to fit content */
+  opacity: 1;
+  padding: 0 30px 30px;
+  transition: all 1s ease;
+}
+
+.content-left {
+  flex: 1;
+  max-width: 60%;
+}
+
+.content-left p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.content-right {
+  flex: 1;
+  max-width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.service-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.service-tag {
+  background-color: #f3f4f6;
+  color: #000000;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.visit-site-btn {
+  background-color: #121212;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 30px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.visit-site-btn:hover {
+  background-color: #2d2d2d;
+}
+
+@media (max-width: 1240px) {
+  .expertise-sections {
+    margin: 0 20px;
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .section-expanded-content {
+    flex-direction: column;
+  }
+
+  .content-left,
+  .content-right {
+    max-width: 100%;
+  }
+
+  .expertise-sections {
+    margin: 0 20px;
+  }
+
+  .service-tags {
+    justify-content: flex-start;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .expertise-title h1 {
+    font-size: 3rem;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .section-header h2 {
+    font-size: 2rem;
+  }
+
+  .content-left p {
+    font-size: 1rem;
+  }
+
+  /* Adjust hover behavior for touch devices */
+  .expertise-section:hover .section-expanded-content {
+    max-height: 2000px; /* Larger for mobile as content might be taller */
+  }
+}
+
+@media (max-width: 480px) {
+  .expertise-title h1 {
+    font-size: 2.5rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .content-left p {
+    font-size: 0.9rem;
+  }
+
+  .service-tag {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+
+  .visit-site-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
