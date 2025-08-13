@@ -1,0 +1,472 @@
+@import url(/src/index.css);
+
+.highlight-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  font-family: 'Gilroy', sans-serif; 
+  /* min-height: 100vh; */
+  width: 100%;
+  background-color: #fff;
+  padding: 60px 0px;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+
+.highlight-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #000;
+}
+
+.highlight-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.highlight-header h2 {
+  font-size: clamp(4rem, 5vw, 5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.highlight-button {
+  background-color: #e9dcc3;
+  color: #000;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 30px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.highlight-button:hover {
+  background-color: #ebd095;
+  transform: scale(1.05);
+}
+
+.highlightCards-container {
+  position: relative;
+  width: 100%;
+  height: 800px;
+  display: flex;
+  padding: 0px;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+  margin-top: 3rem; /* Added top margin */
+  /* Add transition for smoother height changes */
+  transition: height 0.5s ease-out;
+}
+
+.highlightCard {
+  position: absolute;
+  width: 350px;
+  height: 550px;
+  border-radius: 20px;
+  padding: 20px;
+  align-items: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  /* Improve transition for smoother animations */
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, opacity 0.5s ease-out;
+  overflow: hidden;
+  cursor: pointer;
+  will-change: transform, box-shadow;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.highlightCard-title {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 3rem;
+  text-align: left;
+  font-weight: 600;
+  color: white;
+  z-index: 2;
+}
+
+.highlighthighlightCard-image-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 94%;
+  height: 60%;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.highlighthighlightCard-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+/* Initial stacked state - shuffled appearance */
+.highlightCards-container:not(.expanded) .highlightCard {
+  transform-origin: center center;
+}
+
+/* Stacked cards with offset */
+.highlightCards-container:not(.expanded) .highlightCard:nth-child(1) {
+  transform: translate3d(0, -8px, 0) rotate(-2deg);
+  z-index: 5;
+}
+
+.highlightCards-container:not(.expanded) .highlightCard:nth-child(2) {
+  transform: translate3d(8px, -4px, 0) rotate(1deg);
+  z-index: 4;
+}
+
+.highlightCards-container:not(.expanded) .highlightCard:nth-child(3) {
+  transform: translate3d(-5px, 0, 0) rotate(-1deg);
+  z-index: 3;
+}
+
+.highlightCards-container:not(.expanded) .highlightCard:nth-child(4) {
+  transform: translate3d(10px, 4px, 0) rotate(2deg);
+  z-index: 2;
+}
+
+.highlightCards-container:not(.expanded) .highlightCard:nth-child(5) {
+  transform: translate3d(-8px, 8px, 0) rotate(-1.5deg);
+  z-index: 1;
+}
+
+/* Hover effects only when expanded */
+.highlightCards-container.expanded .highlightCard:hover {
+  z-index: 100 !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* Add a class for the transition state to prevent flickering */
+.highlightCards-container.transitioning .highlightCard {
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+/* Specific card positions when expanded with original tilts - aligned horizontally */
+.highlightCards-container.expanded .highlightCard:nth-child(1) {
+  transform: translate3d(550px, -50px, 0) rotate(-9deg) !important;
+}
+
+.highlightCards-container.expanded .highlightCard:nth-child(2) {
+  transform: translate3d(225px, 40px, 0) rotate(-4deg) !important;
+}
+
+.highlightCards-container.expanded .highlightCard:nth-child(3) {
+  transform: translate3d(0px, -40px, 0) rotate(10deg) !important;
+}
+
+.highlightCards-container.expanded .highlightCard:nth-child(4) {
+  transform: translate3d(-225px, 50px, 0) rotate(4deg) !important;
+}
+
+.highlightCards-container.expanded .highlightCard:nth-child(5) {
+  transform: translate3d(-550px, -50px, 0) rotate(-9deg) !important;
+}
+
+/* Hover states for specific cards - preserve rotation while scaling */
+.highlightCards-container.expanded .highlightCard:nth-child(1):hover {
+  transform: translate3d(550px, -50px, 0) rotate(-9deg) scale(1.1) !important;
+}
+
+.highlightCards-container.expanded .highlightCard:nth-child(2):hover {
+  transform: translate3d(225px, 40px, 0) rotate(-4deg) scale(1.1) !important;
+}
+
+.highlightCards-container.expanded .highlightCard:nth-child(3):hover {
+  transform: translate3d(0px, -40px, 0) rotate(10deg) scale(1.1) !important;
+}
+
+.highlightCards-container.expanded .highlightCard:nth-child(4):hover {
+  transform: translate3d(-225px, 50px, 0) rotate(4deg) scale(1.1) !important;
+}
+
+.highlightCards-container.expanded .highlightCard:nth-child(5):hover {
+  transform: translate3d(-550px, -50px, 0) rotate(-9deg) scale(1.1) !important;
+}
+
+/* Add staggered animation delays for smoother expansion */
+.highlightCards-container.expanded .highlightCard:nth-child(1) {
+  transition-delay: 0s;
+}
+
+.highlightCards-container.expanded .highlightCard:nth-child(2) {
+  transition-delay: 0.05s;
+}
+
+.highlightCards-container.expanded .highlightCard:nth-child(3) {
+  transition-delay: 0.1s;
+}
+
+.highlightCards-container.expanded .highlightCard:nth-child(4) {
+  transition-delay: 0.15s;
+}
+
+.highlightCards-container.expanded .highlightCard:nth-child(5) {
+  transition-delay: 0.2s;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1300px) {
+  .highlightCards-container {
+    height: 600px;
+  }
+  
+  .highlightCard {
+    width: 250px;
+    height: 350px;
+  }
+  
+  .highlightCard-title {
+    font-size: 2rem;
+  }
+  
+  /* Adjust spread for this breakpoint */
+  .highlightCards-container.expanded .highlightCard:nth-child(1) {
+    transform: translate3d(400px, -40px, 0) rotate(-9deg) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(2) {
+    transform: translate3d(175px, 30px, 0) rotate(-4deg) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(3) {
+    transform: translate3d(0px, -30px, 0) rotate(10deg) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(4) {
+    transform: translate3d(-175px, 40px, 0) rotate(4deg) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(5) {
+    transform: translate3d(-400px, -40px, 0) rotate(-9deg) !important;
+  }
+  
+  /* Hover states */
+  .highlightCards-container.expanded .highlightCard:nth-child(1):hover {
+    transform: translate3d(400px, -40px, 0) rotate(-9deg) scale(1.1) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(2):hover {
+    transform: translate3d(175px, 30px, 0) rotate(-4deg) scale(1.1) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(3):hover {
+    transform: translate3d(0px, -30px, 0) rotate(10deg) scale(1.1) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(4):hover {
+    transform: translate3d(-175px, 40px, 0) rotate(4deg) scale(1.1) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(5):hover {
+    transform: translate3d(-400px, -40px, 0) rotate(-9deg) scale(1.1) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .highlightCards-container {
+    height: 500px;
+  }
+  
+  .highlight-header h2 {
+    font-size: clamp(3rem, 5vw, 5rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+  .highlightCard {
+    width: 200px;
+    height: 280px;
+  }
+  
+  
+
+  .highlightCard-title {
+    font-size: 2rem;
+  }
+  
+  
+  
+  /* Adjust spread for this breakpoint */
+  .highlightCards-container.expanded .highlightCard:nth-child(1) {
+    transform: translate3d(300px, -30px, 0) rotate(-9deg) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(2) {
+    transform: translate3d(120px, 20px, 0) rotate(-4deg) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(3) {
+    transform: translate3d(0px, -20px, 0) rotate(10deg) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(4) {
+    transform: translate3d(-120px, 20px, 0) rotate(4deg) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(5) {
+    transform: translate3d(-300px, -30px, 0) rotate(-9deg) !important;
+  }
+  
+  /* Hover states */
+  .highlightCards-container.expanded .highlightCard:nth-child(1):hover {
+    transform: translate3d(300px, -30px, 0) rotate(-9deg) scale(1.1) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(2):hover {
+    transform: translate3d(120px, 20px, 0) rotate(-4deg) scale(1.1) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(3):hover {
+    transform: translate3d(0px, -20px, 0) rotate(10deg) scale(1.1) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(4):hover {
+    transform: translate3d(-120px, 20px, 0) rotate(4deg) scale(1.1) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(5):hover {
+    transform: translate3d(-300px, -30px, 0) rotate(-9deg) scale(1.1) !important;
+  }
+}
+
+/* Fix for mobile devices */
+@media (max-width: 640px) {
+  .highlightCards-container.expanded {
+    height: 400px;
+  }
+  
+  
+  
+  .highlight-header h2 {
+    font-size: clamp(2rem, 5vw, 5rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+  .highlightCards-container.expanded .highlightCard {
+    transform: scale(0.7) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(1) {
+    transform: translate3d(250px, -20px, 0) rotate(-9deg) scale(0.7) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(2) {
+    transform: translate3d(110px, 15px, 0) rotate(-4deg) scale(0.7) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(3) {
+    transform: translate3d(0px, -15px, 0) rotate(10deg) scale(0.7) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(4) {
+    transform: translate3d(-110px, 15px, 0) rotate(4deg) scale(0.7) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(5) {
+    transform: translate3d(-250px, -20px, 0) rotate(-9deg) scale(0.7) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:hover {
+    transform: scale(0.8) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(1):hover {
+    transform: translate3d(250px, -20px, 0) rotate(-9deg) scale(0.8) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(2):hover {
+    transform: translate3d(110px, 15px, 0) rotate(-4deg) scale(0.8) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(3):hover {
+    transform: translate3d(0px, -15px, 0) rotate(10deg) scale(0.8) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(4):hover {
+    transform: translate3d(-110px, 15px, 0) rotate(4deg) scale(0.8) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(5):hover {
+    transform: translate3d(-250px, -20px, 0) rotate(-9deg) scale(0.8) !important;
+  }
+}
+
+/* Fix for mobile devices */
+@media (max-width: 390px) {
+  .highlightCards-container.expanded {
+    height: 300px;
+  }
+
+  
+  
+  
+
+  .highlightCard-title {
+    font-size: 2.1rem;
+  }
+  
+  .highlightCards-container.expanded .highlightCard {
+    transform: scale(0.7) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(1) {
+    transform: translate3d(180px, -40px, 0) rotate(-9deg) scale(0.7) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(2) {
+    transform: translate3d(110px, 15px, 0) rotate(-4deg) scale(0.7) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(3) {
+    transform: translate3d(0px, -15px, 0) rotate(10deg) scale(0.7) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(4) {
+    transform: translate3d(-90px, 15px, 0) rotate(4deg) scale(0.7) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(5) {
+    transform: translate3d(-180px, -40px, 0) rotate(-9deg) scale(0.7) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:hover {
+    transform: scale(0.8) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(1):hover {
+    transform: translate3d(180px, -20px, 0) rotate(-9deg) scale(0.8) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(2):hover {
+    transform: translate3d(110px, 15px, 0) rotate(-4deg) scale(0.8) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(3):hover {
+    transform: translate3d(0px, -15px, 0) rotate(10deg) scale(0.8) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(4):hover {
+    transform: translate3d(-90px, 15px, 0) rotate(4deg) scale(0.8) !important;
+  }
+  
+  .highlightCards-container.expanded .highlightCard:nth-child(5):hover {
+    transform: translate3d(-180px, -20px, 0) rotate(-9deg) scale(0.8) !important;
+  }
+}

@@ -1,0 +1,216 @@
+.shopify-partner-section {
+  background-color: #eef4eb;
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.shopify-partner-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.shopify-logo-circle {
+  cursor: pointer;
+  background-color: white;
+  width: 225px;
+  height: 225px;
+  margin: 7px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 10px;
+  transition: all 0.6s ease-in-out;
+}
+
+/* Hover effect: move left and rotate backwards */
+.shopify-logo-pill:hover .shopify-logo-circle {
+  left: calc(90% - 225px);
+  transform: scale(0.95);
+  transition: all 0.6s ease-in-out;
+}
+
+
+.shopify-partner-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 40px;
+  color: #000;
+}
+
+.highlight-text {
+  color: #7ab55b;
+  font-weight: 700;
+}
+
+.shopify-logo-container {
+  margin: 30px 0 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.shopify-logo-pill {
+  background-color: #7ab55c;
+  width: 600px;
+  height: 300px;
+  border-radius: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+  position: relative;
+}
+
+.shopify-logo-circle {
+  cursor: pointer;
+  background-color: white;
+  width: 270px;
+  height: 270px;
+  margin: 7px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.shopify-logo-circle:hover {
+  transform: scale(0.95);
+  transition: all 0.3s ease-in-out;
+ 
+}
+.shopify-logo {
+  width: 60px;
+  height: 60px;
+}
+
+.shopify-tagline {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.shopify-tagline h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #226724;
+}
+
+.learn-more-btn {
+  background-color: #7ab55c;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 30px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.learn-more-btn:hover {
+  background-color: #689f4a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.learn-more-btn.playing {
+  animation: pulse 0.5s ease-in-out;
+}
+
+.logo-img {
+  max-width: 150px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .logo-img {
+    max-width: 100px;
+  }
+  .shopify-partner-title {
+    font-size: 2.5rem;
+  }
+
+  .shopify-logo-pill {
+    width: 400px;
+    height: 200px;
+    padding-right: 8px;
+  }
+
+  .shopify-logo-circle {
+    width: 175px;
+    height: 175px;
+    
+  }
+
+  .shopify-logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .shopify-tagline h2 {
+    font-size: 1.5rem;
+  }
+  .shopify-logo-circle {
+    width: 175px;
+    height: 175px;
+  }
+}
+
+@media (max-width: 480px) {
+  .shopify-partner-title {
+    font-size: 2rem;
+  }
+
+  .logo-img {
+    max-width: 70px;
+  }
+
+  .shopify-logo-pill {
+    width: 300px;
+    height: 150px;
+    padding-right: 5px;
+  }
+
+  .shopify-logo-circle {
+    width: 125px;
+    height: 125px;
+  }
+
+  .shopify-logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .shopify-tagline h2 {
+    font-size: 1.2rem;
+  }
+  .shopify-logo-circle {
+    width: 125px;
+    height: 125px;
+  }
+}
+.shopify-logo-pill {
+  overflow: hidden;
+  position: relative;
+}
+

@@ -1,0 +1,1519 @@
+/* Import Gilroy Font */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+/* You'll need to add Gilroy font files to your project or use a CDN */
+@font-face {
+  font-family: "Gilroy-Bold";
+  src: url("path/to/Gilroy-Bold.woff2") format("woff2"), url("path/to/Gilroy-Bold.woff") format("woff");
+  font-weight: bold;
+  font-display: swap;
+}
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Gilroy-Bold", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* line-height: 1.6; */
+  color: #1f2937;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Landing Page */
+.landing-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f5f5 0%, #f0fbfc 100%);
+  position: relative;
+  padding: 1rem;
+}
+
+/* Button Base Styles */
+.btn-base {
+  font-family: "Gilroy-Bold", sans-serif;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.btn-base:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+.btn-base:active {
+  transform: translateY(0);
+}
+
+/* Primary Button */
+.btn-primary {
+  background-color: #22c55e;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  gap: 0.75rem;
+}
+
+.btn-primary:hover {
+  background-color: #16a34a;
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background-color: #374151;
+  color: white;
+  padding: 0.875rem 1.75rem;
+  font-size: 0.95rem;
+}
+
+.btn-secondary:hover {
+  background-color: #1f2937;
+}
+
+/* Outline Button */
+/* .btn-outline {
+  background-color: transparent;
+  color: #374151;
+  border: 1px solid #d1d5db;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+} */
+
+.btn-outline:hover {
+  background-color: #f9fafb;
+  border-color: #9ca3af;
+}
+
+/* Phone Button */
+.btn-phone {
+  background: none;
+  border: none;
+  color: inherit;
+  font-family: "Gilroy-Bold", sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+}
+
+.btn-phone:hover {
+  color: #0d9488;
+  background-color: rgba(13, 148, 136, 0.1);
+}
+
+/* WhatsApp Float */
+.whatsapp-float {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 1000;
+}
+
+.whatsapp-btn {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background-color: #22c55e;
+  color: white;
+  border: none;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.whatsapp-btn:hover {
+  background-color: #16a34a;
+  transform: scale(1.1);
+}
+
+/* Header */
+/* .header {
+  padding: 2rem 0;
+} */
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.addlogo-section {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.addlogo {
+  height: 4rem;
+  width: auto;
+  object-fit: contain;
+}
+
+.company-name {
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+.phone-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #1f2937;
+  font-weight: bold;
+}
+
+.phone-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  font-family: "Gilroy-Bold", sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: medium;
+  /* padding: 0.5rem 1rem; */
+  border-radius: 0.5rem;
+}
+
+.phone-btn:hover {
+  color: #0d9488;
+  background-color: rgba(13, 148, 136, 0.1);
+}
+
+/* Hero Section */
+.add-hero-section {
+  padding: 4rem 0;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 12px;
+  padding: 0.75rem 1.25rem;
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 0.875rem;
+  font-weight: bold;
+  gap: 0.5rem;
+}
+
+.badge-green {
+  /* background-color: rgb(233, 220, 195); */
+  color: #166534;
+}
+
+.badge-teal {
+  /* background-color: rgb(233, 220, 195); */
+  color: #134e4a;
+}
+
+.badge-logo {
+  height: 2rem;
+  width: auto;
+  object-fit: contain;
+}
+
+.emoji {
+  font-size: 1rem;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hero-title {
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #1f2937;
+  line-height: 1.1;
+}
+
+.highlight {
+  color: #0d9488;
+}
+
+.hero-description {
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 1.125rem;
+  color: #6b7280;
+  line-height: 1.7;
+  font-weight: 500;
+}
+
+.add-cta-button {
+  background-color: #22c55e;
+  color: white;
+  padding: 1.25rem 2.5rem;
+  border-radius: 0.75rem;
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 1.125rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  width: 80%;
+  height: 48px;
+}
+
+.add-cta-button:hover {
+  background-color: #16a34a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+.add-cta-button:active {
+  transform: translateY(0);
+}
+
+/* Contact Form */
+.contact-form-wrapper {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  padding: 2.5rem;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.form-title {
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+/* Hero Contact Form - Unique Classes */
+.hero-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.hero-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.hero-form-input {
+  height: 3rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  /* border: 1px solid #d1d5db;
+  background: rgba(240, 253, 250, 0.5); */
+  padding: 0.75rem 1rem;
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.hero-form-input:focus {
+  outline: none;
+  /* border-color: #0d9488; */
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+  transform: translateY(-1px);
+}
+
+.hero-form-input::placeholder {
+  color: #9ca3af;
+  font-family: "Gilroy-Bold", sans-serif;
+  font-weight: 500;
+}
+
+.hero-form-textarea {
+  min-height: 5rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  /* border: 1px solid #d1d5db;
+  background: rgba(240, 253, 250, 0.5); */
+  padding: 0.75rem 1rem;
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  resize: vertical;
+}
+
+.hero-form-textarea:focus {
+  outline: none;
+  /* border-color: #0d9488; */
+   box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+  transform: translateY(-1px);
+}
+
+.hero-form-textarea::placeholder {
+  color: #9ca3af;
+  font-family: "Gilroy-Bold", sans-serif;
+  font-weight: 500;
+}
+
+.hero-form-submit {
+  background-color: #374151;
+  color: white;
+  padding: 1rem;
+  font-family: "Gilroy-Bold", sans-serif;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hero-form-submit:hover {
+  background-color: #1f2937;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+.hero-form-submit:active {
+  transform: translateY(0);
+}
+
+/* Final Contact Form - Unique Classes */
+.final-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.final-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.final-form-input {
+  height: 3rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  /* border: 1px solid #d1d5db;
+  background: rgba(240, 253, 250, 0.5); */
+  padding: 0.75rem 1rem;
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.final-form-input:focus {
+  outline: none;
+  /* border-color: #0d9488; */
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+  transform: translateY(-1px);
+}
+
+.final-form-input::placeholder {
+  color: #9ca3af;
+  font-family: "Gilroy-Bold", sans-serif;
+  font-weight: 500;
+}
+
+/* .final-form-input:invalid {
+  border-color: #e63946;
+  background: rgba(255, 0, 0, 0.05);
+}
+
+.final-form-input:valid {
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.05);
+} */
+
+.final-form-textarea {
+  min-height: 5rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  /* border: 1px solid #d1d5db;
+  background: rgba(240, 253, 250, 0.5); */
+  padding: 0.75rem 1rem;
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  resize: vertical;
+}
+
+.final-form-textarea:focus {
+  outline: none;
+  /* border-color: #0d9488; */
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+  transform: translateY(-1px);
+}
+
+.final-form-textarea::placeholder {
+  color: #9ca3af;
+  font-family: "Gilroy-Bold", sans-serif;
+  font-weight: 500;
+}
+
+.final-form-submit {
+  background-color: #374151;
+  color: white;
+  padding: 1rem;
+  font-family: "Gilroy-Bold", sans-serif;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.final-form-submit:hover {
+  background-color: #1f2937;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+.final-form-submit:active {
+  transform: translateY(0);
+}
+
+/* General Contact Form Classes (for other forms if needed) */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.form-input {
+  height: 3rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  background: rgba(240, 253, 250, 0.5);
+  padding: 0.75rem 1rem;
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #0d9488;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+  transform: translateY(-1px);
+}
+
+.form-input::placeholder {
+  color: #9ca3af;
+  font-family: "Gilroy-Bold", sans-serif;
+  font-weight: 500;
+}
+
+.form-textarea {
+  min-height: 5rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  background: rgba(240, 253, 250, 0.5);
+  padding: 0.75rem 1rem;
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  resize: vertical;
+}
+
+.form-textarea:focus {
+  outline: none;
+  border-color: #0d9488;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+  transform: translateY(-1px);
+}
+
+.form-textarea::placeholder {
+  color: #9ca3af;
+  font-family: "Gilroy-Bold", sans-serif;
+  font-weight: 500;
+}
+
+.form-submit {
+  background-color: #374151;
+  color: white;
+  padding: 1rem;
+  font-family: "Gilroy-Bold", sans-serif;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-submit:hover {
+  background-color: #1f2937;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+.form-submit:active {
+  transform: translateY(0);
+}
+
+/* Pricing Section */
+.pricing-section {
+  padding: 5rem 0;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.add-section-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+}
+
+.section-subtitle {
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 1.25rem;
+  color: #6b7280;
+  font-weight: bold;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.features-image {
+  position: relative;
+}
+
+.image-wrapper {
+  border-radius: 2rem;
+  padding: 2.5rem;
+  height: 28rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-wrapper img {
+  max-width: 100%;
+  max-height: 165%;
+  object-fit: contain;
+  border-radius: 1rem;
+}
+
+.features-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.features-title {
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #1f2937;
+  line-height: 1.2;
+  text-transform: capitalize !important;
+}
+
+.features-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: #374151;
+  line-height: 1.7;
+}
+
+.features-text p {
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 500;
+} 
+
+
+.features-video {
+  max-width: 100%;
+  max-height: 135%;
+  object-fit: contain;
+  border-radius: 1rem;
+}
+
+
+/* Client addlogos */
+.clients-section {
+  padding: 5rem 0;
+  overflow: hidden;
+}
+
+.clients-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.slider-row {
+  position: relative;
+}
+
+.slider-track {
+  display: flex;
+  gap: 3.5rem;
+  animation-duration: 30s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.slide-right {
+  animation-name: slideRight;
+}
+
+.slide-left {
+  animation-name: slideLeft;
+}
+
+.paused {
+  animation-play-state: paused;
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.client-addlogo {
+  flex-shrink: 0;
+  background: white;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  min-width: 14rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.client-addlogo:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);
+}
+
+.client-name {
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #1f2937;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+
+.client-addlogo:hover .client-name {
+  color: #0d9488;
+}
+
+.external-icon {
+  margin-left: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.client-addlogo:hover .external-icon {
+  opacity: 1;
+}
+
+/* Plans Section */
+.plans-section {
+  padding: 5rem 0;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.plan-card {
+  border: 2px solid;
+  border-radius: 1rem;
+  background-color: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease;
+}
+
+.plan-blue {
+  border-color: #bfdbfe;
+}
+
+.plan-blue:hover {
+  border-color: #93c5fd;
+}
+
+.plan-green {
+  border-color: #bbf7d0;
+}
+
+.plan-green:hover {
+  border-color: #86efac;
+}
+
+.plan-purple {
+  border-color: #e9d5ff;
+}
+
+.plan-purple:hover {
+  border-color: #d8b4fe;
+}
+
+.plan-content {
+  padding: 2.5rem;
+}
+
+.plan-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.plan-name {
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 0.75rem;
+}
+
+.plan-description {
+  font-family: "Gilroy-Bold", sans-serif;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.plan-price {
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+.plan-features {
+  list-style: none;
+  margin-bottom: 2.5rem;
+}
+
+.plan-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 0.875rem;
+  color: #374151;
+  font-weight: 500;
+}
+
+.plan-features li::before {
+  content: "";
+  width: 0.375rem;
+  height: 0.375rem;
+  background-color: #3b82f6;
+  border-radius: 50%;
+  margin-top: 0.5rem;
+  flex-shrink: 0;
+}
+
+.plan-green .plan-features li::before {
+  background-color: #22c55e;
+}
+
+.plan-purple .plan-features li::before {
+  background-color: #a855f7;
+}
+
+.expanded-features {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+}
+
+.plan-blue .expanded-features {
+  background-color: #eff6ff;
+}
+
+.plan-green .expanded-features {
+  background-color: #f0fdf4;
+}
+
+.plan-purple .expanded-features {
+  background-color: #faf5ff;
+}
+
+.expanded-list {
+  list-style: none;
+}
+
+.expanded-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 0.875rem;
+  color: #374151;
+  font-weight: 500;
+}
+
+.expand-btn {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid #d1d5db;
+  background-color: transparent;
+  color: #374151;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-family: "Gilroy-Bold", sans-serif;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+}
+
+.expand-btn:hover {
+  background-color: #f9fafb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.plan-contact {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 1.5rem;
+}
+
+.contact-label {
+  font-family: "Gilroy-Bold", sans-serif;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.contact-phone {
+  background: none;
+  border: none;
+  color: #374151;
+  cursor: pointer;
+  font-family: "Gilroy-Bold", sans-serif;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  font-size: inherit;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+}
+
+.contact-phone:hover {
+  color: #0d9488;
+  background-color: rgba(13, 148, 136, 0.1);
+}
+
+/* FAQ Section */
+.faq-section {
+  padding: 5rem 0;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.faq-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.section-label {
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 0.875rem;
+  font-weight: bold;
+  color: #6b7280;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.faq-title {
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #1f2937;
+  line-height: 1.2;
+}
+
+.faq-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: #374151;
+  line-height: 1.7;
+}
+
+.faq-text p {
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.faq-item {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.faq-question {
+  width: 100%;
+  padding: 1rem;
+  background: none;
+  font-size: 1.125rem;
+  border: none;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-family: "Gilroy-Bold", sans-serif;
+  font-weight: bold;
+  color: #1f2937;
+  transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+  background-color: #0d9488;
+  color: white;
+}
+
+.faq-icon {
+  transition: transform 0.3s ease;
+  color: #6b7280;
+}
+
+.faq-icon.rotated {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding: 0 2rem 2rem;
+  color: #374151;
+  border-top: 1px solid #f3f4f6;
+}
+
+.faq-answer p {
+  padding-top: 1.5rem;
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Final CTA */
+.final-cta {
+  padding: 5rem 0;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.cta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  color: #374151;
+}
+
+.contact-link {
+  background: none;
+  border: none;
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 1.25rem;
+  color: #1f2937;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+}
+
+.contact-link:hover {
+  color: #0d9488;
+  background-color: rgba(13, 148, 136, 0.1);
+}
+
+.contact-text {
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 1.25rem;
+  color: #1f2937;
+  font-weight: bold;
+}
+
+.contact-address {
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 1.25rem;
+  color: #1f2937;
+  font-weight: bold;
+}
+
+.contact-addlogo {
+  height: 2.5rem;
+  width: auto;
+  object-fit: contain;
+}
+
+.final-form .final-contact-form {
+  gap: 1.25rem;
+}
+
+.whatsapp-submit {
+  background-color: #22c55e;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  font-family: "Gilroy-Bold", sans-serif;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.whatsapp-submit:hover {
+  background-color: #16a34a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer */
+.footer {
+  padding: 5rem 0;
+  border-top: 1px solid #e5e7eb;
+}
+
+.footer-content {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.footer-title {
+  font-family: "Gilroy-Bold", sans-serif;
+  font-size: 2.25rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 2rem;
+  /* text-transform: capitalize; */
+}
+
+.footer-text {
+  font-family: "Gilroy-Bold", sans-serif;
+  color: #374151;
+  line-height: 1.7;
+  max-width: 64rem;
+  margin: 0 auto 1.5rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.footer-addlogo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-addlogo-img {
+  height: 3.5rem;
+  width: auto;
+  object-fit: contain;
+}
+
+.footer-copyright {
+  font-family: "Gilroy-Bold", sans-serif;
+  color: #6b7280;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* WhatsApp Button */
+.whatsapp-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: #25d366;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.25rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.whatsapp-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  .addlogo {
+    height: 6rem;
+    width: auto;
+    object-fit: contain;
+  }
+  .hero-grid,
+  .features-grid,
+  .faq-grid,
+  .cta-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .plans-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title,
+  .section-title,
+  .features-title,
+  .faq-title {
+    font-size: 2rem;
+  }
+
+  .add-cta-button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    align-self: center;
+    width: 100%;
+    max-width: 400px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .addlogo {
+    height: 5rem;
+    width: auto;
+    object-fit: contain;
+  }
+  .landing-page {
+    padding: 0.5rem;
+  }
+
+  .hero-form-row,
+  .final-form-row,
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  /* .header-content {
+    flex-direction: column;
+    gap: 1.5rem;
+  } */
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .slider-track {
+    gap: 2rem;
+  }
+
+  .client-addlogo {
+    min-width: 12rem;
+    padding: 1.5rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .features-title,
+  .faq-title {
+    font-size: 2rem;
+    text-transform: capitalize;
+  }
+
+  .whatsapp-button {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.75rem;
+  }
+
+  .add-cta-button {
+    padding: 1rem 1.5rem;
+    font-size: 0.95rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  .badges {
+    justify-content: center;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  .landing-page {
+    padding: 0.25rem;
+  }
+
+  .add-hero-section,
+  .pricing-section,
+  .clients-section,
+  .plans-section,
+  .faq-section,
+  .final-cta,
+  .footer {
+    padding: 1rem 0;
+  }
+
+  .contact-form-wrapper {
+    padding: 1rem;
+  }
+
+  .plan-content {
+    padding: 1rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .whatsapp-button {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+
+  .add-cta-button {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.875rem;
+    width: 81%;
+  }
+
+  .badge {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  .badge-logo {
+    height: 2rem;
+  }
+}
+
+/* Additional responsive styles for CTA button */
+@media (max-width: 375px) {
+  .add-cta-button {
+    padding: 0.75rem 1rem;
+    font-size: 0.8rem;
+    gap: 0.5rem;
+  }
+
+  .add-cta-button svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Ensure all buttons maintain consistency */
+button,
+.btn-base,
+.add-cta-button,
+.hero-form-submit,
+.final-form-submit,
+.form-submit,
+.whatsapp-submit,
+.expand-btn {
+  font-family: "Gilroy-Bold", sans-serif !important;
+  font-weight: bold !important;
+}
+
+/* Focus states for accessibility */
+/* button:focus,
+.btn-base:focus,
+.add-cta-button:focus,
+.hero-form-submit:focus,
+.final-form-submit:focus,
+.form-submit:focus,
+.whatsapp-submit:focus {
+  outline: 2px solid #0d9488;
+  outline-offset: 2px;
+}    */
+
+
+@media (min-width: 1024px) {
+  .expand-btn {
+    display: none !important;
+  }
+}
+
+
+.error-text {
+  color: red;
+  font-size: 0.675rem;
+  margin-bottom: 4px;
+}
+
+.g-recaptcha {
+  margin: 1rem 0;
+}
