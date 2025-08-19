@@ -17,6 +17,7 @@ import SocialMedia from "./pages/Services/SocialMedia/social-media";
 import WebappDevelopment from "./pages/Services/WebAppDevelopment/web-app-development"; 
 import PrivacyPolicy from "./pages/PrivacyPolicy/privacy-policy"; 
 import TermsOfService from "./pages/TermsofService/terms-of-service";
+import Portfolio from "./pages/Portfolio/portfolio";
 
 
 function App() {
@@ -52,7 +53,7 @@ function AppContent() {
         <Route path="/services/webapp-development" element={<WebappDevelopment />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-of-services" element={<TermsOfService />} />
-        
+        <Route path="/portfolio" element={<Portfolio />} />
 
         {/* Add other routes as needed */}
       </Routes>
