@@ -362,7 +362,7 @@ export default function Portfolio() {
           name: "Fashion Brand Campaign",
           type: "Commercial Video",
           thumbnail: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xvwo0qWD65ihY6Q1eib4hBMccHVKWr.png",
-          videoUrl: "public/assets/DdcWebsiteVideo-mobile.mp4",
+          videoUrl: "./assets/DdcWebsiteVideo-mobile.mp4",
           description: "High-end fashion commercial showcasing traditional Indian wear with cinematic quality",
         },
         {
