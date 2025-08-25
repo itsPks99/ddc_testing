@@ -1,0 +1,1119 @@
+/* Adding us-landing-page prefix to all class names for uniqueness */
+/* @import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist);
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+} */
+
+/* Reset and base styles */
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
+
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* WebKit */
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.us-landing-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Navigation */
+.us-landing-page-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  z-index: 50;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.us-landing-page-nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.us-landing-page-nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.us-landing-page-nav-link {
+  color: #6b7280;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.us-landing-page-nav-link:hover {
+  color: #111827;
+}
+
+.us-landing-page-nav-logo {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.us-landing-page-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.us-landing-page-mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #374151;
+}
+
+/* Enhanced mobile menu with smooth animations */
+.us-landing-page-mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: translateY(-10px);
+  opacity: 0;
+  animation: us-landing-page-mobile-menu-slide-in 0.3s ease-out forwards;
+  overflow: hidden;
+}
+
+.us-landing-page-mobile-menu-content {
+  padding: 2rem 1rem;
+}
+
+.us-landing-page-mobile-menu-section {
+  margin-bottom: 2rem;
+}
+
+.us-landing-page-mobile-menu-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #f97316;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: us-landing-page-fade-up 0.4s ease-out 0.1s forwards;
+}
+
+.us-landing-page-mobile-menu-link {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 0;
+  background: none;
+  border: none;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #111827;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.2s;
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.us-landing-page-mobile-menu-link:nth-child(2) {
+  animation: us-landing-page-fade-up 0.4s ease-out 0.2s forwards;
+}
+
+.us-landing-page-mobile-menu-link:nth-child(3) {
+  animation: us-landing-page-fade-up 0.4s ease-out 0.3s forwards;
+}
+
+.us-landing-page-mobile-menu-link:hover {
+  color: #f97316;
+  transform: translateX(5px);
+}
+
+/* Mobile menu animation keyframes */
+@keyframes us-landing-page-mobile-menu-slide-in {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes us-landing-page-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Buttons */
+.us-landing-page-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.us-landing-page-btn-primary {
+  background: #f97316;
+  color: white;
+}
+
+.us-landing-page-btn-primary:hover {
+  background: #ea580c;
+}
+
+.us-landing-page-btn-outline {
+  background: transparent;
+  border: 1px solid #d1d5db;
+  color: #374151;
+}
+
+.us-landing-page-btn-outline:hover {
+  background: #f9fafb;
+}
+
+.us-landing-page-btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+}
+
+/* Hero Section */
+.us-landing-page-hero {
+  padding-top: 6rem;
+  padding-bottom: 4rem;
+  background: #f9fafb;
+  text-align: center;
+}
+
+.us-landing-page-hero-content {
+  transform: translateY(2.5rem);
+  opacity: 0;
+  transition: all 1s ease-out;
+}
+
+.us-landing-page-hero-content.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.us-landing-page-hero-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+
+.us-landing-page-hero-subtitle {
+  font-size: 1.25rem;
+  color: #6b7280;
+  margin-bottom: 2rem;
+  max-width: 32rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.us-landing-page-text-orange {
+  color: #f97316;
+}
+
+.us-landing-page-text-pink {
+  color: #ec4899;
+}
+
+/* Badge */
+.us-landing-page-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #f3f4f6;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.us-landing-page-badge-primary {
+  background: #fbbf24;
+  color: #111827;
+}
+
+.us-landing-page-badge-white {
+  background: white;
+  color: #111827;
+}
+
+/* Metrics Section */
+.us-landing-page-metrics {
+  padding: 4rem 0;
+  background: #111827;
+  color: white;
+}
+
+.us-landing-page-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .us-landing-page-metrics-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.us-landing-page-metric-item {
+  text-align: center;
+  transform: translateY(2.5rem);
+  opacity: 0;
+  transition: all 0.7s ease-out;
+}
+
+.us-landing-page-metric-item.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.us-landing-page-metric-value {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.us-landing-page-metric-desc {
+  color: #9ca3af;
+  font-size: 0.875rem;
+}
+
+/* Auto-sliding brands */
+.us-landing-page-brands-section {
+  overflow: hidden;
+  padding: 3rem 0;
+  background: #f9fafb;
+}
+
+.us-landing-page-brands-slider {
+  display: flex;
+  animation: us-landing-page-scroll-left 30s linear infinite;
+}
+
+.us-landing-page-brands-item {
+  flex-shrink: 0;
+  margin: 0 1rem;
+}
+
+.us-landing-page-brands-image {
+  height: 16rem;
+  width: auto;
+  object-fit: contain;
+}
+
+@keyframes us-landing-page-scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Features Section */
+.us-landing-page-features {
+  padding: 5rem 0;
+  background: white;
+}
+
+.us-landing-page-features-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .us-landing-page-features-container {
+    flex-direction: row;
+  }
+}
+
+.us-landing-page-features-cta {
+  flex: 1;
+}
+
+.us-landing-page-features-content {
+  flex: 2;
+}
+
+.us-landing-page-features-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.us-landing-page-features-description {
+  color: #6b7280;
+  margin-bottom: 2rem;
+}
+
+.us-landing-page-features-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .us-landing-page-features-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.us-landing-page-feature-item {
+  transform: translateY(2.5rem);
+  opacity: 0;
+  transition: all 0.7s ease-out;
+}
+
+.us-landing-page-feature-item.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.us-landing-page-feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.us-landing-page-feature-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.us-landing-page-feature-desc {
+  color: #6b7280;
+}
+
+/* Card */
+.us-landing-page-card {
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.us-landing-page-card-gray {
+  background: #f3f4f6;
+}
+
+.us-landing-page-card-pink {
+  background: #fce7f3;
+}
+
+.us-landing-page-card-blue {
+  background: #dbeafe;
+}
+
+/* Case Studies */
+.us-landing-page-case-studies {
+  padding: 5rem 0;
+  background: #111827;
+  color: white;
+  text-align: center;
+}
+
+.us-landing-page-case-studies-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .us-landing-page-case-studies-title {
+    font-size: 3rem;
+  }
+}
+
+.us-landing-page-case-studies-grid {
+  display: grid;
+  gap: 2rem;
+  margin-top: 4rem;
+  transform: translateY(2.5rem);
+  opacity: 0;
+  transition: all 1s ease-out;
+}
+
+@media (min-width: 768px) {
+  .us-landing-page-case-studies-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.us-landing-page-case-studies-grid.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.us-landing-page-case-study-image {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+/* World Class Brands */
+.us-landing-page-world-brands {
+  padding: 5rem 0;
+  background: white;
+}
+
+.us-landing-page-world-brands-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .us-landing-page-world-brands-title {
+    font-size: 3rem;
+  }
+}
+
+/* Updated sticky section height for 8 cards */
+.us-landing-page-sticky-section-8 {
+  height: 800vh; /* 8x viewport height for 8 cards */
+  position: relative;
+}
+
+.us-landing-page-sticky-content {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+/* Enhanced horizontal scrolling for 8 cards with infinite scroll */
+.us-landing-page-world-brands-horizontal-8 {
+  display: flex;
+  gap: 2rem;
+  transition: transform 0.1s ease-out;
+  width: 400%; /* 16 cards width (8 original + 8 duplicates for infinite scroll) */
+  will-change: transform;
+}
+
+/* Updated card width for 8 cards layout */
+.us-landing-page-brand-card-8 {
+  flex: 0 0 calc(12.5% - 1.75rem); /* 100/8 = 12.5% */
+  opacity: 0.4;
+  transform: scale(0.85);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  /* filter: blur(1px); */
+}
+
+.us-landing-page-active-card {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 2;
+  /* filter: blur(0); */
+}
+
+/* Added yellow color for 8th brand card */
+.us-landing-page-card-yellow {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 1px solid #f59e0b;
+}
+
+/* Testimonials */
+.us-landing-page-testimonials {
+  padding: 5rem 0;
+  background: #f9fafb;
+}
+
+.us-landing-page-testimonials-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.us-landing-page-testimonials-avatars {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.us-landing-page-avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: #d1d5db;
+  margin-left: -0.5rem;
+  border: 2px solid white;
+}
+
+.us-landing-page-avatar:first-child {
+  margin-left: 0;
+}
+
+.us-landing-page-testimonials-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.us-landing-page-testimonials-subtitle {
+  color: #6b7280;
+}
+
+.us-landing-page-testimonials-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .us-landing-page-testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .us-landing-page-testimonials-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.us-landing-page-testimonial-card {
+  transform: translateY(2.5rem);
+  opacity: 0;
+  transition: all 0.7s ease-out;
+}
+
+.us-landing-page-testimonial-card.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.us-landing-page-testimonial-text {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 1rem;
+}
+
+.us-landing-page-testimonial-author {
+  display: flex;
+  align-items: center;
+}
+
+.us-landing-page-author-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: #d1d5db;
+  margin-right: 0.75rem;
+}
+
+.us-landing-page-author-info {
+  flex: 1;
+}
+
+.us-landing-page-author-name {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.us-landing-page-author-role {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.us-landing-page-testimonial-rating {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.us-landing-page-rating-number {
+  font-size: 0.875rem;
+  font-weight: bold;
+  margin-right: 0.25rem;
+}
+
+/* Comparison Section */
+.us-landing-page-comparison {
+  padding: 5rem 0;
+  background: white;
+}
+
+.us-landing-page-comparison-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.us-landing-page-comparison-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.us-landing-page-comparison-grid {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+  transform: translateY(2.5rem);
+  opacity: 0;
+  transition: all 1s ease-out;
+}
+
+@media (min-width: 1024px) {
+  .us-landing-page-comparison-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.us-landing-page-comparison-grid.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.us-landing-page-comparison-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.us-landing-page-comparison-item {
+  display: flex;
+  align-items: flex-start;
+}
+
+.us-landing-page-comparison-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.75rem;
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+}
+
+.us-landing-page-icon-green {
+  color: #10b981;
+}
+
+.us-landing-page-icon-red {
+  color: #ef4444;
+}
+
+.us-landing-page-comparison-content h3 {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.us-landing-page-comparison-content p {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.us-landing-page-comparison-center {
+  text-align: center;
+}
+
+.us-landing-page-comparison-circle {
+  width: 12rem;
+  height: 12rem;
+  border-radius: 50%;
+  background: #fce7f3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.us-landing-page-comparison-logo {
+  text-align: center;
+}
+
+.us-landing-page-comparison-logo div {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+/* Schedule Call */
+.us-landing-page-schedule-call {
+  padding: 5rem 0;
+  background: #f9fafb;
+}
+
+.us-landing-page-schedule-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.us-landing-page-schedule-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.us-landing-page-schedule-description {
+  color: #6b7280;
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+.us-landing-page-schedule-content {
+  max-width: 64rem;
+  margin: 0 auto;
+  transform: translateY(2.5rem);
+  opacity: 0;
+  transition: all 1s ease-out;
+}
+
+.us-landing-page-schedule-content.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.us-landing-page-schedule-image {
+  width: 100%;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* FAQ Section */
+.us-landing-page-faq {
+  padding: 5rem 0;
+  background: white;
+}
+
+.us-landing-page-faq-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.us-landing-page-faq-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.us-landing-page-faq-content {
+  max-width: 64rem;
+  margin: 0 auto;
+  transform: translateY(2.5rem);
+  opacity: 0;
+  transition: all 1s ease-out;
+}
+
+.us-landing-page-faq-content.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.us-landing-page-faq-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .us-landing-page-faq-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.us-landing-page-faq-item {
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 1rem;
+}
+
+.us-landing-page-faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  padding: 1rem 0;
+  background: none;
+  border: none;
+  font-weight: 500;
+  color: #111827;
+  cursor: pointer;
+}
+
+.us-landing-page-faq-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  transform: rotate(0deg);
+  transition: transform 0.3s;
+}
+
+.us-landing-page-faq-icon.rotated {
+  transform: rotate(45deg);
+}
+
+.us-landing-page-faq-answer {
+  padding-bottom: 1rem;
+}
+
+.us-landing-page-faq-answer p {
+  color: #6b7280;
+}
+
+/* Footer */
+.us-landing-page-footer {
+  background: #1f2937;
+  color: white;
+  padding: 4rem 0;
+}
+
+.us-landing-page-footer-grid {
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .us-landing-page-footer-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.us-landing-page-footer-section h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.us-landing-page-footer-section h4 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.us-landing-page-footer-section p {
+  color: #9ca3af;
+  margin-bottom: 1.5rem;
+}
+
+.us-landing-page-footer-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.us-landing-page-footer-links {
+  list-style: none;
+}
+
+.us-landing-page-footer-links li {
+  margin-bottom: 0.5rem;
+}
+
+.us-landing-page-footer-links a {
+  color: #9ca3af;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.us-landing-page-footer-links a:hover {
+  color: white;
+}
+
+.us-landing-page-footer-bottom {
+  border-top: 1px solid #374151;
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.us-landing-page-footer-bottom p {
+  color: #9ca3af;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .us-landing-page-hero-title {
+    font-size: 4.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .us-landing-page-nav-links {
+    display: none;
+  }
+
+  .us-landing-page-mobile-menu-toggle {
+    display: block;
+  }
+
+  .us-landing-page-hero-title {
+    font-size: 2.5rem;
+  }
+
+  .us-landing-page-features-container {
+    flex-direction: column;
+  }
+
+  .us-landing-page-comparison-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .us-landing-page-footer-buttons {
+    flex-direction: column;
+  }
+
+  /* Mobile specific styles for World Class Brands sticky scroll */
+  .us-landing-page-world-brands-container {
+    scroll-snap-type: x mandatory;
+  }
+
+  /* Updated mobile card width for better viewing */
+  .us-landing-page-brand-card-8 {
+    scroll-snap-align: start;
+    width: 18rem;
+    flex: 0 0 18rem;
+  }
+
+  /* Mobile horizontal scroll for 8 cards with infinite scroll */
+  .us-landing-page-world-brands-horizontal-8 {
+    width: calc(18rem * 16 + 2rem * 15); /* 16 cards (8 + 8 duplicates) + gaps */
+  }
+}
+
+/* Adding individual element scroll animation classes */
+.us-landing-page-animate-fade-up {
+  transform: translateY(2rem);
+  opacity: 0;
+  transition: all 0.8s ease-out;
+}
+
+.us-landing-page-animate-fade-up.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.us-landing-page-animate-fade-left {
+  opacity: 0;
+  transform: translateX(-2rem);
+  transition: all 0.8s ease-out;
+}
+
+.us-landing-page-animate-fade-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.us-landing-page-animate-fade-right {
+  opacity: 0;
+  transform: translateX(2rem);
+  transition: all 0.8s ease-out;
+}
+
+.us-landing-page-animate-fade-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.us-landing-page-animate-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.8s ease-out;
+}
+
+.us-landing-page-animate-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Enhanced scroll animations for all elements */
+.us-landing-page-animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.us-landing-page-animate-on-scroll.us-landing-page-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.us-landing-page-animate-fade-left.us-landing-page-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.us-landing-page-animate-fade-right.us-landing-page-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.us-landing-page-animate-scale.us-landing-page-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Staggered animation delays */
+.us-landing-page-animate-delay-1 {
+  transition-delay: 0.1s;
+}
+
+.us-landing-page-animate-delay-2 {
+  transition-delay: 0.2s;
+}
+
+.us-landing-page-animate-delay-3 {
+  transition-delay: 0.3s;
+}
+
+.us-landing-page-animate-delay-4 {
+  transition-delay: 0.4s;
+}
+
+.us-landing-page-animate-delay-5 {
+  transition-delay: 0.5s;
+}
+
+/* Added additional delay classes for 8 cards */
+.us-landing-page-animate-delay-6 {
+  transition-delay: 0.6s;
+}
+
+.us-landing-page-animate-delay-7 {
+  transition-delay: 0.7s;
+}
+
+.us-landing-page-brand-metrics {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  justify-content: center;
+}

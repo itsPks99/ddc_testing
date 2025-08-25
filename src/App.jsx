@@ -18,6 +18,7 @@ import WebappDevelopment from "./pages/Services/WebAppDevelopment/web-app-develo
 import PrivacyPolicy from "./pages/PrivacyPolicy/privacy-policy"; 
 import TermsOfService from "./pages/TermsofService/terms-of-service";
 import Portfolio from "./pages/Portfolio/portfolio";
+import UsLandingPage from "./pages/UsAddLandingpage/usLandingPage";
 
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
 function AppContent() {
   const location = useLocation();
   usePageTracking(); // Custom hook for page tracking
-  const hideLayout = location.pathname === "/shopify-landing-page" || location.pathname === "/shopify" ;
+  const hideLayout = location.pathname === "/shopify-landing-page" || location.pathname === "/shopify" || location.pathname === "/us-landing-page";
 
   return (
     <>
@@ -46,6 +47,9 @@ function AppContent() {
         <Route path="/contactUs" element={<ContactUs />} />
         <Route path="/shopify-landing-page" element={<ShopifyLandingPage />} />
         <Route path="/shopify" element={<Shopify />} />
+        <Route path="/us-landing-page" element={<UsLandingPage />} />
+        
+        {/* Services Routes */}
         <Route path="/services/branding" element={<Branding />} />
         <Route path="/services/performance-marketing" element={<PerformanceMarketing />} />
         <Route path="/services/photography" element={<Photography />} />
