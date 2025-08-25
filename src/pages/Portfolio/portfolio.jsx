@@ -370,14 +370,14 @@ export default function Portfolio() {
           name: "Product Showcase Reel",
           type: "Product Video",
           thumbnail: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Fi1mv1WoEedWxVgL54nqyIv1ENCwWn.png",
-          videoUrl: "public/assets/portfolioimages/RANTHAMBHORE RUSH.mp4",
+          videoUrl: "public/assets/DdcWebsiteVideo-mobile.mp4",
           description: "Dynamic product showcase video highlighting jewelry collection with premium aesthetics",
         },
         {
           name: "Brand Story Video",
           type: "Brand Documentary",
           thumbnail: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xR8vNC4a7pqhWSoFwxdD84JWnAOcvS.png",
-          videoUrl: "public/assets/portfolioimages/JEWELLERY HOLICS V1.mp4",
+          videoUrl: "public/assets/DdcWebsiteVideo-mobile.mp4",
           description: "Compelling brand story video capturing the essence of luxury fashion and craftsmanship",
         },
         {
