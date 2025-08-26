@@ -3,6 +3,10 @@
 import "./portfolio.css"
 import React, { useEffect, useState } from "react"
 import LogoImg from "/assets/all_logos/ddc logo/ddc logo cropped.png"
+import LogoImg_1 from "/assets/portfolioimages/Performance/perfonrmance1.png"
+import LogoImg_2 from "/assets/portfolioimages/Performance/perfonrmance2.png"
+import LogoImg_3 from "/assets/portfolioimages/Performance/perfonrmance3.png"
+
 
 export default function Portfolio() {
   useEffect(() => {
@@ -213,9 +217,9 @@ export default function Portfolio() {
           name: "Manvi Daga",
           type: "Fashion E-commerce",
           images: [
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XJjG8PEryZwDZQNmV5MgymQcfp85r3.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Fi1mv1WoEedWxVgL54nqyIv1ENCwWn.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kRyeCHl2ptWcMapOHLOKXTw75Cfux7.png",
+            "/assets/portfolioimages/manidaga/manvidagadesktop1.png",
+            "/assets/portfolioimages/manidaga/manvidagadesktop2.png",
+            "/assets/portfolioimages/manidaga/manvidagadesktop3.png",
           ],
           mobileImages: [
             "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XJjG8PEryZwDZQNmV5MgymQcfp85r3.png",
@@ -225,27 +229,27 @@ export default function Portfolio() {
           description: "Elegant jewelry website with premium product photography and seamless shopping experience",
         },
         {
-          name: "INARA Fashion",
+          name: "Inara Fashion",
           type: "Traditional Fashion E-commerce",
           images: [
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Fi1mv1WoEedWxVgL54nqyIv1ENCwWn.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XJjG8PEryZwDZQNmV5MgymQcfp85r3.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xR8vNC4a7pqhWSoFwxdD84JWnAOcvS.png",
+            "/assets/portfolioimages/Inara/inaradesktop1.png",
+            "/assets/portfolioimages/Inara/inaradesktop2.png",
+            "/assets/portfolioimages/Inara/inaradesktop3.png",
           ],
           mobileImages: [
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Fi1mv1WoEedWxVgL54nqyIv1ENCwWn.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XJjG8PEryZwDZQNmV5MgymQcfp85r3.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xR8vNC4a7pqhWSoFwxdD84JWnAOcvS.png",
+            "/assets/portfolioimages/Inara/inaradesktop1.png",
+            "/assets/portfolioimages/Inara/inaradesktop2.png",
+            "/assets/portfolioimages/Inara/inaradesktop3.png",
           ],
           description: "Vibrant traditional Indian fashion website with mobile-responsive design",
         },
         {
-          name: "Fashion Portfolio",
-          type: "E-commerce Platform",
+          name: "July Issue",
+          type: "Contemporary Fashion E-commerce",
           images: [
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kRyeCHl2ptWcMapOHLOKXTw75Cfux7.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XaFAA1qAshcASBggChicWM3g1384DE.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-g8VqhQZnW87FNaa7QlT2BmxdV3NQ8W.png",
+            "/assets/portfolioimages/julyissue/julyissuedesktop1.png",
+            "/assets/portfolioimages/julyissue/julyissuedesktop2.png",
+            "/assets/portfolioimages/julyissue/julyissuedesktop3.png",
           ],
           mobileImages: [
             "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kRyeCHl2ptWcMapOHLOKXTw75Cfux7.png",
@@ -254,21 +258,21 @@ export default function Portfolio() {
           ],
           description: "Complete fashion e-commerce solution with advanced filtering and product showcase",
         },
-        {
-          name: "Delhi Digital Company",
-          type: "Corporate Website",
-          images: [
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xR8vNC4a7pqhWSoFwxdD84JWnAOcvS.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-g8VqhQZnW87FNaa7QlT2BmxdV3NQ8W.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XaFAA1qAshcASBggChicWM3g1384DE.png",
-          ],
-          mobileImages: [
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xR8vNC4a7pqhWSoFwxdD84JWnAOcvS.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-g8VqhQZnW87FNaa7QlT2BmxdV3NQ8W.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XaFAA1qAshcASBggChicWM3g1384DE.png",
-          ],
-          description: "Modern corporate website with professional design and user-friendly navigation",
-        },
+        // {
+        //   name: "Delhi Digital Company",
+        //   type: "Corporate Website",
+        //   images: [
+        //     "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xR8vNC4a7pqhWSoFwxdD84JWnAOcvS.png",
+        //     "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-g8VqhQZnW87FNaa7QlT2BmxdV3NQ8W.png",
+        //     "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XaFAA1qAshcASBggChicWM3g1384DE.png",
+        //   ],
+        //   mobileImages: [
+        //     "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xR8vNC4a7pqhWSoFwxdD84JWnAOcvS.png",
+        //     "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-g8VqhQZnW87FNaa7QlT2BmxdV3NQ8W.png",
+        //     "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XaFAA1qAshcASBggChicWM3g1384DE.png",
+        //   ],
+        //   description: "Modern corporate website with professional design and user-friendly navigation",
+        // },
       ],
       showLinks: true,
       links: websiteDevelopmentLinks,
@@ -282,33 +286,33 @@ export default function Portfolio() {
           name: "Multi-Brand Management",
           type: "Instagram Growth Strategy",
           images: [
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XaFAA1qAshcASBggChicWM3g1384DE.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-NbWjcrYmC2Unu1UYBk8XYNGLnUDcW4.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xvwo0qWD65ihY6Q1eib4hBMccHVKWr.png",
+            "/assets/portfolioimages/SocialMedia/image1.png",
+            "/assets/portfolioimages/SocialMedia/image2.png",
+            "/assets/portfolioimages/SocialMedia/image3.png",
           ],
           mobileImages: [
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XaFAA1qAshcASBggChicWM3g1384DE.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-NbWjcrYmC2Unu1UYBk8XYNGLnUDcW4.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xvwo0qWD65ihY6Q1eib4hBMccHVKWr.png",
+            "/assets/portfolioimages/SocialMedia/image1.png",
+            "/assets/portfolioimages/SocialMedia/image2.png",
+            "/assets/portfolioimages/SocialMedia/image3.png",
           ],
           description:
             "Managing 20K+ followers across luxury fashion and lifestyle brands including Samsaragin, DrinkSober, and 121Couture",
         },
-        {
-          name: "Fashion Brand Portfolio",
-          type: "Social Media Strategy",
-          images: [
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-NbWjcrYmC2Unu1UYBk8XYNGLnUDcW4.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Fi1mv1WoEedWxVgL54nqyIv1ENCwWn.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kRyeCHl2ptWcMapOHLOKXTw75Cfux7.png",
-          ],
-          mobileImages: [
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-NbWjcrYmC2Unu1UYBk8XYNGLnUDcW4.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Fi1mv1WoEedWxVgL54nqyIv1ENCwWn.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kRyeCHl2ptWcMapOHLOKXTw75Cfux7.png",
-          ],
-          description: "Comprehensive social media management for fashion brands with consistent engagement growth",
-        },
+        // {
+        //   name: "Fashion Brand Portfolio",
+        //   type: "Social Media Strategy",
+        //   images: [
+        //     "/assets/portfolioimages/SocialMedia/fashionbrand1.png",
+        //     "/assets/portfolioimages/SocialMedia/fashionbrand2.png",
+        //     "/assets/portfolioimages/SocialMedia/fashionbrand3.png",
+        //   ],
+        //   mobileImages: [
+        //     "/assets/portfolioimages/SocialMedia/fashionbrand1.png",
+        //     "/assets/portfolioimages/SocialMedia/fashionbrand2.png",
+        //     "/assets/portfolioimages/SocialMedia/fashionbrand3.png",
+        //   ],
+        //   description: "Comprehensive social media management for fashion brands with consistent engagement growth",
+        // },
       ],
       showLinks: true,
       links: socialMediaBrands,
@@ -323,14 +327,14 @@ export default function Portfolio() {
           name: "Analytics Dashboard",
           type: "Marketing Analytics & ROI",
           images: [
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-g8VqhQZnW87FNaa7QlT2BmxdV3NQ8W.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XJjG8PEryZwDZQNmV5MgymQcfp85r3.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xR8vNC4a7pqhWSoFwxdD84JWnAOcvS.png",
+            { src: LogoImg_1, alt: "Performance 1" },
+            { src: LogoImg_2, alt: "Performance 2" },
+            { src: LogoImg_3, alt: "Performance 3" },
           ],
           mobileImages: [
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-g8VqhQZnW87FNaa7QlT2BmxdV3NQ8W.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XJjG8PEryZwDZQNmV5MgymQcfp85r3.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xR8vNC4a7pqhWSoFwxdD84JWnAOcvS.png",
+            { src: LogoImg_1, alt: "Performance 1" },
+            { src: LogoImg_2, alt: "Performance 2" },
+            { src: LogoImg_3, alt: "Performance 3" },
           ],
           description:
             "₹125,558.40 revenue generated with 85% conversion rate improvement and comprehensive performance tracking",
@@ -339,14 +343,14 @@ export default function Portfolio() {
           name: "Campaign Optimization",
           type: "Performance Metrics",
           images: [
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-g8VqhQZnW87FNaa7QlT2BmxdV3NQ8W.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XaFAA1qAshcASBggChicWM3g1384DE.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-NbWjcrYmC2Unu1UYBk8XYNGLnUDcW4.png",
+            "/assets/portfolioimages/Performance/performance1.png",
+            "/assets/portfolioimages/Performance/performance2.png",
+            "/assets/portfolioimages/Performance/performance3.png",
           ],
           mobileImages: [
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-g8VqhQZnW87FNaa7QlT2BmxdV3NQ8W.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XaFAA1qAshcASBggChicWM3g1384DE.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-NbWjcrYmC2Unu1UYBk8XYNGLnUDcW4.png",
+            "/assets/portfolioimages/Performance/performance1.png",
+            "/assets/portfolioimages/Performance/performance2.png",
+            "/assets/portfolioimages/Performance/performance3.png",
           ],
           description:
             "Advanced analytics showing 67% increase in online store sessions and improved customer acquisition",
@@ -397,7 +401,7 @@ export default function Portfolio() {
       ],
       projects: [
         {
-          name: "INARA Fashion Shoot",
+          name: "Inara Fashion Shoot",
           type: "Fashion Photography",
           images: [
             "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xvwo0qWD65ihY6Q1eib4hBMccHVKWr.png",

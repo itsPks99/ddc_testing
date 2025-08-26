@@ -5,22 +5,16 @@ import { CheckCircle, XCircle } from "lucide-react"
 
 function useScrollAnimation() {
   const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
+  const ref = useRef(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
+        if (entry.isIntersecting) setIsVisible(true)
       },
-      { threshold: 0.1 },
+      { threshold: 0.1 }
     )
-
-    if (ref.current) {
-      observer.observe(ref.current)
-    }
-
+    if (ref.current) observer.observe(ref.current)
     return () => observer.disconnect()
   }, [])
 
@@ -31,32 +25,41 @@ export default function ComparisonSection() {
   const { ref, isVisible } = useScrollAnimation()
 
   const positives = [
-    { title: "Growth", desc: "You have a remarkable product and are committed to your next phase of growth." },
     {
-      title: "True Industry Expertise",
-      desc: "You're interested in finding a true ally with world class industry expertise.",
+      title: "Serious About Growth",
+      desc: "You’re ready to scale revenue with high-converting Shopify stores or custom builds that don’t cut corners.",
     },
     {
-      title: "Creative Work",
-      desc: "You are looking for unique, creative work and a strategy designed specifically for you.",
+      title: "Trust the Experts",
+      desc: "You want a hands-on partner with deep Shopify & headless (React/Node) experience who can own outcomes.",
     },
     {
-      title: "Win Awards",
-      desc: "You faith in data-driven startifies and do not get sidetracked by the desire to win awards.",
+      title: "Performance First",
+      desc: "Speed, SEO, analytics and CRO matter more than trends—every page should load fast and convert better.",
+    },
+    {
+      title: "Brand + Strategy",
+      desc: "You care about storytelling, clean UI/UX, and long-term compounding results—not just a one-off launch.",
     },
   ]
 
   const negatives = [
     {
-      title: "Don't Have Trust",
-      desc: "You Don't trust the team you've hired or you tend to micro-manage creative work.",
+      title: "Cheapest Over Quality",
+      desc: "If price is the only metric and craftsmanship is optional, we won’t be the right fit.",
     },
     {
-      title: "Not Interested In Brand",
-      desc: "You are just in it for making a quick profit, and you are not excited about your brand.",
+      title: "Pixel-Pushing & Micro-Managing",
+      desc: "You don’t trust partners to make design/tech decisions and prefer to direct every minor change.",
     },
-    { title: "Refuse to Acknowledge", desc: "You refuse to acknowledge market trends and changing consumer demands." },
-    { title: "Hustle Culture", desc: 'You romanticize "hustel culture" and working non-stop.' },
+    {
+      title: "Chasing Vanity",
+      desc: "Awards and trends matter more than measurable growth, data, and customer experience.",
+    },
+    {
+      title: "Quick Fix Mindset",
+      desc: "You want hacks instead of a resilient, fast store with clear strategy, testing, and iteration.",
+    },
   ]
 
   return (
@@ -65,12 +68,13 @@ export default function ComparisonSection() {
         <div className="us-landing-page-comparison-header">
           <div className="us-landing-page-badge">Your Match</div>
           <h2 className="us-landing-page-comparison-title">
-            Are We Made <span className="us-landing-page-text-orange">For</span>{" "}
-            <span className="us-landing-page-text-pink">Each Other?</span>
+            Are We the <span className="us-landing-page-text-orange">Right</span>{" "}
+            <span className="us-landing-page-text-pink">Fit?</span>
           </h2>
         </div>
 
         <div className={`us-landing-page-comparison-grid ${isVisible ? "visible" : ""}`}>
+          {/* Best fit */}
           <div className="us-landing-page-comparison-list">
             {positives.map((item, index) => (
               <div key={index} className="us-landing-page-comparison-item">
@@ -83,15 +87,17 @@ export default function ComparisonSection() {
             ))}
           </div>
 
+          {/* Center logo */}
           <div className="us-landing-page-comparison-center">
             <div className="us-landing-page-comparison-circle">
               <div className="us-landing-page-comparison-logo">
-                <div>The Landing</div>
-                <div>Page Company</div>
+                <div>Delhi</div>
+                <div>Digital Co.</div>
               </div>
             </div>
           </div>
 
+          {/* Not a fit */}
           <div className="us-landing-page-comparison-list">
             {negatives.map((item, index) => (
               <div key={index} className="us-landing-page-comparison-item">

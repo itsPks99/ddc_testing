@@ -4,22 +4,16 @@ import { useEffect, useRef, useState } from "react"
 
 function useScrollAnimation() {
   const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
+  const ref = useRef(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
+        if (entry.isIntersecting) setIsVisible(true)
       },
-      { threshold: 0.1 },
+      { threshold: 0.1 }
     )
-
-    if (ref.current) {
-      observer.observe(ref.current)
-    }
-
+    if (ref.current) observer.observe(ref.current)
     return () => observer.disconnect()
   }, [])
 
@@ -31,21 +25,22 @@ export default function IncludedServicesSection() {
 
   const services = [
     {
-      icon: "💎",
-      title: "UI/UX Design",
-      description:
-        "We craft intuitive and visually appealing designs that enhance user experience and drive conversions.",
-    },
-    {
-      icon: "📝",
-      title: "Content & Graphics",
-      description: "We create compelling content and graphics that resonate with your audience and boost engagement.",
-    },
-    {
       icon: "🛍️",
       title: "Shopify Development",
       description:
-        "We build high-performance landing pages that are optimized for speed, functionality, and seamless user interactions.",
+        "High-performance Shopify storefronts and landing pages built for speed, SEO, and conversions.",
+    },
+    {
+      icon: "🧩",
+      title: "Custom Development",
+      description:
+        "Headless/React builds, custom APIs, and integrations tailored to your workflows and business logic.",
+    },
+    {
+      icon: "💎",
+      title: "UI/UX Design",
+      description:
+        "Clean, conversion-focused design that looks premium and guides shoppers to checkout.",
     },
   ]
 
@@ -56,24 +51,29 @@ export default function IncludedServicesSection() {
           <div className="us-landing-page-features-cta">
             <div className="us-landing-page-card us-landing-page-card-gray">
               <h3 className="us-landing-page-features-title">
-                Ready To Blow The
+                Ready to Turn Traffic into Revenue?
                 <br />
-                Doors Off?
+                We Build High Converting Stores.
               </h3>
+
               <button className="us-landing-page-btn us-landing-page-btn-primary">Get In Touch</button>
             </div>
           </div>
+
           <div className="us-landing-page-features-content">
-            <div className="us-landing-page-badge">Custom Landing Page Design</div>
+            <div className="us-landing-page-badge">Shopify &amp; Custom Development</div>
+
             <h2 className="us-landing-page-features-title">
               <span className="us-landing-page-text-orange">Included</span> in Every
               <br />
-              Landing Page Design
+              Shopify &amp; Custom Build
             </h2>
+
             <p className="us-landing-page-features-description">
-              Tailored landing to highlight your bestsellers, refine your sales pitch, and engage today's distracted
-              shopper.
+              Conversion-ready pages and storefronts—whether on Shopify or fully custom—built to load fast, look
+              premium, and sell more.
             </p>
+
             <div className="us-landing-page-features-grid">
               {services.map((service, index) => (
                 <div

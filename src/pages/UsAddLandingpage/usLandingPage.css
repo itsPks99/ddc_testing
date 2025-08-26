@@ -65,7 +65,7 @@ body {
 }
 
 .us-landing-page-nav-link:hover {
-  color: #111827;
+  color: #f97316;
 }
 
 .us-landing-page-nav-logo {
@@ -175,7 +175,7 @@ body {
 
 /* Buttons */
 .us-landing-page-btn {
-  padding: 0.75rem 1.5rem;
+  padding: 0.50rem 1.2rem;
   border: none;
   border-radius: 0.5rem;
   font-weight: 600;
@@ -185,15 +185,19 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  border-radius: 20px;
 }
 
 .us-landing-page-btn-primary {
   background: #f97316;
   color: white;
+  border-radius: 20x;
 }
 
 .us-landing-page-btn-primary:hover {
-  background: #ea580c;
+  background: black;
+  color: white;
+  
 }
 
 .us-landing-page-btn-outline {
@@ -207,8 +211,9 @@ body {
 }
 
 .us-landing-page-btn-lg {
-  padding: 1rem 2rem;
-  font-size: 1.125rem;
+  /* padding: 1rem 2rem;
+  font-size: 1.125rem; */
+  border-radius: 20px;
 }
 
 /* Hero Section */
@@ -277,15 +282,17 @@ body {
 
 /* Metrics Section */
 .us-landing-page-metrics {
-  padding: 4rem 0;
-  background: #111827;
+  padding-bottom: 2rem;
+  background: #0b0d10;
   color: white;
+  border-right: 1px solid white;
 }
 
 .us-landing-page-metrics-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
+  
 }
 
 @media (min-width: 768px) {
@@ -351,7 +358,7 @@ body {
 
 /* Features Section */
 .us-landing-page-features {
-  padding: 5rem 0;
+  padding: 1rem 0;
   background: white;
 }
 
@@ -446,7 +453,7 @@ body {
 
 /* Case Studies */
 .us-landing-page-case-studies {
-  padding: 5rem 0;
+  padding: 1rem 0;
   background: #111827;
   color: white;
   text-align: center;
@@ -513,11 +520,19 @@ body {
   height: 800vh; /* 8x viewport height for 8 cards */
   position: relative;
 }
+@media screen and (max-width: 767px) {
+  .us-landing-page-sticky-section-8 {
+   display: none;
+  }
+  
+}
 
 .us-landing-page-sticky-content {
   position: sticky;
   top: 0;
-  height: 100vh;
+  /* height:100%; */
+  padding-top: 50px;
+  padding-bottom: 10px;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -529,7 +544,7 @@ body {
   display: flex;
   gap: 2rem;
   transition: transform 0.1s ease-out;
-  width: 400%; /* 16 cards width (8 original + 8 duplicates for infinite scroll) */
+  width: 300%; /* 16 cards width (8 original + 8 duplicates for infinite scroll) */
   will-change: transform;
 }
 
@@ -670,7 +685,7 @@ body {
 
 /* Comparison Section */
 .us-landing-page-comparison {
-  padding: 5rem 0;
+  padding: 1rem 0;
   background: white;
 }
 
@@ -962,7 +977,7 @@ body {
 /* Responsive Design */
 @media (min-width: 768px) {
   .us-landing-page-hero-title {
-    font-size: 4.5rem;
+    font-size: 3rem;
   }
 }
 
@@ -976,7 +991,7 @@ body {
   }
 
   .us-landing-page-hero-title {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
   }
 
   .us-landing-page-features-container {
@@ -1005,7 +1020,7 @@ body {
 
   /* Mobile horizontal scroll for 8 cards with infinite scroll */
   .us-landing-page-world-brands-horizontal-8 {
-    width: calc(18rem * 16 + 2rem * 15); /* 16 cards (8 + 8 duplicates) + gaps */
+    /* width: calc(16rem * 14 + 1.5rem * 13); 16 cards (8 + 8 duplicates) + gaps */
   }
 }
 

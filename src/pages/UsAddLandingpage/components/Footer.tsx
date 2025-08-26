@@ -51,14 +51,14 @@ export default function Footer() {
           <div className="us-landing-page-footer-section">
             <h4>Operation Office</h4>
             <p>442-443 Laxmi Enclave - 2, Katargam Surat, Gujarat, India</p>
-            <p>+91 9505564228</p>
+            <p>+91 92051 10208</p>
           </div>
         </div>
 
         <div className="us-landing-page-footer-bottom">
-          <p>© The landing page company, Inc. 2024</p>
+          <p>© Delhi Digita Co., Inc. 2025</p>
           <p>
-            Made with love ❤️ by <span className="us-landing-page-text-orange">Mark91 Studio</span>
+            Made with love ❤️ by <span className="us-landing-page-text-orange"><a href="https://delhidigital.co/" style={{color :"#9ca3af", textDecoration:"none"}}>Delhi Digita Co.</a></span>
           </p>
         </div>
       </div>

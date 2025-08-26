@@ -19,6 +19,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy/privacy-policy";
 import TermsOfService from "./pages/TermsofService/terms-of-service";
 import Portfolio from "./pages/Portfolio/portfolio";
 import UsLandingPage from "./pages/UsAddLandingpage/usLandingPage";
+import Contactuslanding from "./pages/UsAddLandingpage/components/Contactuslanding"
 
 
 function App() {
@@ -32,7 +33,7 @@ function App() {
 function AppContent() {
   const location = useLocation();
   usePageTracking(); // Custom hook for page tracking
-  const hideLayout = location.pathname === "/shopify-landing-page" || location.pathname === "/shopify" || location.pathname === "/us-landing-page";
+  const hideLayout = location.pathname === "/shopify-landing-page" || location.pathname === "/shopify" || location.pathname === "/us-landing-page" || location.pathname === "/portfolio";
 
   return (
     <>
@@ -58,6 +59,7 @@ function AppContent() {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-of-services" element={<TermsOfService />} />
         <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/contactuslanding" element={<Contactuslanding />} />
 
         {/* Add other routes as needed */}
       </Routes>

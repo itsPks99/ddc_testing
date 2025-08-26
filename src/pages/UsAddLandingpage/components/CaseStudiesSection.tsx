@@ -1,60 +1,91 @@
-"use client"
+"use client";
 
-import { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react";
 
 function useScrollAnimation() {
-  const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.1 },
-    )
+      ([entry]) => entry.isIntersecting && setIsVisible(true),
+      { threshold: 0.1 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
 
-    if (ref.current) {
-      observer.observe(ref.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
-
-  return { ref, isVisible }
+  return { ref, isVisible };
 }
 
 export default function CaseStudiesSection() {
-  const { ref, isVisible } = useScrollAnimation()
+  const { ref, isVisible } = useScrollAnimation();
+
+  // EXACTLY six images → displayed as 2 cards (3 per card on desktop, 2 per card on phones)
+  const images = [
+    "/assets/us-landing-page/Casestudies-1/Casestudies-1(1).png",
+    "/assets/us-landing-page/Casestudies-1/Casestudies-1(2).png",
+    "/assets/us-landing-page/Casestudies-1/Casestudies-1(3).png", // replace if needed
+    "/assets/us-landing-page/Casestudies-2/Casestudies-2(1).png",
+    "/assets/us-landing-page/Casestudies-2/Casestudies-2(2).png",
+    "/assets/us-landing-page/Casestudies-2/Casestudies-2(3).png", // replace if needed
+  ].filter(Boolean);
+
+  // Split into two groups of three
+  const groups = [images.slice(0, 3), images.slice(3, 6)];
 
   return (
-    <div id="case-studies" ref={ref} className="us-landing-page-case-studies">
-      <div className="us-landing-page-container">
-        <div className="us-landing-page-testimonials-header">
-          <div className="us-landing-page-badge us-landing-page-badge-white">CASE STUDY</div>
-          <h2 className="us-landing-page-case-studies-title">
-            <span className="us-landing-page-text-orange">Featured</span>{" "}
-            <span className="us-landing-page-text-pink">Case Study</span>
-            <br />
-            The Good Stuff's Flawless Gummies
-          </h2>
-        </div>
+    <section id="case-studies" ref={ref} className="us-landing-page-case-studies cs-section cs-dark">
+      <style>{`
+        .cs-section { padding-block: clamp(48px, 7vw, 96px); --phoneH: clamp(260px, 55vh, 560px); }
+        .cs-dark { background:#0b0d10; color:#fff; }
+        .cs-wrap { display: grid; gap: clamp(20px, 3vw, 32px); }
 
-        <div className={`us-landing-page-case-studies-grid ${isVisible ? "visible" : ""}`}>
-          <div>
-            <img src="/case-study-mockups.png" alt="Case study mockups" className="us-landing-page-case-study-image" />
-          </div>
-          <div>
-            <img
-              src="/case-study-reviews.png"
-              alt="Product reviews and metrics"
-              className="us-landing-page-case-study-image"
-            />
-          </div>
+        /* Header (kept exactly like before) */
+        .cs-kicker { font-weight: 900; font-size: clamp(22px, 3.8vw, 40px); line-height: 1.05; background: linear-gradient(90deg, #ff7a59, #ff66b3, #a855f7); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -0.02em; }
+        .cs-title { margin: 6px 0 0 0; font-weight: 800; font-size: clamp(30px, 5.8vw, 64px); line-height: 1.08; letter-spacing: -0.02em; color:#fff; }
+
+        /* Two cards */
+        .cs-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(28px, 3.5vw, 48px); }
+        .cs-rail { background:#bfe1ff; border-radius: 24px; padding: clamp(14px, 2vw, 22px); overflow: hidden; opacity:0; transform: translateY(10px); transition: opacity .5s ease, transform .5s ease; }
+        .visible .cs-rail { opacity:1; transform: translateY(0); }
+
+        /* Phone frames inside each card */
+        .cs-images { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 1.8vw, 24px); align-items: start; justify-items: stretch; }
+        .phone {aspect-ratio: 9 / 19; background:#fff; border-radius: 20px; padding: clamp(10px, 1.2vw, 14px); border: 1px solid rgba(2,6,23,.08); box-shadow: 0 12px 28px rgba(2,6,23,.18); display: flex; align-items: flex-start; justify-content: center; }
+        .phone__img { max-height: 100%; width: 100%; height: 100%; object-fit: contain; object-position: top center; border-radius: 12px; display:block; }
+        .cs-hide-mobile { display:block; }
+
+        /* Responsive: stack the two cards, and show only 2 images per card */
+        @media (max-width: 900px) { .cs-list { grid-template-columns: 1fr; } }
+        @media (max-width: 640px) {
+          .cs-images { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+          .cs-hide-mobile { display:none !important; }
+          .cs-section { --phoneH: 360px; }
+        }
+      `}</style>
+
+      <div className="us-landing-page-container cs-wrap">
+        {/* Keep the title EXACTLY like earlier */}
+        <header>
+          <div className="cs-kicker">Featured Case Study</div>
+          <h2 className="cs-title">The Good Stuff’s Flawless Gummies</h2>
+        </header>
+
+        <div className={`cs-list ${isVisible ? "visible" : ""}`}>
+          {groups.map((group, idx) => (
+            <div className="cs-rail" key={`group-${idx}`}>
+              <div className="cs-images">
+                {group.map((src, i) => (
+                  <div className={`phone ${i === 2 ? "cs-hide-mobile" : ""}`} key={`img-${idx}-${i}`}>
+                    <img className="phone__img" src={src || "/placeholder.svg"} alt={`Case Study image ${idx * 3 + i + 1}`} loading="lazy" decoding="async" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
-  )
+    </section>
+  );
 }
