@@ -67,12 +67,13 @@ function useStickyScroll() {
       if (rect.top <= 0 && rect.bottom >= windowHeight) {
         const progress = Math.abs(rect.top) / (containerHeight - windowHeight)
         setScrollProgress(progress)
-        const cardIndex = Math.min(Math.floor(progress * 8), 7)
+        const cardIndex = Math.min(Math.floor(progress * 5), 4)
         setCurrentCard(cardIndex)
       }
     }
 
     window.addEventListener("scroll", handleScroll, { passive: true })
+    handleScroll() // initialize on mount
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
@@ -93,7 +94,6 @@ export default function WorldClassBrands() {
         "A premium jewelry e-commerce store with custom Shopify development, optimized for luxury shopping experience.",
       metrics: { CRO: "+15%", AOV: "+25%", REV: "+45%" },
       color: "us-landing-page-card-gray",
-      // image: "/assets/us-landing-page/Tievadesktop.png",
       images: ["/assets/us-landing-page/Tievadesktop.png", "/assets/us-landing-page/tievamobile.png"],
       tint: "#F2F2F2",
     },
@@ -104,7 +104,7 @@ export default function WorldClassBrands() {
         "We launched Manvi Daga's fashion Shopify store, creating a seamless shopping experience with remarkable results.",
       metrics: { CRO: "+35%", AOV: "+40%", REV: "+85%" },
       color: "us-landing-page-card-pink",
-      image: "/assets/us-landing-page/Manvidesktop.png" ,
+      image: "/assets/us-landing-page/Manvidesktop.png",
       images: ["/assets/us-landing-page/Manvidesktop.png", "/assets/us-landing-page/Manvimobile.png"],
       tint: "#FBE8F3",
     },
@@ -136,34 +136,8 @@ export default function WorldClassBrands() {
         "Fashion e-commerce platform with advanced filtering, wishlist functionality, and seamless checkout process.",
       metrics: { CRO: "+18%", AOV: "+35%", REV: "+48%" },
       color: "us-landing-page-card-purple",
-      image: "/fashion-ecommerce-website.png",
-    },
-    {
-      name: "Anthi Naturals",
-      rating: 5,
-      description:
-        "Organic beauty products Shopify store with subscription model and customer loyalty program integration.",
-      metrics: { CRO: "+25%", AOV: "+28%", REV: "+58%" },
-      color: "us-landing-page-card-green",
-      image: "/natural-beauty-website.png",
-    },
-    {
-      name: "Drink Sober",
-      rating: 5,
-      description:
-        "Beverage e-commerce platform with age verification, subscription services, and inventory management system.",
-      metrics: { CRO: "+20%", AOV: "+32%", REV: "+52%" },
-      color: "us-landing-page-card-teal",
-      image: "/beverage-ecommerce-website.png",
-    },
-    {
-      name: "Geum Jewels",
-      rating: 5,
-      description:
-        "Luxury jewelry Shopify store with AR try-on feature, custom product configurator, and premium checkout experience.",
-      metrics: { CRO: "+30%", AOV: "+45%", REV: "+78%" },
-      color: "us-landing-page-card-yellow",
-      image: "/luxury-jewelry-ecommerce.png",
+      image: "/assets/portfolioimages/julyissue/julyissuedesktop1.png",
+      images: ["/assets/portfolioimages/julyissue/julyissuedesktop1.png", "/assets/portfolioimages/julyissue/julyphone.png"],
     },
   ]
 
@@ -173,6 +147,13 @@ export default function WorldClassBrands() {
     Array.isArray(cs.images) && cs.images.length
       ? [clean(cs.images[0]), clean(cs.images[1] || cs.images[0])]
       : [clean(cs.image), clean(cs.image)]
+
+  /* === UPDATED SCROLL MATH: scroll only across the first 5 items === */
+  const TOTAL = caseStudies.length * 3        // because we render [...caseStudies, ...caseStudies]
+  const VISIBLE = caseStudies.length          // we want to finish at the 5th card
+  const rawTranslate = scrollProgress * (VISIBLE - 1) * (100 / TOTAL) // 4 * (100/10) = 40%
+  const MAX_SHIFT = 36.0566                   // clamp (tweak if your gaps/margins change)
+  const translatePct = Math.min(rawTranslate, MAX_SHIFT)
 
   return (
     <div
@@ -185,52 +166,52 @@ export default function WorldClassBrands() {
         .wcb-card { display:grid; gap:16px; background:#fff; border-radius:18px; padding:clamp(14px,2vw,18px); box-shadow:0 10px 28px rgba(2,6,23,.06); }
         /* keep your other rules the same... */
 
-.wcb-bay {
-  /* you can adjust this height if needed */
-  --tint:#f3f4f6;
-  background:var(--tint);
-  border-radius:16px;
-  padding:clamp(10px,1.4vw,14px);
-  display:grid;
-  grid-template-columns:7fr 3fr;
-  gap:clamp(10px,1.4vw,14px);
-  align-items:stretch;
-}
+        .wcb-bay {
+          /* you can adjust this height if needed */
+          --tint:#f3f4f6;
+          background:var(--tint);
+          border-radius:16px;
+          padding:clamp(10px,1.4vw,14px);
+          display:grid;
+          grid-template-columns:7fr 3fr;
+          gap:clamp(10px,1.4vw,14px);
+          align-items:stretch;
+        }
 
-/* ✅ Top-align and normalize how images fill the frames */
-.wcb-frame {
-  background:#fff;
-  border:1px solid rgba(2,6,23,.08);
-  border-radius:12px;
-  overflow:hidden;
-  gap:8px;
-  /* align content to the top, center horizontally */
-  display: grid;
-  grid-template-columns: 4fr 1fr;
-  align-items:flex-start;
-  justify-content:center;
-}
+        /* ✅ Top-align and normalize how images fill the frames */
+        .wcb-frame {
+          background:#fff;
+          border:1px solid rgba(2,6,23,.08);
+          border-radius:12px;
+          overflow:hidden;
+          gap:8px;
+          /* align content to the top, center horizontally */
+          display: grid;
+          grid-template-columns: 4fr 1fr;
+          align-items:flex-start;
+          justify-content:center;
+        }
 
-/* image fills by height, stays top-aligned, never crops */
-.wcb-frame img {
-  height:100%;          /* scale by height for consistent alignment */
-  width:auto;           /* respect aspect ratio */
-  max-width:100%;       /* don’t overflow horizontally */
-  object-fit:contain;   /* no cropping */
-  object-position:top center; /* ⬆️ align to top edge */
-  display:block;
-  transform:translateZ(0); /* avoid subpixel blur on some GPUs */
+        /* image fills by height, stays top-aligned, never crops */
+        .wcb-frame img {
+          height:100%;          /* scale by height for consistent alignment */
+          width:auto;           /* respect aspect ratio */
+          max-width:100%;       /* don’t overflow horizontally */
+          object-fit:contain;   /* no cropping */
+          object-position:top center; /* ⬆️ align to top edge */
+          display:block;
+          transform:translateZ(0); /* avoid subpixel blur on some GPUs */
 
-}
+        }
 
         .wcb-head { display:flex; align-items:center; justify-content:space-between; gap:12px; }
         .wcb-name { font-weight:800; font-size:clamp(18px,2vw,18px); }
         .wcb-stars { color:#ff6b00; display:inline-flex; gap:4px; }
         .wcb-desc { color:#4b5563; font-size:14px; line-height:1.55; }
-        .wcb-stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(12px,1.6vw,18px); padding-top:4px; }
+        .wcb-stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(12px,1.6vw,18px); }
         .wcb-stat { display:grid; justify-items:center; gap:6px; position:relative; }
         .wcb-stat:not(:first-child)::before { content:""; position:absolute; left:-8px; top:12%; bottom:12%; width:1px; background:rgba(2,6,23,.1); }
-        .wcb-pill { background:#eef0f2; color:#3b3f45; font-weight:700; font-size:11px; padding:6px 10px; border-radius:999px; }
+        .wcb-pill { background:#eef0f2; color:#3b3f45; font-weight:700; font-size:11px; padding:6px 10px; border-radius:999px; alignment-content:center; }
         .wcb-num { font-weight:900; font-size:clamp(18px,2.8vw,18px); }
         .wcb-type { color:#6b7280; font-size:13px; }
 
@@ -263,7 +244,7 @@ export default function WorldClassBrands() {
             <div
               className={`us-landing-page-world-brands-horizontal-8 ${isVisible ? "visible" : ""}`}
               style={{
-                transform: `translateX(-${scrollProgress * (caseStudies.length - 1) * (100 / caseStudies.length)}%)`,
+                transform: `translateX(-${translatePct}%)`,
                 transition: "transform 0.1s ease-out",
               }}
             >
@@ -272,9 +253,9 @@ export default function WorldClassBrands() {
                 return (
                   <div
                     key={`${study.name}-${index}`}
-                    ref={index < 8 ? setRef(index + 2) : undefined}
+                    ref={index < 5 ? setRef(index + 2) : undefined}
                     className={`us-landing-page-card us-landing-page-brand-card-8 ${study.color} us-landing-page-animate-scale us-landing-page-animate-delay-${(index % 8) + 1
-                      } ${index < 8 && visibleElements[index + 2] ? "visible" : ""} ${index % 8 === currentCard ? "us-landing-page-active-card" : ""
+                      } ${index < 5 && visibleElements[index + 2] ? "visible" : ""} ${index % 5 === currentCard ? "us-landing-page-active-card" : ""
                       } wcb-card`}
                   >
                     {/* uploaded layout: two-image mockup bay */}
@@ -289,9 +270,9 @@ export default function WorldClassBrands() {
                     </div> */}
 
                     <div className="wcb-frame">
-                        <img src={desk || "/placeholder.svg"} alt={`${study.name} desktop mockup`} />
-                        <img src={mob || "/placeholder.svg"} alt={`${study.name} mobile mockup`} />
-                      </div>
+                      <img src={desk || "/placeholder.svg"} alt={`${study.name} desktop mockup`} />
+                      <img src={mob || "/placeholder.svg"} alt={`${study.name} mobile mockup`} />
+                    </div>
 
                     {/* brand + stars (same classes so your theme applies) */}
                     <div className="us-landing-page-brand-header wcb-head">

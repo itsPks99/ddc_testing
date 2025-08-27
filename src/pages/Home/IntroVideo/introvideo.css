@@ -68,27 +68,3 @@
     height: 100% !important;
   }
   
-
-  /* Show/hide per breakpoint */
-.only-desktop { display: block; }
-.only-mobile  { display: none; }
-
-@media (max-width: 768px) {
-  .only-desktop { display: none; }
-  .only-mobile  { display: block; }
-}
-
-/* Optional: your existing classes */
-.video-section { position: relative; }
-.video-background { width: 100%; height: auto; display: block; }
-.video-hidden { opacity: 0; }
-.video-visible { opacity: 1; transition: opacity .3s ease; }
-
-.video-loader {
-  position: absolute; inset: 0;
-  display: grid; place-items: center;
-  z-index: 2;
-}
-.video-error {
-  color: #fff; display: grid; place-items: center; min-height: 40vh;
-}

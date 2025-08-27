@@ -22,7 +22,7 @@ export default function HeroSection() {
             <span className="us-landing-page-text-pink">Stores</span>
           </h1>
           <p className="us-landing-page-hero-subtitle">Custom Shopify Development & E-commerce Solutions</p>
-          <button className="us-landing-page-btn us-landing-page-btn-primary us-landing-page-btn-lg">Contact Us</button>
+          <button className="us-landing-page-btn us-landing-page-btn-primary us-landing-page-btn-lg"><a href="https://wa.me/919205110208" style={{ color: "white", textDecoration: "none" }}> Contact Us</a></button>
         </div>
       </div>
     </section>

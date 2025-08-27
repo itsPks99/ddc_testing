@@ -64,13 +64,13 @@ export default function ScheduleCallSection() {
 
               {/* CTAs */}
               <div className="stage-card__actions">
-                <a href="tel:+9192051 10208" className="btn btn--light" aria-label="Call us now">
+                <a href="tel:+919205110208" className="btn btn--light" aria-label="Call us now">
                   <PhoneIcon />
                   <span>Call Us Now</span>
                 </a>
                 <button className="btn btn--primary" type="button">
                   <ChatIcon />
-                  <span>Get In Touch</span>
+                  <span><a href="https://wa.me/919205110208" style={{ color: "white", textDecoration: "none" }}> Get In Touch</a></span>
                 </button>
               </div>
             </div>

@@ -546,6 +546,7 @@ body {
   transition: transform 0.1s ease-out;
   width: 300%; /* 16 cards width (8 original + 8 duplicates for infinite scroll) */
   will-change: transform;
+  padding-right: 110px; /* Extra padding to prevent cutting off last card */
 }
 
 /* Updated card width for 8 cards layout */
@@ -916,7 +917,7 @@ body {
 
 @media (min-width: 768px) {
   .us-landing-page-footer-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -1129,6 +1130,6 @@ body {
 .us-landing-page-brand-metrics {
   display: flex;
   gap: 1rem;
-  margin-top: 0.5rem;
+  /* margin-top: 0.5rem; */
   justify-content: center;
 }

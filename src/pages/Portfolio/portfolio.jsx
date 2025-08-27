@@ -327,34 +327,34 @@ export default function Portfolio() {
           name: "Analytics Dashboard",
           type: "Marketing Analytics & ROI",
           images: [
-            { src: LogoImg_1, alt: "Performance 1" },
-            { src: LogoImg_2, alt: "Performance 2" },
-            { src: LogoImg_3, alt: "Performance 3" },
+            "/assets/portfolioimages/Performance/perfonrmance1.png",
+            "/assets/portfolioimages/Performance/perfonrmance2.png",
+            "/assets/portfolioimages/Performance/perfonrmance3.png",
           ],
           mobileImages: [
-            { src: LogoImg_1, alt: "Performance 1" },
-            { src: LogoImg_2, alt: "Performance 2" },
-            { src: LogoImg_3, alt: "Performance 3" },
+            "/assets/portfolioimages/Performance/perfonrmance1.png",
+            "/assets/portfolioimages/Performance/perfonrmance2.png",
+            "/assets/portfolioimages/Performance/perfonrmance3.png",
           ],
           description:
             "₹125,558.40 revenue generated with 85% conversion rate improvement and comprehensive performance tracking",
         },
-        {
-          name: "Campaign Optimization",
-          type: "Performance Metrics",
-          images: [
-            "/assets/portfolioimages/Performance/performance1.png",
-            "/assets/portfolioimages/Performance/performance2.png",
-            "/assets/portfolioimages/Performance/performance3.png",
-          ],
-          mobileImages: [
-            "/assets/portfolioimages/Performance/performance1.png",
-            "/assets/portfolioimages/Performance/performance2.png",
-            "/assets/portfolioimages/Performance/performance3.png",
-          ],
-          description:
-            "Advanced analytics showing 67% increase in online store sessions and improved customer acquisition",
-        },
+        // {
+        //   name: "Campaign Optimization",
+        //   type: "Performance Metrics",
+        //   images: [
+        //     "/assets/portfolioimages/Performance/performance1.png",
+        //     "/assets/portfolioimages/Performance/performance2.png",
+        //     "/assets/portfolioimages/Performance/performance3.png",
+        //   ],
+        //   mobileImages: [
+        //     "/assets/portfolioimages/Performance/performance1.png",
+        //     "/assets/portfolioimages/Performance/performance2.png",
+        //     "/assets/portfolioimages/Performance/performance3.png",
+        //   ],
+        //   description:
+        //     "Advanced analytics showing 67% increase in online store sessions and improved customer acquisition",
+        // },
       ],
     },
     {
@@ -367,108 +367,108 @@ export default function Portfolio() {
           name: "Fashion Brand Campaign",
           type: "Commercial Video",
           thumbnail: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xvwo0qWD65ihY6Q1eib4hBMccHVKWr.png",
-          videoUrl: "./assets/DdcWebsiteVideo-mobile.mp4",
+          videoUrl: "./Mobile_V.mp4",
           description: "High-end fashion commercial showcasing traditional Indian wear with cinematic quality",
         },
         {
           name: "Product Showcase Reel",
           type: "Product Video",
           thumbnail: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Fi1mv1WoEedWxVgL54nqyIv1ENCwWn.png",
-          videoUrl: "/assets/DdcWebsiteVideo-mobile.mp4",
+          videoUrl: "/Mobile_V.mp4",
           description: "Dynamic product showcase video highlighting jewelry collection with premium aesthetics",
         },
         {
           name: "Brand Story Video",
           type: "Brand Documentary",
           thumbnail: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xR8vNC4a7pqhWSoFwxdD84JWnAOcvS.png",
-          videoUrl: "/assets/DdcWebsiteVideo-mobile.mp4",
+          videoUrl: "/Mobile_V.mp4",
           description: "Compelling brand story video capturing the essence of luxury fashion and craftsmanship",
         },
         {
           name: "Social Media Content",
           type: "Social Video",
           thumbnail: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XaFAA1qAshcASBggChicWM3g1384DE.png",
-          videoUrl: "/assets/DdcWebsiteVideo-mobile.mp4",
+          videoUrl: "/Mobile_V.mp4",
           description: "Engaging social media video content designed for maximum engagement and brand awareness",
         },
         {
           name: "Event Coverage",
           type: "Event Video",
           thumbnail: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kRyeCHl2ptWcMapOHLOKXTw75Cfux7.png",
-          videoUrl: "/assets/DdcWebsiteVideo-mobile.mp4",
+          videoUrl: "/Mobile_V.mp4",
           description: "Professional event coverage capturing key moments with cinematic storytelling approach",
         },
       ],
-      projects: [
-        {
-          name: "Inara Fashion Shoot",
-          type: "Fashion Photography",
-          images: [
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xvwo0qWD65ihY6Q1eib4hBMccHVKWr.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Fi1mv1WoEedWxVgL54nqyIv1ENCwWn.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kRyeCHl2ptWcMapOHLOKXTw75Cfux7.png",
-          ],
-          mobileImages: [
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xvwo0qWD65ihY6Q1eib4hBMccHVKWr.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Fi1mv1WoEedWxVgL54nqyIv1ENCwWn.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kRyeCHl2ptWcMapOHLOKXTw75Cfux7.png",
-          ],
-          description: "Traditional Indian fashion brand with vibrant product photography and professional styling",
-        },
-        {
-          name: "AURA Jewelry Collection",
-          type: "Product Photography",
-          images: [
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Fi1mv1WoEedWxVgL54nqyIv1ENCwWn.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XJjG8PEryZwDZQNmV5MgymQcfp85r3.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xR8vNC4a7pqhWSoFwxdD84JWnAOcvS.png",
-          ],
-          mobileImages: [
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Fi1mv1WoEedWxVgL54nqyIv1ENCwWn.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XJjG8PEryZwDZQNmV5MgymQcfp85r3.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xR8vNC4a7pqhWSoFwxdD84JWnAOcvS.png",
-          ],
-          description: "Luxury jewelry photography with elegant lighting and premium presentation",
-        },
-      ],
+      // projects: [
+      //   {
+      //     name: "Inara Fashion Shoot",
+      //     type: "Fashion Photography",
+      //     images: [
+      //       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xvwo0qWD65ihY6Q1eib4hBMccHVKWr.png",
+      //       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Fi1mv1WoEedWxVgL54nqyIv1ENCwWn.png",
+      //       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kRyeCHl2ptWcMapOHLOKXTw75Cfux7.png",
+      //     ],
+      //     mobileImages: [
+      //       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xvwo0qWD65ihY6Q1eib4hBMccHVKWr.png",
+      //       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Fi1mv1WoEedWxVgL54nqyIv1ENCwWn.png",
+      //       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kRyeCHl2ptWcMapOHLOKXTw75Cfux7.png",
+      //     ],
+      //     description: "Traditional Indian fashion brand with vibrant product photography and professional styling",
+      //   },
+      //   {
+      //     name: "AURA Jewelry Collection",
+      //     type: "Product Photography",
+      //     images: [
+      //       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Fi1mv1WoEedWxVgL54nqyIv1ENCwWn.png",
+      //       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XJjG8PEryZwDZQNmV5MgymQcfp85r3.png",
+      //       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xR8vNC4a7pqhWSoFwxdD84JWnAOcvS.png",
+      //     ],
+      //     mobileImages: [
+      //       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Fi1mv1WoEedWxVgL54nqyIv1ENCwWn.png",
+      //       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XJjG8PEryZwDZQNmV5MgymQcfp85r3.png",
+      //       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xR8vNC4a7pqhWSoFwxdD84JWnAOcvS.png",
+      //     ],
+      //     description: "Luxury jewelry photography with elegant lighting and premium presentation",
+      //   },
+      // ],
     },
-    {
-      id: "05",
-      title: "BRANDING & PACKAGING",
-      description: "Complete brand identity solutions from concept to packaging design.",
-      projects: [
-        {
-          name: "Delhi Digital Branding",
-          type: "Corporate Identity",
-          images: [
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xR8vNC4a7pqhWSoFwxdD84JWnAOcvS.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-g8VqhQZnW87FNaa7QlT2BmxdV3NQ8W.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XaFAA1qAshcASBggChicWM3g1384DE.png",
-          ],
-          mobileImages: [
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xR8vNC4a7pqhWSoFwxdD84JWnAOcvS.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-g8VqhQZnW87FNaa7QlT2BmxdV3NQ8W.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XaFAA1qAshcASBggChicWM3g1384DE.png",
-          ],
-          description: "Complete brand identity design with modern logo and professional presentation",
-        },
-        {
-          name: "Fashion Brand Identity",
-          type: "Brand Development",
-          images: [
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kRyeCHl2ptWcMapOHLOKXTw75Cfux7.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-NbWjcrYmC2Unu1UYBk8XYNGLnUDcW4.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xvwo0qWD65ihY6Q1eib4hBMccHVKWr.png",
-          ],
-          mobileImages: [
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kRyeCHl2ptWcMapOHLOKXTw75Cfux7.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-NbWjcrYmC2Unu1UYBk8XYNGLnUDcW4.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xvwo0qWD65ihY6Q1eib4hBMccHVKWr.png",
-          ],
-          description: "Comprehensive branding solutions for fashion and lifestyle brands with packaging design",
-        },
-      ],
-    },
+    // {
+    //   id: "05",
+    //   title: "BRANDING & PACKAGING",
+    //   description: "Complete brand identity solutions from concept to packaging design.",
+    //   projects: [
+    //     {
+    //       name: "Delhi Digital Branding",
+    //       type: "Corporate Identity",
+    //       images: [
+    //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xR8vNC4a7pqhWSoFwxdD84JWnAOcvS.png",
+    //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-g8VqhQZnW87FNaa7QlT2BmxdV3NQ8W.png",
+    //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XaFAA1qAshcASBggChicWM3g1384DE.png",
+    //       ],
+    //       mobileImages: [
+    //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xR8vNC4a7pqhWSoFwxdD84JWnAOcvS.png",
+    //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-g8VqhQZnW87FNaa7QlT2BmxdV3NQ8W.png",
+    //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XaFAA1qAshcASBggChicWM3g1384DE.png",
+    //       ],
+    //       description: "Complete brand identity design with modern logo and professional presentation",
+    //     },
+    //     {
+    //       name: "Fashion Brand Identity",
+    //       type: "Brand Development",
+    //       images: [
+    //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kRyeCHl2ptWcMapOHLOKXTw75Cfux7.png",
+    //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-NbWjcrYmC2Unu1UYBk8XYNGLnUDcW4.png",
+    //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xvwo0qWD65ihY6Q1eib4hBMccHVKWr.png",
+    //       ],
+    //       mobileImages: [
+    //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kRyeCHl2ptWcMapOHLOKXTw75Cfux7.png",
+    //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-NbWjcrYmC2Unu1UYBk8XYNGLnUDcW4.png",
+    //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xvwo0qWD65ihY6Q1eib4hBMccHVKWr.png",
+    //       ],
+    //       description: "Comprehensive branding solutions for fashion and lifestyle brands with packaging design",
+    //     },
+    //   ],
+    // },
   ]
 
   return (

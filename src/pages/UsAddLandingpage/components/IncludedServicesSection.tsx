@@ -1,6 +1,8 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import { FaShopify, FaLaptopCode, FaPalette } from "react-icons/fa"
+
 
 function useScrollAnimation() {
   const [isVisible, setIsVisible] = useState(false)
@@ -25,19 +27,19 @@ export default function IncludedServicesSection() {
 
   const services = [
     {
-      icon: "🛍️",
+      icon: <FaShopify size={32} />,
       title: "Shopify Development",
       description:
         "High-performance Shopify storefronts and landing pages built for speed, SEO, and conversions.",
     },
     {
-      icon: "🧩",
+      icon: <FaLaptopCode size={32} />,
       title: "Custom Development",
       description:
         "Headless/React builds, custom APIs, and integrations tailored to your workflows and business logic.",
     },
     {
-      icon: "💎",
+      icon: <FaPalette size={32} />,
       title: "UI/UX Design",
       description:
         "Clean, conversion-focused design that looks premium and guides shoppers to checkout.",
@@ -56,7 +58,7 @@ export default function IncludedServicesSection() {
                 We Build High Converting Stores.
               </h3>
 
-              <button className="us-landing-page-btn us-landing-page-btn-primary">Get In Touch</button>
+              <button className="us-landing-page-btn us-landing-page-btn-primary"><a href="https://wa.me/919205110208" style={{ color: "white", textDecoration: "none" }}>Get In Touch</a></button>
             </div>
           </div>
 

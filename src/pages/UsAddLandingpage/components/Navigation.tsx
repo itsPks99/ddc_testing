@@ -35,7 +35,7 @@ export default function Navigation() {
         <div className="us-landing-page-nav-logo">Delhi Digital Co.</div>
         <div className="us-landing-page-nav-actions">
           <button className="us-landing-page-btn us-landing-page-btn-primary" >
-            Contact Us
+           <a href="https://wa.me/919205110208" style={{ color: "white", textDecoration: "none" }}> Contact Us</a>
           </button>
           <button className="us-landing-page-mobile-menu-toggle" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
