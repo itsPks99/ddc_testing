@@ -5,8 +5,8 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react"
 import "./introvideo.css"
 
 export default function IntroVideo({
-  desktopVideoSrc = "/Desktop_V.mp4",
-  mobileVideoSrc = "/Mobile_V.mp4",
+  desktopVideoSrc = "https://cdn.shopify.com/videos/c/o/v/2e03bc676c8c4c2eb78acbcef6c872fa.mp4",
+  mobileVideoSrc = "https://cdn.shopify.com/videos/c/o/v/aceae072656b4cd2916b8cf664338be1.mp4",
   posterImage = "",
   autoPlay = true,
   muted = true,
