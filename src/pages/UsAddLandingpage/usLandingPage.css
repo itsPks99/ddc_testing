@@ -1023,6 +1023,7 @@ body {
     width: calc(16rem * 14 + 1.5rem * 13); 16 cards (8 + 8 duplicates) + gaps
   }
 } */
+}
 
 /* Adding individual element scroll animation classes */
 .us-landing-page-animate-fade-up {
