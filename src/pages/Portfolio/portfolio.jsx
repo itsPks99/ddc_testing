@@ -392,6 +392,7 @@ export default function Portfolio() {
           description: "Engaging social media video content designed for maximum engagement and brand awareness",
         },
         {
+          // New video project added
           name: "Event Coverage",
           type: "Event Video",
           thumbnail: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kRyeCHl2ptWcMapOHLOKXTw75Cfux7.png",
