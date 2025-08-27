@@ -1019,10 +1019,10 @@ body {
   }
 
   /* Mobile horizontal scroll for 8 cards with infinite scroll */
-  .us-landing-page-world-brands-horizontal-8 {
-    /* width: calc(16rem * 14 + 1.5rem * 13); 16 cards (8 + 8 duplicates) + gaps */
+  /* .us-landing-page-world-brands-horizontal-8 {
+    width: calc(16rem * 14 + 1.5rem * 13); 16 cards (8 + 8 duplicates) + gaps
   }
-}
+} */
 
 /* Adding individual element scroll animation classes */
 .us-landing-page-animate-fade-up {
