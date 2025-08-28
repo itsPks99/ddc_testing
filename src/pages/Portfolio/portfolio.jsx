@@ -1,113 +1,112 @@
-"use client"
+"use client";
 
-import "./portfolio.css"
-import React, { useEffect, useState } from "react"
-import LogoImg from "/assets/all_logos/ddc logo/ddc logo cropped.png"
-import LogoImg_1 from "/assets/portfolioimages/Performance/perfonrmance1.png"
-import LogoImg_2 from "/assets/portfolioimages/Performance/perfonrmance2.png"
-import LogoImg_3 from "/assets/portfolioimages/Performance/perfonrmance3.png"
+import "./portfolio.css";
+import React, { useEffect, useRef, useState } from "react";
 
-
+/* ============================ */
+/* Main Component               */
+/* ============================ */
 export default function Portfolio() {
+  const sectionRefs = useRef({});
+  const tabsRef = useRef(null);
+  const servicesRef = useRef(null);
+  const stickySentinelRef = useRef(null);
+
+  // Viewer (embed) state
+  const [viewerOpen, setViewerOpen] = useState(false);
+  const [viewerItem, setViewerItem] = useState({ name: "", url: "" });
+
+  // Tabs state
+  const [activeTab, setActiveTab] = useState("website-development");
+  const [isTabsSticky, setIsTabsSticky] = useState(false);
+  const [tabsHidden, setTabsHidden] = useState(false);
+  
+  const lastYRef = useRef(0);
+
+  /* ---- Animate on appear + sticky slides init ---- */
   useEffect(() => {
-    // Initialize scroll animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px",
-    }
-
+    const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("portfolio-animate-in")
-        }
-      })
-    }, observerOptions)
+      entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add("portfolio-animate-in"));
+    }, observerOptions);
 
-    // Observe all animated elements
-    const animatedElements = document.querySelectorAll("[data-animate]")
-    animatedElements.forEach((el) => observer.observe(el))
+    document.querySelectorAll("[data-animate]").forEach((el) => observer.observe(el));
 
+    // In-section sticky image wheel (desktop only)
     const initStickyScroll = () => {
-      const isMobile = window.innerWidth <= 768
-      if (isMobile) {
-        return // Exit early on mobile devices
-      }
+      if (window.innerWidth <= 768) return;
+      const fullScreenProjects = document.querySelectorAll(".portfolio-fullscreen-project");
 
-      const fullScreenProjects = document.querySelectorAll(".portfolio-fullscreen-project")
+      fullScreenProjects.forEach((project) => {
+        const images = project.querySelectorAll(".portfolio-project-image-slide");
+        const totalImages = images.length;
+        if (totalImages <= 1) return;
 
-      fullScreenProjects.forEach((project, projectIndex) => {
-        const images = project.querySelectorAll(".portfolio-project-image-slide")
-        const totalImages = images.length
-
-        if (totalImages <= 1) return
-
-        let currentImageIndex = 0
-        let isScrollingWithinProject = false
-        let scrollTimeout
-
-        const handleScroll = (e) => {
-          const rect = project.getBoundingClientRect()
-          const isProjectInView = rect.top <= 0 && rect.bottom > window.innerHeight
-
-          if (isProjectInView && !isScrollingWithinProject) {
-            // Project is sticky, handle image transitions
-            e.preventDefault()
-            isScrollingWithinProject = true
-
-            // Clear any existing timeout
-            clearTimeout(scrollTimeout)
-
-            // Determine scroll direction
-            const deltaY = e.deltaY || e.detail || -e.wheelDelta
-
-            if (deltaY > 0 && currentImageIndex < totalImages - 1) {
-              // Scroll down - next image
-              currentImageIndex++
-              updateActiveImage()
-            } else if (deltaY < 0 && currentImageIndex > 0) {
-              // Scroll up - previous image
-              currentImageIndex--
-              updateActiveImage()
-            } else if (deltaY > 0 && currentImageIndex === totalImages - 1) {
-              // Last image reached, allow normal scroll
-              isScrollingWithinProject = false
-              return
-            } else if (deltaY < 0 && currentImageIndex === 0) {
-              // First image reached, allow normal scroll
-              isScrollingWithinProject = false
-              return
-            }
-
-            // Reset scroll lock after delay
-            scrollTimeout = setTimeout(() => {
-              isScrollingWithinProject = false
-            }, 100)
-          }
-        }
+        let currentImageIndex = 0;
+        let isScrollingWithinProject = false;
+        let scrollTimeout;
 
         const updateActiveImage = () => {
-          images.forEach((img, index) => {
-            img.classList.toggle("portfolio-active-slide", index === currentImageIndex)
-          })
-        }
+          images.forEach((img, index) => img.classList.toggle("portfolio-active-slide", index === currentImageIndex));
+        };
 
-        // Add wheel event listener for desktop only
-        project.addEventListener("wheel", handleScroll, { passive: false })
+        const handleScroll = (e) => {
+          const rect = project.getBoundingClientRect();
+          const inView = rect.top <= 0 && rect.bottom > window.innerHeight;
+          if (!inView || isScrollingWithinProject) return;
 
-        // Touch events removed to prevent sticky scroll behavior on mobile
+          e.preventDefault();
+          isScrollingWithinProject = true;
+          clearTimeout(scrollTimeout);
 
-        // Initialize first image as active
-        updateActiveImage()
-      })
-    }
+          const deltaY = e.deltaY || e.detail || -e.wheelDelta;
+          if (deltaY > 0 && currentImageIndex < totalImages - 1) currentImageIndex++;
+          else if (deltaY < 0 && currentImageIndex > 0) currentImageIndex--;
+          else {
+            isScrollingWithinProject = false;
+            return;
+          }
 
-    // Initialize after a short delay to ensure DOM is ready
-    setTimeout(initStickyScroll, 100)
+          updateActiveImage();
+          scrollTimeout = setTimeout(() => (isScrollingWithinProject = false), 120);
+        };
 
-    return () => observer.disconnect()
-  }, [])
+        project.addEventListener("wheel", handleScroll, { passive: false });
+        updateActiveImage();
+      });
+    };
 
+    setTimeout(initStickyScroll, 100);
+    return () => observer.disconnect();
+  }, []);
+
+  /* ---- Smart sticky behavior (show on scroll-up, hide on scroll-down) ---- */
+  useEffect(() => {
+    // Sentinel tells us when tabs have reached the top
+    const io = new IntersectionObserver(
+      ([entry]) => setIsTabsSticky(!entry.isIntersecting),
+      { threshold: 0 }
+    );
+    if (stickySentinelRef.current) io.observe(stickySentinelRef.current);
+
+    const onScroll = () => {
+      const y = window.scrollY;
+      const dy = y - lastYRef.current;
+      // hide when scrolling down, show on up
+      if (Math.abs(dy) > 6) {
+        setTabsHidden(dy > 0 && y > 120); // hide only after we’ve moved a bit
+        lastYRef.current = y;
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      io.disconnect();
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
+  /* ---- Data (unchanged) ---- */
   const websiteDevelopmentLinks = {
     "Jewellery & Accessories": [
       { name: "Tieva Jewels", url: "https://tievajewels.com" },
@@ -124,14 +123,7 @@ export default function Portfolio() {
       { name: "Abracadabra Kids", url: "https://abracadabrakids.com" },
       { name: "Fllae", url: "https://fllae.com" },
       { name: "Rosatelier", url: "https://xn--rosatelier-d7a.com" },
-      // { name: "Label Inara", url: "https://labelinara.com" },
-      // { name: "Cecil", url: "https://cecil.co.in" },
-      // { name: "Gauri Designer", url: "https://gauridesigner.com" },
     ],
-    // "Footwear": [
-    //     { name: "Nauvab", url: "https://nauvab.com" },
-    //     { name: "Meko Studio", url: "https://meko-studio.com" },
-    // ],
     "Natural Beauty & Wellness": [
       { name: "Anthi Naturals", url: "https://anthinaturals.com" },
       { name: "Senthera World", url: "https://sentheraworld.com" },
@@ -140,11 +132,6 @@ export default function Portfolio() {
       { name: "Sitara Rum", url: "https://sitararum.com" },
       { name: "Samsara Gin", url: "https://samsaragin.com" },
     ],
-    // "Beverage": [
-    //     { name: "Drink Sober", url: "https://drinksober.co" },
-    //     { name: "Sitara Rum", url: "https://sitararum.com" },
-    //     { name: "Samsara Gin", url: "https://samsaragin.com" },
-    // ],
     Sports: [
       { name: "Elephant Racquet Club", url: "https://elephantracquetclub.com" },
       { name: "Nackers", url: "https://nackers.in" },
@@ -153,11 +140,7 @@ export default function Portfolio() {
       { name: "Label Inara", url: "https://labelinara.com" },
       { name: "Cecil", url: "https://cecil.co.in" },
     ],
-    // "Indian Traditional Wear": [
-    //     { name: "Monica Khosla", url: "https://monicakhosla.in" },
-    //     { name: "Sunehari Dhaga", url: "https://suneharidhaga.com" },
-    // ],
-  }
+  };
 
   const socialMediaBrands = {
     "BEVERAGE BRANDS": [
@@ -166,9 +149,6 @@ export default function Portfolio() {
       { name: "Sitara Rum", url: "https://www.instagram.com/sitara.rum/" },
       { name: "Drink Sober", url: "https://www.instagram.com/drink.sober/" },
       { name: "Hindraj Tea", url: "https://www.instagram.com/hindrajtea/" },
-      // { name: "Suria Grofresh", url: "https://www.instagram.com/suriagrofresh" },
-      // { name: "HiMarket India", url: "https://www.instagram.com/himarketindia" },
-      // { name: "Feel Blissful", url: "https://www.instagram.com/feel_blissful/" },
     ],
     "JEWELRY BRANDS": [
       { name: "Geum Jewels", url: "https://www.instagram.com/geumjewels" },
@@ -191,26 +171,149 @@ export default function Portfolio() {
       { name: "Senthera World", url: "https://www.instagram.com/sentheraworld" },
       { name: "Formulo", url: "https://www.instagram.com/formulo.in" },
     ],
-    // "💡 TECH / ELECTRONICS": [
-    //     { name: "Eairtec", url: "https://www.instagram.com/eairtec" },
-    // ],
-    // "🏡 HOME DÉCOR": [
-    //     { name: "Delhi Brass", url: "https://www.instagram.com/delhibrass" },
-    // ],
-    // "👟 FOOTWEAR": [
-    //     { name: "Nauvab", url: "https://www.instagram.com/nauvab.co" },
-    //     { name: "StepT6 India", url: "https://www.instagram.com/stept6.india" },
-    // ],
-    // "🧴 SKINCARE PRODUCTS": [
-    //     { name: "Senthera World", url: "https://www.instagram.com/sentheraworld" },
-    //     { name: "Formulo", url: "https://www.instagram.com/formulo.in" },
-    // ],
-  }
+  };
+
+  const brandingPackagingProjects = {
+    "LUXURY BRANDS": [
+      { name: "Samsara Gin Premium Packaging", url: "https://www.behance.net/gallery/samsara-gin" },
+      { name: "Tieva Jewels Brand Identity", url: "https://www.behance.net/gallery/tieva-jewels" },
+      { name: "Geum Jewels Packaging Design", url: "https://www.behance.net/gallery/geum-jewels" },
+      { name: "Anthi Naturals Brand Kit", url: "https://www.behance.net/gallery/anthi-naturals" },
+    ],
+    "FASHION BRANDS": [
+      { name: "July Issue Brand Identity", url: "https://www.behance.net/gallery/july-issue" },
+      { name: "Manvi Daga Brand Package", url: "https://www.behance.net/gallery/manvi-daga" },
+      { name: "Label Inara Branding", url: "https://www.behance.net/gallery/label-inara" },
+      { name: "Rosatelier Brand Design", url: "https://www.behance.net/gallery/rosatelier" },
+    ],
+    "BEVERAGE BRANDS": [
+      { name: "Sitara Rum Packaging", url: "https://www.behance.net/gallery/sitara-rum" },
+      { name: "Drink Sober Brand Identity", url: "https://www.behance.net/gallery/drink-sober" },
+      { name: "Hindraj Tea Packaging", url: "https://www.behance.net/gallery/hindraj-tea" },
+    ],
+  };
+
+  const photographyImages = {
+  all: [
+    // ---- existing 25 (unchanged) ----
+    { id: 1,  category: "model",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/5.jpg?v=1756384649",                alt: "Editorial fashion portrait" },
+    { id: 2,  category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08926_copy.jpg?v=1756384649",    alt: "Jewelry / product close-up" },
+    { id: 3,  category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00519_copy.jpg?v=1756384643",    alt: "Cosmetic / accessory product shot" },
+    { id: 4,  category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/4_1.jpg?v=1756384638",              alt: "Lifestyle brand shot" },
+    { id: 5,  category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC07722_copy.jpg?v=1756384636",    alt: "Product on-set / studio" },
+    { id: 6,  category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/4.jpg?v=1756384634",                alt: "Lifestyle brand imagery" },
+    { id: 7,  category: "model",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/2.jpg?v=1756384632",                alt: "Model portrait" },
+    { id: 8,  category: "model",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/3.jpg?v=1756384631",                alt: "Fashion model profile" },
+    { id: 9,  category: "event",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_2316.jpg?v=1756384622",          alt: "Event coverage photo" },
+    { id: 10, category: "model",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_8624_copy.jpg?v=1756384610",    alt: "Runway / editorial model" },
+    { id: 11, category: "event",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC09093_copy.jpg?v=1756384662",    alt: "Live event highlight" },
+    { id: 12, category: "model",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0852_copy.jpg?v=1756384659",    alt: "Editorial portrait" },
+    { id: 13, category: "event",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00367_copy.jpg?v=1756384660",    alt: "Backstage / event moment" },
+    { id: 14, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08231_copy.jpg?v=1756384658",    alt: "Lifestyle outdoor" },
+    { id: 15, category: "model",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00166_copy.jpg?v=1756384658",    alt: "Studio model portrait" },
+    { id: 16, category: "model",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0765_copy.jpg?v=1756384661",    alt: "Fashion editorial pose" },
+    { id: 17, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08740_copy.jpg?v=1756384658",    alt: "Lifestyle brand storytelling" },
+    { id: 18, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00604_copy.jpg?v=1756384658",    alt: "Product flatlay / detail" },
+    { id: 19, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08516_copy.jpg?v=1756384653",    alt: "Premium product detail" },
+    { id: 20, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC09527_copy.jpg?v=1756384651",    alt: "Packshot / product frame" },
+    { id: 21, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08551_copy.jpg?v=1756384653",    alt: "Jewelry macro detail" },
+    { id: 22, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08491_copy.jpg?v=1756384651",    alt: "Accessory product photo" },
+    { id: 23, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08926_copy_1.jpg?v=1756384652",  alt: "Cosmetic / object detail" },
+    { id: 24, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08681_copy.jpg?v=1756384652",    alt: "Styled product shot" },
+    { id: 25, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00567_copy.jpg?v=1756384650",    alt: "Minimal product composition" },
+
+    // ---- NEW items you sent now ----
+    { id: 26, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01246_copy.jpg?v=1756384674", alt: "Lifestyle outdoor scene" },
+    { id: 27, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01955_copy.jpg?v=1756384676", alt: "Styled product close-up" },
+    { id: 28, category: "model",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00321_copy.jpg?v=1756384674", alt: "Studio model portrait" },
+    { id: 29, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02595_copy.jpg?v=1756384673", alt: "Product packshot" },
+    { id: 30, category: "model",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02536_copy_1.jpg?v=1756384673", alt: "Editorial model pose" },
+    { id: 31, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01386_copy.jpg?v=1756384673", alt: "Lifestyle brand storytelling" },
+    { id: 32, category: "model",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02536_copy.jpg?v=1756384673", alt: "Fashion model portrait" },
+    { id: 33, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01158_copy.jpg?v=1756384672", alt: "Product detail / macro" },
+    { id: 34, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02436_copy.jpg?v=1756384671", alt: "Lifestyle ambience" },
+    { id: 35, category: "model",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC03250_copy.jpg?v=1756384670", alt: "Editorial model in frame" },
+    { id: 36, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC03351_copy.jpg?v=1756384669", alt: "Clean product composition" },
+    { id: 37, category: "model",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00814_copy.jpg?v=1756384671", alt: "Model candid / studio" },
+    { id: 38, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC03063_copy.jpg?v=1756384666", alt: "Lifestyle scene" },
+    { id: 39, category: "event",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08151_copy.jpg?v=1756384665", alt: "Event highlight" },
+    { id: 40, category: "model",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_1228_copy.jpg?v=1756384665", alt: "Runway / model portrait" },
+    { id: 41, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0613_copy_2.jpg?v=1756384666", alt: "Packshot / detail" },
+    { id: 42, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0497_copy_2.jpg?v=1756384665", alt: "Premium product macro" },
+    { id: 43, category: "event",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0839_copy.jpg?v=1756384662", alt: "Event crowd / moment" },
+  ],
+
+  product: [
+    // existing
+    { id: 2,  category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08926_copy.jpg?v=1756384649",   alt: "Jewelry / product close-up" },
+    { id: 3,  category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00519_copy.jpg?v=1756384643",   alt: "Cosmetic / accessory product shot" },
+    { id: 5,  category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC07722_copy.jpg?v=1756384636",   alt: "Product on-set / studio" },
+    { id: 18, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00604_copy.jpg?v=1756384658",   alt: "Product flatlay / detail" },
+    { id: 19, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08516_copy.jpg?v=1756384653",   alt: "Premium product detail" },
+    { id: 20, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC09527_copy.jpg?v=1756384651",   alt: "Packshot / product frame" },
+    { id: 21, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08551_copy.jpg?v=1756384653",   alt: "Jewelry macro detail" },
+    { id: 22, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08491_copy.jpg?v=1756384651",   alt: "Accessory product photo" },
+    { id: 23, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08926_copy_1.jpg?v=1756384652", alt: "Cosmetic / object detail" },
+    { id: 24, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08681_copy.jpg?v=1756384652",   alt: "Styled product shot" },
+    { id: 25, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00567_copy.jpg?v=1756384650",   alt: "Minimal product composition" },
+    // new
+    { id: 27, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01955_copy.jpg?v=1756384676",   alt: "Styled product close-up" },
+    { id: 29, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02595_copy.jpg?v=1756384673",   alt: "Product packshot" },
+    { id: 33, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01158_copy.jpg?v=1756384672",   alt: "Product detail / macro" },
+    { id: 36, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC03351_copy.jpg?v=1756384669",   alt: "Clean product composition" },
+    { id: 41, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0613_copy_2.jpg?v=1756384666", alt: "Packshot / detail" },
+    { id: 42, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0497_copy_2.jpg?v=1756384665", alt: "Premium product macro" },
+  ],
+
+  model: [
+    // existing
+    { id: 1,  category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/5.jpg?v=1756384649",             alt: "Editorial fashion portrait" },
+    { id: 7,  category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/2.jpg?v=1756384632",             alt: "Model portrait" },
+    { id: 8,  category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/3.jpg?v=1756384631",             alt: "Fashion model profile" },
+    { id: 10, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_8624_copy.jpg?v=1756384610", alt: "Runway / editorial model" },
+    { id: 12, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0852_copy.jpg?v=1756384659", alt: "Editorial portrait" },
+    { id: 15, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00166_copy.jpg?v=1756384658", alt: "Studio model portrait" },
+    { id: 16, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0765_copy.jpg?v=1756384661", alt: "Fashion editorial pose" },
+    // new
+    { id: 28, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00321_copy.jpg?v=1756384674", alt: "Studio model portrait" },
+    { id: 30, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02536_copy_1.jpg?v=1756384673", alt: "Editorial model pose" },
+    { id: 32, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02536_copy.jpg?v=1756384673", alt: "Fashion model portrait" },
+    { id: 35, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC03250_copy.jpg?v=1756384670", alt: "Editorial model in frame" },
+    { id: 37, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00814_copy.jpg?v=1756384671", alt: "Model candid / studio" },
+    { id: 40, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_1228_copy.jpg?v=1756384665", alt: "Runway / model portrait" },
+  ],
+
+  lifestyle: [
+    // existing
+    { id: 4,  category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/4_1.jpg?v=1756384638",         alt: "Lifestyle brand shot" },
+    { id: 6,  category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/4.jpg?v=1756384634",            alt: "Lifestyle brand imagery" },
+    { id: 14, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08231_copy.jpg?v=1756384658",alt: "Lifestyle outdoor" },
+    { id: 17, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08740_copy.jpg?v=1756384658",alt: "Lifestyle brand storytelling" },
+    // new
+    { id: 26, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01246_copy.jpg?v=1756384674", alt: "Lifestyle outdoor scene" },
+    { id: 31, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01386_copy.jpg?v=1756384673", alt: "Lifestyle brand storytelling" },
+    { id: 34, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02436_copy.jpg?v=1756384671", alt: "Lifestyle ambience" },
+    { id: 38, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC03063_copy.jpg?v=1756384666", alt: "Lifestyle scene" },
+  ],
+
+  event: [
+    // existing
+    { id: 9,  category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_2316.jpg?v=1756384622",         alt: "Event coverage photo" },
+    { id: 11, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC09093_copy.jpg?v=1756384662",    alt: "Live event highlight" },
+    { id: 13, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00367_copy.jpg?v=1756384660",    alt: "Backstage / event moment" },
+    // new
+    { id: 39, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08151_copy.jpg?v=1756384665",    alt: "Event highlight" },
+    { id: 43, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0839_copy.jpg?v=1756384662",    alt: "Event crowd / moment" },
+  ],
+};
+
+
 
   const services = [
     {
       id: "01",
-      title: "WEBSITE DEVELOPMENT",
+      slug: "website-development",
+      name: "WEBSITE DEVELOPMENT",
       description: "Unlock the potential of your online presence with our expert website development services.",
       projects: [
         {
@@ -258,68 +361,40 @@ export default function Portfolio() {
           ],
           description: "Complete fashion e-commerce solution with advanced filtering and product showcase",
         },
-        // {
-        //   name: "Delhi Digital Company",
-        //   type: "Corporate Website",
-        //   images: [
-        //     "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xR8vNC4a7pqhWSoFwxdD84JWnAOcvS.png",
-        //     "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-g8VqhQZnW87FNaa7QlT2BmxdV3NQ8W.png",
-        //     "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XaFAA1qAshcASBggChicWM3g1384DE.png",
-        //   ],
-        //   mobileImages: [
-        //     "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xR8vNC4a7pqhWSoFwxdD84JWnAOcvS.png",
-        //     "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-g8VqhQZnW87FNaa7QlT2BmxdV3NQ8W.png",
-        //     "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XaFAA1qAshcASBggChicWM3g1384DE.png",
-        //   ],
-        //   description: "Modern corporate website with professional design and user-friendly navigation",
-        // },
       ],
       showLinks: true,
       links: websiteDevelopmentLinks,
     },
     {
       id: "02",
-      title: "SOCIAL MEDIA MANAGEMENT",
+      slug: "social-media-management",
+      name: "SOCIAL MEDIA MANAGEMENT",
       description: "Building meaningful connections in the digital age through our tailored social media services.",
       projects: [
         {
           name: "Multi-Brand Management",
           type: "Instagram Growth Strategy",
           images: [
-            "/assets/portfolioimages/SocialMedia/image1.png",
-            "/assets/portfolioimages/SocialMedia/image2.png",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/1.png?v=1756385975",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/2.png?v=1756385974",
             "/assets/portfolioimages/SocialMedia/image3.png",
           ],
           mobileImages: [
-            "/assets/portfolioimages/SocialMedia/image1.png",
-            "/assets/portfolioimages/SocialMedia/image2.png",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/1.png?v=1756385975",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/2.png?v=1756385974",
             "/assets/portfolioimages/SocialMedia/image3.png",
           ],
           description:
-            "Managing 20K+ followers across luxury fashion and lifestyle brands including Samsaragin, DrinkSober, and 121Couture",
+            "Managing the social presence and content strategy for luxury fashion and lifestyle brands including Samsaragin, DrinkSober, and 121Couture",
         },
-        // {
-        //   name: "Fashion Brand Portfolio",
-        //   type: "Social Media Strategy",
-        //   images: [
-        //     "/assets/portfolioimages/SocialMedia/fashionbrand1.png",
-        //     "/assets/portfolioimages/SocialMedia/fashionbrand2.png",
-        //     "/assets/portfolioimages/SocialMedia/fashionbrand3.png",
-        //   ],
-        //   mobileImages: [
-        //     "/assets/portfolioimages/SocialMedia/fashionbrand1.png",
-        //     "/assets/portfolioimages/SocialMedia/fashionbrand2.png",
-        //     "/assets/portfolioimages/SocialMedia/fashionbrand3.png",
-        //   ],
-        //   description: "Comprehensive social media management for fashion brands with consistent engagement growth",
-        // },
       ],
       showLinks: true,
       links: socialMediaBrands,
     },
     {
       id: "03",
-      title: "PERFORMANCE MARKETING",
+      slug: "performance-marketing",
+      name: "PERFORMANCE MARKETING",
       description:
         "Our performance marketing tactics drive success and elevate your brand. Efficiency meets effectiveness in our performance marketing solutions.",
       projects: [
@@ -339,35 +414,63 @@ export default function Portfolio() {
           description:
             "₹125,558.40 revenue generated with 85% conversion rate improvement and comprehensive performance tracking",
         },
-        // {
-        //   name: "Campaign Optimization",
-        //   type: "Performance Metrics",
-        //   images: [
-        //     "/assets/portfolioimages/Performance/performance1.png",
-        //     "/assets/portfolioimages/Performance/performance2.png",
-        //     "/assets/portfolioimages/Performance/performance3.png",
-        //   ],
-        //   mobileImages: [
-        //     "/assets/portfolioimages/Performance/performance1.png",
-        //     "/assets/portfolioimages/Performance/performance2.png",
-        //     "/assets/portfolioimages/Performance/performance3.png",
-        //   ],
-        //   description:
-        //     "Advanced analytics showing 67% increase in online store sessions and improved customer acquisition",
-        // },
       ],
     },
     {
       id: "04",
-      title: "PHOTOGRAPHY/VIDEOGRAPHY",
+      slug: "branding-packaging",
+      name: "BRANDING & PACKAGING",
+      description:
+        "Creating distinctive brand identities and packaging solutions that captivate audiences and drive business growth.",
+      projects: [
+        {
+          name: "Brand Identity Suite",
+          type: "Complete Brand Package",
+          images: [
+            "/assets/portfolioimages/Branding/branding1.png",
+            "/assets/portfolioimages/Branding/branding2.png",
+            "/assets/portfolioimages/Branding/branding3.png",
+          ],
+          mobileImages: [
+            "/assets/portfolioimages/Branding/branding1.png",
+            "/assets/portfolioimages/Branding/branding2.png",
+            "/assets/portfolioimages/Branding/branding3.png",
+          ],
+          description:
+            "Comprehensive brand identity development including logo design, color palette, typography, and brand guidelines for luxury and lifestyle brands",
+        },
+        {
+          name: "Packaging Design",
+          type: "Product Packaging",
+          images: [
+            "/assets/portfolioimages/Packaging/packaging1.png",
+            "/assets/portfolioimages/Packaging/packaging2.png",
+            "/assets/portfolioimages/Packaging/packaging3.png",
+          ],
+          mobileImages: [
+            "/assets/portfolioimages/Packaging/packaging1.png",
+            "/assets/portfolioimages/Packaging/packaging2.png",
+            "/assets/portfolioimages/Packaging/packaging3.png",
+          ],
+          description:
+            "Premium packaging solutions that enhance product appeal and create memorable unboxing experiences for fashion, jewelry, and lifestyle brands",
+        },
+      ],
+      showLinks: true,
+      links: brandingPackagingProjects,
+    },
+    {
+      id: "05",
+      slug: "photography-videography",
+      name: "PHOTOGRAPHY/VIDEOGRAPHY",
       description: "Professional visual content creation for brands and digital marketing campaigns.",
-      type: "video", // Special type for video carousel
+      type: "mixed",
       videos: [
         {
           name: "Fashion Brand Campaign",
           type: "Commercial Video",
           thumbnail: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xvwo0qWD65ihY6Q1eib4hBMccHVKWr.png",
-          videoUrl: ".https://cdn.shopify.com/videos/c/o/v/aceae072656b4cd2916b8cf664338be1.mp4",
+          videoUrl: "https://cdn.shopify.com/videos/c/o/v/aceae072656b4cd2916b8cf664338be1.mp4",
           description: "High-end fashion commercial showcasing traditional Indian wear with cinematic quality",
         },
         {
@@ -392,7 +495,6 @@ export default function Portfolio() {
           description: "Engaging social media video content designed for maximum engagement and brand awareness",
         },
         {
-          // New video project added
           name: "Event Coverage",
           type: "Event Video",
           thumbnail: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kRyeCHl2ptWcMapOHLOKXTw75Cfux7.png",
@@ -400,81 +502,30 @@ export default function Portfolio() {
           description: "Professional event coverage capturing key moments with cinematic storytelling approach",
         },
       ],
-      // projects: [
-      //   {
-      //     name: "Inara Fashion Shoot",
-      //     type: "Fashion Photography",
-      //     images: [
-      //       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xvwo0qWD65ihY6Q1eib4hBMccHVKWr.png",
-      //       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Fi1mv1WoEedWxVgL54nqyIv1ENCwWn.png",
-      //       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kRyeCHl2ptWcMapOHLOKXTw75Cfux7.png",
-      //     ],
-      //     mobileImages: [
-      //       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xvwo0qWD65ihY6Q1eib4hBMccHVKWr.png",
-      //       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Fi1mv1WoEedWxVgL54nqyIv1ENCwWn.png",
-      //       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kRyeCHl2ptWcMapOHLOKXTw75Cfux7.png",
-      //     ],
-      //     description: "Traditional Indian fashion brand with vibrant product photography and professional styling",
-      //   },
-      //   {
-      //     name: "AURA Jewelry Collection",
-      //     type: "Product Photography",
-      //     images: [
-      //       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Fi1mv1WoEedWxVgL54nqyIv1ENCwWn.png",
-      //       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XJjG8PEryZwDZQNmV5MgymQcfp85r3.png",
-      //       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xR8vNC4a7pqhWSoFwxdD84JWnAOcvS.png",
-      //     ],
-      //     mobileImages: [
-      //       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Fi1mv1WoEedWxVgL54nqyIv1ENCwWn.png",
-      //       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XJjG8PEryZwDZQNmV5MgymQcfp85r3.png",
-      //       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xR8vNC4a7pqhWSoFwxdD84JWnAOcvS.png",
-      //     ],
-      //     description: "Luxury jewelry photography with elegant lighting and premium presentation",
-      //   },
-      // ],
+      photography: photographyImages,
     },
-    // {
-    //   id: "05",
-    //   title: "BRANDING & PACKAGING",
-    //   description: "Complete brand identity solutions from concept to packaging design.",
-    //   projects: [
-    //     {
-    //       name: "Delhi Digital Branding",
-    //       type: "Corporate Identity",
-    //       images: [
-    //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xR8vNC4a7pqhWSoFwxdD84JWnAOcvS.png",
-    //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-g8VqhQZnW87FNaa7QlT2BmxdV3NQ8W.png",
-    //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XaFAA1qAshcASBggChicWM3g1384DE.png",
-    //       ],
-    //       mobileImages: [
-    //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xR8vNC4a7pqhWSoFwxdD84JWnAOcvS.png",
-    //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-g8VqhQZnW87FNaa7QlT2BmxdV3NQ8W.png",
-    //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XaFAA1qAshcASBggChicWM3g1384DE.png",
-    //       ],
-    //       description: "Complete brand identity design with modern logo and professional presentation",
-    //     },
-    //     {
-    //       name: "Fashion Brand Identity",
-    //       type: "Brand Development",
-    //       images: [
-    //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kRyeCHl2ptWcMapOHLOKXTw75Cfux7.png",
-    //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-NbWjcrYmC2Unu1UYBk8XYNGLnUDcW4.png",
-    //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xvwo0qWD65ihY6Q1eib4hBMccHVKWr.png",
-    //       ],
-    //       mobileImages: [
-    //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kRyeCHl2ptWcMapOHLOKXTw75Cfux7.png",
-    //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-NbWjcrYmC2Unu1UYBk8XYNGLnUDcW4.png",
-    //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xvwo0qWD65ihY6Q1eib4hBMccHVKWr.png",
-    //       ],
-    //       description: "Comprehensive branding solutions for fashion and lifestyle brands with packaging design",
-    //     },
-    //   ],
-    // },
-  ]
+  ];
+
+  /* ---- UI handlers ---- */
+  const handleTabClick = (slug) => {
+    setActiveTab(slug);
+    if (servicesRef.current) {
+      const offsetTop = servicesRef.current.offsetTop - 100;
+      window.scrollTo({ top: offsetTop, behavior: "smooth" });
+    }
+  };
+
+  const handleLinkClick = (link) => {
+    // Always try to open in modal; if the site blocks iframes, our viewer shows a fallback.
+    setViewerItem(link);
+    setViewerOpen(true);
+  };
+
+  const activeService = services.find((s) => s.slug === activeTab);
 
   return (
     <div className="portfolio-main-container">
-      {/* Hero Section */}
+      {/* Hero / About */}
       <section className="portfolio-about-section" data-animate="fade-up">
         <div className="portfolio-about-content">
           <div className="portfolio-about-text-section">
@@ -490,87 +541,100 @@ export default function Portfolio() {
           </div>
           <div className="portfolio-about-logo">
             <img
-              src={LogoImg}
-              alt="Delhi Digital"
+              src="/assets/all_logos/ddc logo/ddc logo 2 cropped.png"
+              alt="Delhi Digital Company Logo"
               className="portfolio-logo-image"
             />
           </div>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="portfolio-services-section">
-        <div className="portfolio-services-header" data-animate="fade-up">
+      {/* Sticky sentinel */}
+      <div ref={stickySentinelRef} style={{ height: 1 }} aria-hidden />
+
+      {/* Tabs (smart sticky) */}
+      <div
+        ref={tabsRef}
+        className={`portfolio-tabs ${isTabsSticky ? "portfolio-tabs-sticky" : ""}`}
+        aria-label="Services navigation"
+        style={{
+          transform: isTabsSticky && tabsHidden ? "translateY(-100%)" : "translateY(0)",
+        }}
+      >
+        <div className="portfolio-tabs-container">
+          {services.map((service) => (
+            <button
+              key={service.slug}
+              className={`portfolio-tab ${activeTab === service.slug ? "portfolio-tab-active" : ""}`}
+              onClick={() => handleTabClick(service.slug)}
+            >
+              {service.name}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Services */}
+      <section ref={servicesRef} className="portfolio-services-section">
+        {/* <div className="portfolio-services-header" data-animate="fade-up">
           <div className="portfolio-services-accent-bar"></div>
           <h2 className="portfolio-services-title">OUR SERVICES</h2>
-        </div>
+        </div> */}
 
         <div className="portfolio-services-grid">
-          {services.map((service, index) => (
+          {activeService && (
             <div
-              key={service.id}
+              key={activeService.slug}
+              ref={(el) => (sectionRefs.current[activeService.slug] = el)}
+              id={activeService.slug}
               className="portfolio-service-card"
-              data-animate={index % 2 === 0 ? "slide-left" : "slide-right"}
+              data-animate="fade-up"
             >
-              <div className="portfolio-service-number">{service.id}</div>
+              <div className="portfolio-service-number">{activeService.id}</div>
               <div className="portfolio-service-content">
                 <div className="portfolio-service-title-bar">
-                  <h3 className="portfolio-service-title">{service.title}</h3>
+                  <h3 className="portfolio-service-title">{activeService.name}</h3>
                 </div>
-                <p className="portfolio-service-description">{service.description}</p>
+                <p className="portfolio-service-description">{activeService.description}</p>
 
-                {service.type === "video" ? (
-                  <>
-                    <VideoCarousel videos={service.videos} />
-                    {service.projects && service.projects.length > 0 && (
-                      <div className="portfolio-photography-section">
-                        <div className="portfolio-photography-header ">
-                          <div className="portfolio-photography-accent-line"></div>
-                          <h3 className="portfolio-photography-title">Photography</h3>
-                        </div>
-                        <p className="portfolio-photography-description">
-                          Professional photography services capturing the essence of your brand with stunning visuals.
-                        </p>
-                        <div className="portfolio-fullscreen-projects-container">
-                          {service.projects.map((project, projectIndex) => (
-                            <FullScreenProject key={projectIndex} project={project} />
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </>
+                {activeService.type === "video" ? (
+                  <VideoCarousel key={`video-${activeService.slug}`} videos={activeService.videos} />
+                ) : activeService.type === "mixed" ? (
+                  <PhotoVideoSection key={`photo-video-${activeService.slug}`} service={activeService} />
                 ) : (
                   <div className="portfolio-fullscreen-projects-container">
-                    {service.projects.map((project, projectIndex) => (
-                      <FullScreenProject key={projectIndex} project={project} />
+                    {activeService.projects.map((project, projectIndex) => (
+                      <FullScreenProject key={`${activeService.slug}-${projectIndex}`} project={project} />
                     ))}
                   </div>
                 )}
 
-                {service.showLinks && (
+                {activeService.showLinks && (
                   <div className="portfolio-service-links" data-animate="fade-up">
                     <h4 className="portfolio-links-title">
-                      {service.title === "WEBSITE DEVELOPMENT"
+                      {activeService.name === "WEBSITE DEVELOPMENT"
                         ? "List Of Websites Developed By Us:"
+                        : activeService.name === "BRANDING & PACKAGING"
+                        ? "List Of Branding & Packaging Projects:"
                         : "Our Social Media Brands:"}
                     </h4>
                     <div className="portfolio-links-categories">
-                      {Object.entries(service.links).map(([category, links]) => (
-                        <div key={category} className="portfolio-links-category-section">
+                      {Object.entries(activeService.links).map(([category, links]) => (
+                        <div key={`${activeService.slug}-${category}`} className="portfolio-links-category-section">
                           <h5 className="portfolio-category-heading">{category}</h5>
                           <div className="portfolio-links-list">
                             {links.map((link, linkIndex) => (
-                              <a
-                                key={linkIndex}
-                                href={link.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="portfolio-service-link"
+                              <button
+                                key={`${activeService.slug}-${category}-${linkIndex}`}
+                                type="button"
+                                className="portfolio-service-link as-button"
                                 data-animate="fade-up"
                                 style={{ animationDelay: `${linkIndex * 0.1}s` }}
+                                onClick={() => handleLinkClick(link)}
+                                aria-label={`Open ${link.name} in viewer`}
                               >
                                 {link.name}
-                              </a>
+                              </button>
                             ))}
                           </div>
                         </div>
@@ -580,126 +644,182 @@ export default function Portfolio() {
                 )}
               </div>
             </div>
-          ))}
+          )}
         </div>
       </section>
+
+      {/* Embedded Site Viewer (Modal) */}
+      {viewerOpen && (
+        <EmbeddedViewer
+          item={viewerItem}
+          onClose={() => setViewerOpen(false)}
+        />
+      )}
     </div>
-  )
+  );
 }
 
-function VideoCarousel({ videos }) {
-  const [currentIndex, setCurrentIndex] = React.useState(0)
-  const [isPlaying, setIsPlaying] = React.useState(false)
-  const [isMuted, setIsMuted] = React.useState(true)
-  const [touchStart, setTouchStart] = React.useState(null)
-  const [touchEnd, setTouchEnd] = React.useState(null)
-  const [isLoading, setIsLoading] = React.useState(false)
-  const videoRef = React.useRef(null)
-  const playPromiseRef = React.useRef(null)
+/* ============================ */
+/* Embedded Viewer (fixes embed issue) */
+/* ============================ */
+function EmbeddedViewer({ item, onClose }) {
+  const [loaded, setLoaded] = useState(false);
+  const [showFallback, setShowFallback] = useState(false);
 
-  const minSwipeDistance = 50
+  // Close with ESC
+  useEffect(() => {
+    const onKey = (e) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onClose]);
+
+  // If the iframe never loads, show fallback (covers X-Frame-Options / frame-ancestors cases)
+  useEffect(() => {
+    setLoaded(false);
+    setShowFallback(false);
+    const t = setTimeout(() => {
+      if (!loaded) setShowFallback(true);
+    }, 2500); // a little grace period for slower sites
+    return () => clearTimeout(t);
+  }, [item.url, loaded]);
+
+  return (
+    <div className="portfolio-viewer-overlay" role="dialog" aria-modal="true" aria-label={item.name}>
+      <div className="portfolio-viewer">
+        <div className="portfolio-viewer-header">
+          <span className="portfolio-viewer-title">{item.name}</span>
+          <div className="portfolio-viewer-actions">
+            <a
+              className="portfolio-open-new"
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Open in new tab"
+            >
+              Open in New Tab
+            </a>
+            <button className="portfolio-viewer-close" onClick={onClose} aria-label="Close viewer">
+              ✕
+            </button>
+          </div>
+        </div>
+
+        <div className="portfolio-iframe-container">
+          {/* IMPORTANT: no sandbox attribute, no contentDocument probing */}
+          <iframe
+            className="portfolio-viewer-iframe"
+            src={item.url}
+            loading="lazy"
+            title={item.name}
+            allow="clipboard-write; encrypted-media; picture-in-picture; fullscreen"
+            referrerPolicy="no-referrer-when-downgrade"
+            onLoad={() => setLoaded(true)}
+          />
+          <div className={`portfolio-iframe-fallback ${showFallback ? "show" : ""}`}>
+            <div className="portfolio-cors-message">
+              <div className="portfolio-cors-icon">🔒</div>
+              <h3>Site Protection Active</h3>
+              <p>
+                This website prevents embedding inside other sites (X-Frame-Options / frame-ancestors policy).
+                You can still visit it directly in a new tab.
+              </p>
+              <a href={item.url} target="_blank" rel="noopener noreferrer" className="portfolio-fallback-link">
+                Visit {item.name} →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+/* ============================ */
+/* Video Carousel               */
+/* ============================ */
+function VideoCarousel({ videos }) {
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const [isPlaying, setIsPlaying] = React.useState(false);
+  const [isMuted, setIsMuted] = React.useState(true);
+  const [touchStart, setTouchStart] = React.useState(null);
+  const [touchEnd, setTouchEnd] = React.useState(null);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const videoRef = React.useRef(null);
+  const playPromiseRef = React.useRef(null);
+
+  const minSwipeDistance = 50;
 
   const safePlay = async () => {
-    if (!videoRef.current || isLoading) return
-
-    setIsLoading(true)
+    if (!videoRef.current || isLoading) return;
+    setIsLoading(true);
     try {
-      if (playPromiseRef.current) {
-        await playPromiseRef.current
-      }
-
-      playPromiseRef.current = videoRef.current.play()
-      await playPromiseRef.current
-      setIsPlaying(true)
-    } catch (error) {
-      console.log("Play interrupted or failed:", error)
-      setIsPlaying(false)
+      if (playPromiseRef.current) await playPromiseRef.current;
+      playPromiseRef.current = videoRef.current.play();
+      await playPromiseRef.current;
+      setIsPlaying(true);
+    } catch {
+      setIsPlaying(false);
     } finally {
-      setIsLoading(false)
-      playPromiseRef.current = null
+      setIsLoading(false);
+      playPromiseRef.current = null;
     }
-  }
+  };
 
   const safePause = () => {
-    if (!videoRef.current || isLoading) return
-
+    if (!videoRef.current || isLoading) return;
     try {
-      videoRef.current.pause()
-      setIsPlaying(false)
-    } catch (error) {
-      console.log("Pause failed:", error)
-    }
-  }
+      videoRef.current.pause();
+      setIsPlaying(false);
+    } catch {}
+  };
 
   React.useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.muted = true
-      safePlay()
+      videoRef.current.muted = true;
+      safePlay();
     }
-  }, [])
+  }, []);
 
   React.useEffect(() => {
     if (videoRef.current) {
-      safePause()
-
+      safePause();
       setTimeout(() => {
         if (videoRef.current) {
-          videoRef.current.muted = true
-          videoRef.current.currentTime = 0
-          setIsMuted(true)
-          safePlay()
+          videoRef.current.muted = true;
+          videoRef.current.currentTime = 0;
+          setIsMuted(true);
+          safePlay();
         }
-      }, 100)
+      }, 100);
     }
-  }, [currentIndex])
+  }, [currentIndex]);
 
   const onTouchStart = (e) => {
-    setTouchEnd(null)
-    setTouchStart(e.targetTouches[0].clientX)
-  }
-
-  const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX)
-
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+  const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
   const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return
-    const distance = touchStart - touchEnd
-    const isLeftSwipe = distance > minSwipeDistance
-    const isRightSwipe = distance < -minSwipeDistance
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    if (distance > minSwipeDistance) nextSlide();
+    if (distance < -minSwipeDistance) prevSlide();
+  };
 
-    if (isLeftSwipe) {
-      nextSlide()
-    } else if (isRightSwipe) {
-      prevSlide()
-    }
-  }
-
-  const nextSlide = () => {
-    if (!isLoading) {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % videos.length)
-    }
-  }
-
-  const prevSlide = () => {
-    if (!isLoading) {
-      setCurrentIndex((prevIndex) => (prevIndex - 1 + videos.length) % videos.length)
-    }
-  }
-
-  const goToSlide = (index) => {
-    if (!isLoading && index !== currentIndex) {
-      setCurrentIndex(index)
-    }
-  }
+  const nextSlide = () => !isLoading && setCurrentIndex((p) => (p + 1) % videos.length);
+  const prevSlide = () => !isLoading && setCurrentIndex((p) => (p - 1 + videos.length) % videos.length);
+  const goToSlide = (i) => !isLoading && i !== currentIndex && setCurrentIndex(i);
 
   const handleVideoClick = async () => {
-    if (!videoRef.current || isLoading) return
-
+    if (!videoRef.current || isLoading) return;
     if (isPlaying) {
-      safePause()
+      safePause();
     } else {
-      await safePlay()
+      await safePlay();
+      videoRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
     }
-  }
+  };
 
   return (
     <div className="portfolio-videography-section">
@@ -711,62 +831,59 @@ function VideoCarousel({ videos }) {
         We don't just film moments; we create cinematic experiences. Capturing the magic of movement and sound.
       </p>
 
-      <div className="portfolio-video-carousel-wrapper">
+      <div className="portfolio-video-carousel-wrapper portfolio-social-style">
         <div
-          className="portfolio-video-slides-container"
+          className="portfolio-video-slides-container portfolio-social-carousel"
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
         >
           {videos.map((video, index) => {
-            const position = index - currentIndex
-            let className = "portfolio-video-slide"
-
-            if (position === 0) className += " portfolio-center"
-            else if (position === -1 || (position === videos.length - 1 && currentIndex === 0))
-              className += " portfolio-left"
-            else if (position === 1 || (position === -(videos.length - 1) && currentIndex === videos.length - 1))
-              className += " portfolio-right"
-            else className += " portfolio-hidden"
+            const position = index - currentIndex;
+            let className = "portfolio-video-slide portfolio-social-video";
+            if (position === 0) className += " portfolio-center portfolio-active-video";
+            else if (position === -1 || (position === videos.length - 1 && currentIndex === 0)) className += " portfolio-left";
+            else if (position === 1 || (position === -(videos.length - 1) && currentIndex === videos.length - 1)) className += " portfolio-right";
+            else className += " portfolio-hidden";
 
             return (
-              <div key={index} className={className} onClick={() => goToSlide(index)}>
-                <div className="portfolio-video-thumbnail-wrapper">
+              <div key={index} className={className} onClick={() => (position === 0 ? handleVideoClick() : goToSlide(index))}>
+                <div className="portfolio-video-thumbnail-wrapper portfolio-social-video-wrapper">
                   {position === 0 ? (
-                    <div className="portfolio-video-player-container" onClick={handleVideoClick}>
-                      <video
-                        ref={videoRef}
-                        className="portfolio-video-player"
-                        loop
-                        playsInline
-                        poster={video.thumbnail}
-                      >
+                    <div className="portfolio-video-player-container portfolio-social-player" onClick={handleVideoClick}>
+                      <video ref={videoRef} className="portfolio-video-player portfolio-social-video-player" loop playsInline poster={video.thumbnail}>
                         <source src={video.videoUrl} type="video/mp4" />
                         Your browser does not support the video tag.
                       </video>
                       {!isPlaying && !isLoading && (
-                        <div className="portfolio-video-play-overlay portfolio-show-button">
-                          <div className="portfolio-video-play-button">
-                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-                              <circle cx="30" cy="30" r="30" fill="rgba(0, 188, 212, 0.9)" />
-                              <path d="M24 18L24 42L42 30L24 18Z" fill="white" />
+                        <div className="portfolio-video-play-overlay portfolio-social-play-overlay">
+                          <div className="portfolio-video-play-button portfolio-social-play-button">
+                            <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                              <circle cx="40" cy="40" r="40" fill="rgba(255, 255, 255, 0.9)" />
+                              <path d="M32 24L32 56L56 40L32 24Z" fill="#000" />
                             </svg>
                           </div>
                         </div>
                       )}
+                      <div className="portfolio-video-engagement">
+                        <div className="portfolio-video-info">
+                          <h4 className="portfolio-video-title">{video.name}</h4>
+                          <p className="portfolio-video-type">{video.type}</p>
+                        </div>
+                      </div>
                     </div>
                   ) : (
                     <>
                       <img
                         src={video.thumbnail || "/placeholder.svg"}
                         alt={video.name}
-                        className="portfolio-video-thumbnail-image"
+                        className="portfolio-video-thumbnail-image portfolio-social-thumbnail"
                       />
-                      <div className="portfolio-video-play-overlay portfolio-show-button">
-                        <div className="portfolio-video-play-button">
+                      <div className="portfolio-video-play-overlay portfolio-social-play-overlay">
+                        <div className="portfolio-video-play-button portfolio-social-play-button-small">
                           <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
-                            <circle cx="25" cy="25" r="25" fill="rgba(255, 255, 255, 0.9)" />
-                            <path d="M20 15L20 35L35 25L20 15Z" fill="#333" />
+                            <circle cx="25" cy="25" r="25" fill="rgba(255, 255, 255, 0.8)" />
+                            <path d="M20 15L20 35L35 25L20 15Z" fill="#000" />
                           </svg>
                         </div>
                       </div>
@@ -774,84 +891,122 @@ function VideoCarousel({ videos }) {
                   )}
                 </div>
               </div>
-            )
+            );
           })}
         </div>
 
-        <div className="portfolio-video-controls">
-          <button className="portfolio-video-nav-btn" onClick={prevSlide} disabled={isLoading}>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path
-                d="M12 16L6 10L12 4"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
+        <div className="portfolio-video-controls portfolio-social-controls">
+          <button className="portfolio-video-nav-btn portfolio-social-nav" onClick={() => setCurrentIndex((p) => (p - 1 + videos.length) % videos.length)} disabled={isLoading} aria-label="Previous">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
-
-          <div className="portfolio-video-info-center">
-            <span className="portfolio-video-counter">
-              {currentIndex + 1} / {videos.length}
-            </span>
+          <div className="portfolio-video-info-center portfolio-social-info">
+            <span className="portfolio-video-counter portfolio-social-counter">{currentIndex + 1} / {videos.length}</span>
           </div>
-
-          <button className="portfolio-video-nav-btn" onClick={nextSlide} disabled={isLoading}>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path
-                d="M8 16L14 10L8 4"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
+          <button className="portfolio-video-nav-btn portfolio-social-nav" onClick={() => setCurrentIndex((p) => (p + 1) % videos.length)} disabled={isLoading} aria-label="Next">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
         </div>
       </div>
 
       <div className="portfolio-video-actions">
-        {/* <span className="portfolio-video-more-text">Click Here for More Videos</span> */}
-        <button className="portfolio-watch-videos-btn" onClick={handleVideoClick} disabled={isLoading}>
+        <button className="portfolio-watch-videos-btn portfolio-social-action-btn" onClick={() => (isPlaying ? videoRef.current?.pause() : videoRef.current && videoRef.current.play())} disabled={isLoading}>
           {isLoading ? "LOADING..." : isPlaying ? "PAUSE VIDEO" : "PLAY VIDEO"}
         </button>
       </div>
     </div>
-  )
+  );
 }
 
+/* ============================ */
+/* Photo + Video Section        */
+/* ============================ */
+function PhotoVideoSection({ service }) {
+  const [activePhotoTab, setActivePhotoTab] = useState("all");
+  const photoCategories = [
+    { key: "all", label: "All" },
+    { key: "product", label: "Product" },
+    { key: "model", label: "Human Model" },
+    { key: "lifestyle", label: "Lifestyle" },
+    { key: "event", label: "Event" },
+  ];
+  const currentImages = service.photography[activePhotoTab] || service.photography.all;
+
+  return (
+    <div className="portfolio-photo-video-section">
+      <VideoCarousel videos={service.videos} />
+
+      <div className="portfolio-photography-section">
+        <div className="portfolio-photography-header">
+          <div className="portfolio-photography-accent-line"></div>
+          <h3 className="portfolio-photography-title">Photography</h3>
+        </div>
+        <p className="portfolio-photography-description">
+          Capturing moments that tell your brand's story through stunning visual narratives and professional photography.
+        </p>
+
+        <div className="portfolio-photo-tabs">
+          {photoCategories.map((category) => (
+            <button
+              key={category.key}
+              className={`portfolio-photo-tab ${activePhotoTab === category.key ? "portfolio-photo-tab-active" : ""}`}
+              onClick={() => setActivePhotoTab(category.key)}
+            >
+              {category.label}
+            </button>
+          ))}
+        </div>
+
+        <div className="portfolio-photography-grid">
+          {currentImages.map((image, index) => (
+            <div
+              key={image.id}
+              className={`portfolio-photo-item portfolio-photo-item-${(index % 6) + 1}`}
+              data-animate="fade-up"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <img
+                src={image.src || `/placeholder.svg?height=400&width=300&query=${image.alt}`}
+                alt={image.alt}
+                className="portfolio-photo-image"
+                loading="lazy"
+              />
+              <div className="portfolio-photo-overlay">
+                <div className="portfolio-photo-category">{image.category.toUpperCase()}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ============================ */
+/* Sticky Project Section       */
+/* ============================ */
 function FullScreenProject({ project }) {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const [isMobile, setIsMobile] = useState(false)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768)
-    }
-
-    checkMobile()
-    window.addEventListener("resize", checkMobile)
-
-    return () => window.removeEventListener("resize", checkMobile)
-  }, [])
+    const check = () => setIsMobile(window.innerWidth <= 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   useEffect(() => {
-    const images = isMobile && project.mobileImages ? project.mobileImages : project.images
-    if (images.length <= 1) return
+    const imgs = isMobile && project.mobileImages ? project.mobileImages : project.images;
+    if (imgs.length <= 1) return;
+    const id = setInterval(() => setCurrentImageIndex((i) => (i + 1) % imgs.length), 4000);
+    return () => clearInterval(id);
+  }, [project.images, project.mobileImages, isMobile]);
 
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length)
-    }, 4000) // Auto-slide every 4 seconds
-
-    return () => clearInterval(interval)
-  }, [project.images, project.mobileImages, isMobile])
-
-  const goToSlide = (index) => {
-    setCurrentImageIndex(index)
-  }
-
-  const images = isMobile && project.mobileImages ? project.mobileImages : project.images
+  const images = isMobile && project.mobileImages ? project.mobileImages : project.images;
 
   return (
     <div className="portfolio-fullscreen-project">
@@ -867,24 +1022,21 @@ function FullScreenProject({ project }) {
                 <button
                   key={index}
                   className={`portfolio-dot ${index === currentImageIndex ? "portfolio-dot-active" : ""}`}
-                  onClick={() => goToSlide(index)}
+                  onClick={() => setCurrentImageIndex(index)}
                   aria-label={`Go to image ${index + 1}`}
                 />
               ))}
             </div>
           )}
         </div>
+
         <div className="portfolio-fullscreen-project-images">
           {images.map((image, index) => (
             <div
               key={index}
               className={`portfolio-project-image-slide ${index === currentImageIndex ? "portfolio-active-slide" : ""}`}
             >
-              <img
-                src={image || "/placeholder.svg"}
-                alt={`${project.name} - Image ${index + 1}`}
-                className="portfolio-fullscreen-project-image"
-              />
+              <img src={image || "/placeholder.svg"} alt={`${project.name} - Image ${index + 1}`} className="portfolio-fullscreen-project-image" />
             </div>
           ))}
 
@@ -894,7 +1046,7 @@ function FullScreenProject({ project }) {
                 <button
                   key={index}
                   className={`portfolio-dot ${index === currentImageIndex ? "portfolio-dot-active" : ""}`}
-                  onClick={() => goToSlide(index)}
+                  onClick={() => setCurrentImageIndex(index)}
                   aria-label={`Go to image ${index + 1}`}
                 />
               ))}
@@ -903,5 +1055,5 @@ function FullScreenProject({ project }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
