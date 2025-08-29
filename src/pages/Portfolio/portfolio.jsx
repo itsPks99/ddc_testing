@@ -19,9 +19,16 @@ export default function Portfolio() {
   // Tabs state
   const [activeTab, setActiveTab] = useState("website-development");
   const [isTabsSticky, setIsTabsSticky] = useState(false);
-  const [tabsHidden, setTabsHidden] = useState(false);
 
-  const lastYRef = useRef(0);
+  // Mobile detection (for dropdown vs pills)
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= 768);
+    onResize();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   /* ---- Animate on appear + sticky slides init ---- */
   useEffect(() => {
@@ -80,30 +87,18 @@ export default function Portfolio() {
     return () => observer.disconnect();
   }, []);
 
-  /* ---- Smart sticky behavior (show on scroll-up, hide on scroll-down) ---- */
+  /* ---- Sticky behavior: stays fixed until you scroll back to top ---- */
   useEffect(() => {
-    // Sentinel tells us when tabs have reached the top
     const io = new IntersectionObserver(
-      ([entry]) => setIsTabsSticky(!entry.isIntersecting),
+      ([entry]) => {
+        // When the sentinel is NOT intersecting, tabs should be sticky.
+        // When it intersects (you scrolled back up), unstick.
+        setIsTabsSticky(!entry.isIntersecting);
+      },
       { threshold: 0 }
     );
     if (stickySentinelRef.current) io.observe(stickySentinelRef.current);
-
-    const onScroll = () => {
-      const y = window.scrollY;
-      const dy = y - lastYRef.current;
-      // hide when scrolling down, show on up
-      if (Math.abs(dy) > 6) {
-        setTabsHidden(dy > 0 && y > 120); // hide only after we’ve moved a bit
-        lastYRef.current = y;
-      }
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      io.disconnect();
-      window.removeEventListener("scroll", onScroll);
-    };
+    return () => io.disconnect();
   }, []);
 
   /* ---- Data (unchanged) ---- */
@@ -173,26 +168,6 @@ export default function Portfolio() {
     ],
   };
 
-  // const brandingPackagingProjects = {
-  //   "LUXURY BRANDS": [
-  //     { name: "Samsara Gin Premium Packaging", url: "https://www.behance.net/gallery/samsara-gin" },
-  //     { name: "Tieva Jewels Brand Identity", url: "https://www.behance.net/gallery/tieva-jewels" },
-  //     { name: "Geum Jewels Packaging Design", url: "https://www.behance.net/gallery/geum-jewels" },
-  //     { name: "Anthi Naturals Brand Kit", url: "https://www.behance.net/gallery/anthi-naturals" },
-  //   ],
-  //   "FASHION BRANDS": [
-  //     { name: "July Issue Brand Identity", url: "https://www.behance.net/gallery/july-issue" },
-  //     { name: "Manvi Daga Brand Package", url: "https://www.behance.net/gallery/manvi-daga" },
-  //     { name: "Label Inara Branding", url: "https://www.behance.net/gallery/label-inara" },
-  //     { name: "Rosatelier Brand Design", url: "https://www.behance.net/gallery/rosatelier" },
-  //   ],
-  //   "BEVERAGE BRANDS": [
-  //     { name: "Sitara Rum Packaging", url: "https://www.behance.net/gallery/sitara-rum" },
-  //     { name: "Drink Sober Brand Identity", url: "https://www.behance.net/gallery/drink-sober" },
-  //     { name: "Hindraj Tea Packaging", url: "https://www.behance.net/gallery/hindraj-tea" },
-  //   ],
-  // };
-
   const photographyImages = {
     all: [
       // ---- existing 25 (unchanged) ----
@@ -202,12 +177,10 @@ export default function Portfolio() {
       { id: 3, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00519_copy.jpg?v=1756384643", alt: "Cosmetic / accessory product shot" },
       { id: 4, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/4_1.jpg?v=1756384638", alt: "Lifestyle brand shot" },
 
-      
       { id: 5, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC07722_copy.jpg?v=1756384636", alt: "Product on-set / studio" },
       { id: 6, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/4.jpg?v=1756384634", alt: "Lifestyle brand imagery" },
       { id: 7, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/2.jpg?v=1756384632", alt: "Model portrait" },
       { id: 8, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/3.jpg?v=1756384631", alt: "Fashion model profile" },
-
 
       { id: 11, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC09093_copy.jpg?v=1756384662", alt: "Live event highlight" },
       { id: 12, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0852_copy.jpg?v=1756384659", alt: "Editorial portrait" },
@@ -217,8 +190,6 @@ export default function Portfolio() {
       { id: 16, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0765_copy.jpg?v=1756384661", alt: "Fashion editorial pose" },
 
       { id: 18, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00604_copy.jpg?v=1756384658", alt: "Product flatlay / detail" },
-
-
 
       { id: 22, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08491_copy.jpg?v=1756384651", alt: "Accessory product photo" },
       { id: 23, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08926_copy_1.jpg?v=1756384652", alt: "Cosmetic / object detail" },
@@ -246,7 +217,6 @@ export default function Portfolio() {
       { id: 41, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0613_copy_2.jpg?v=1756384666", alt: "Packshot / detail" },
       { id: 42, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0497_copy_2.jpg?v=1756384665", alt: "Premium product macro" },
       { id: 43, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0839_copy.jpg?v=1756384662", alt: "Event crowd / moment" },
-      
     ],
 
     product: [
@@ -269,8 +239,6 @@ export default function Portfolio() {
       { id: 29, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02595_copy.jpg?v=1756384673", alt: "Product packshot" },
       { id: 33, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01158_copy.jpg?v=1756384672", alt: "Product detail / macro" },
       { id: 36, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC03351_copy.jpg?v=1756384669", alt: "Clean product composition" },
-      
-      
     ],
 
     model: [
@@ -308,7 +276,6 @@ export default function Portfolio() {
 
     event: [
       // existing
-
       { id: 11, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC09093_copy.jpg?v=1756384662", alt: "Live event highlight" },
       { id: 13, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00367_copy.jpg?v=1756384660", alt: "Backstage / event moment" },
       // new
@@ -317,8 +284,6 @@ export default function Portfolio() {
       { id: 9, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_2316.jpg?v=1756384622", alt: "Event coverage photo" },
     ],
   };
-
-
 
   const services = [
     {
@@ -386,89 +351,39 @@ export default function Portfolio() {
           name: "Multi-Brand Management",
           type: "Instagram Growth Strategy",
           images: [
-            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/1.png?v=1756385975",
-            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/2.png?v=1756385974",
-            "/assets/portfolioimages/SocialMedia/image3.png",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/6.png?v=1756474836",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/2_334cc44c-cbcf-4e40-8088-8692a3dfd445.png?v=1756474838",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/3.png?v=1756474838",
           ],
           mobileImages: [
-            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/1.png?v=1756385975",
-            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/2.png?v=1756385974",
-            "/assets/portfolioimages/SocialMedia/image3.png",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/6.png?v=1756474836",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/2_334cc44c-cbcf-4e40-8088-8692a3dfd445.png?v=1756474838",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/3.png?v=1756474838",
           ],
           description:
             "Managing the social presence and content strategy for luxury fashion and lifestyle brands including Samsaragin, DrinkSober, and 121Couture",
         },
+
+        {
+          name: "Visual Storytelling",
+          type: "Content Creation & Curation",
+          images: [
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/4.png?v=1756474837",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/5.png?v=1756474838",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/1_d123606c-48be-4981-9c5a-6d8133165758.png?v=1756474838",
+          ],
+
+          mobileImages: [
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/4.png?v=1756474837",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/5.png?v=1756474838",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/1_d123606c-48be-4981-9c5a-6d8133165758.png?v=1756474838",
+          ],
+          description:
+            "Creating and curating visually stunning content that tells a story and engages audiences across platforms.",
+        },
       ],
       showLinks: true,
       links: socialMediaBrands,
-    },
-    {
-      id: "03",
-      slug: "performance-marketing",
-      name: "PERFORMANCE MARKETING",
-      description:
-        "Our performance marketing tactics drive success and elevate your brand. Efficiency meets effectiveness in our performance marketing solutions.",
-      projects: [
-        {
-          name: "Analytics Dashboard",
-          type: "Marketing Analytics & ROI",
-          images: [
-            "/assets/portfolioimages/Performance/perfonrmance1.png",
-            "/assets/portfolioimages/Performance/perfonrmance2.png",
-            "/assets/portfolioimages/Performance/perfonrmance3.png",
-          ],
-          mobileImages: [
-            "/assets/portfolioimages/Performance/perfonrmance1.png",
-            "/assets/portfolioimages/Performance/perfonrmance2.png",
-            "/assets/portfolioimages/Performance/perfonrmance3.png",
-          ],
-          description:
-            "₹125,558.40 revenue generated with 85% conversion rate improvement and comprehensive performance tracking",
-        },
-      ],
-    },
-    {
-      id: "04",
-      slug: "branding-packaging",
-      name: "BRANDING & PACKAGING",
-      description:
-        "Creating distinctive brand identities and packaging solutions that captivate audiences and drive business growth.",
-      projects: [
-        {
-          name: "Brand Identity Suite",
-          type: "Complete Brand Package",
-          images: [
-            "/assets/portfolioimages/Branding/branding1.png",
-            "/assets/portfolioimages/Branding/branding2.png",
-            "/assets/portfolioimages/Branding/branding3.png",
-          ],
-          mobileImages: [
-            "/assets/portfolioimages/Branding/branding1.png",
-            "/assets/portfolioimages/Branding/branding2.png",
-            "/assets/portfolioimages/Branding/branding3.png",
-          ],
-          description:
-            "Comprehensive brand identity development including logo design, color palette, typography, and brand guidelines for luxury and lifestyle brands",
-        },
-        {
-          name: "Packaging Design",
-          type: "Product Packaging",
-          images: [
-            "/assets/portfolioimages/Packaging/packaging1.png",
-            "/assets/portfolioimages/Packaging/packaging2.png",
-            "/assets/portfolioimages/Packaging/packaging3.png",
-          ],
-          mobileImages: [
-            "/assets/portfolioimages/Packaging/packaging1.png",
-            "/assets/portfolioimages/Packaging/packaging2.png",
-            "/assets/portfolioimages/Packaging/packaging3.png",
-          ],
-          description:
-            "Premium packaging solutions that enhance product appeal and create memorable unboxing experiences for fashion, jewelry, and lifestyle brands",
-        },
-      ],
-      // showLinks: true,
-      // links: brandingPackagingProjects,
     },
     {
       id: "05",
@@ -515,6 +430,92 @@ export default function Portfolio() {
       ],
       photography: photographyImages,
     },
+    {
+      id: "03",
+      slug: "performance-marketing",
+      name: "PERFORMANCE MARKETING",
+      description:
+        "Our performance marketing tactics drive success and elevate your brand. Efficiency meets effectiveness in our performance marketing solutions.",
+      projects: [
+        {
+          name: "Analytics Dashboard",
+          type: "Marketing Analytics & ROI",
+          images: [
+            "/assets/portfolioimages/Performance/perfonrmance1.png",
+            "/assets/portfolioimages/Performance/perfonrmance2.png",
+            "/assets/portfolioimages/Performance/perfonrmance3.png",
+          ],
+          mobileImages: [
+            "/assets/portfolioimages/Performance/perfonrmance1.png",
+            "/assets/portfolioimages/Performance/perfonrmance2.png",
+            "/assets/portfolioimages/Performance/perfonrmance3.png",
+          ],
+          description:
+            "₹125,558.40 revenue generated with 85% conversion rate improvement and comprehensive performance tracking",
+        },
+
+        {
+          name: "Ad Campaigns",
+          type: "Targeted Ad Strategies",
+          images: [
+            "/assets/portfolioimages/Performance/perfonrmance4.png",
+            "/assets/portfolioimages/Performance/perfonrmance5.png",
+            "/assets/portfolioimages/Performance/perfonrmance6.png",
+          ],
+          mobileImages: [
+            "/assets/portfolioimages/Performance/perfonrmance4.png",
+            "/assets/portfolioimages/Performance/perfonrmance5.png",
+            "/assets/portfolioimages/Performance/perfonrmance6.png",
+          ],
+          description:
+            "Strategically crafted ad campaigns across Google, Facebook, and Instagram driving high engagement and conversions",
+        },
+      ],
+    },
+    {
+      id: "04",
+      slug: "branding-packaging",
+      name: "BRANDING & PACKAGING",
+      description:
+        "Creating distinctive brand identities and packaging solutions that captivate audiences and drive business growth.",
+      projects: [
+        {
+          name: "Brand Identity Suite",
+          type: "Complete Brand Package",
+          images: [
+            "/assets/portfolioimages/Branding/branding1.png",
+            "/assets/portfolioimages/Branding/branding2.png",
+            "/assets/portfolioimages/Branding/branding3.png",
+          ],
+          mobileImages: [
+            "/assets/portfolioimages/Branding/branding1.png",
+            "/assets/portfolioimages/Branding/branding2.png",
+            "/assets/portfolioimages/Branding/branding3.png",
+          ],
+          description:
+            "Comprehensive brand identity development including logo design, color palette, typography, and brand guidelines for luxury and lifestyle brands",
+        },
+        {
+          name: "Packaging Design",
+          type: "Product Packaging",
+          images: [
+            "/assets/portfolioimages/Packaging/packaging1.png",
+            "/assets/portfolioimages/Packaging/packaging2.png",
+            "/assets/portfolioimages/Packaging/packaging3.png",
+          ],
+          mobileImages: [
+            "/assets/portfolioimages/Packaging/packaging1.png",
+            "/assets/portfolioimages/Packaging/packaging2.png",
+            "/assets/portfolioimages/Packaging/packaging3.png",
+          ],
+          description:
+            "Premium packaging solutions that enhance product appeal and create memorable unboxing experiences for fashion, jewelry, and lifestyle brands",
+        },
+      ],
+      // showLinks: true,
+      // links: brandingPackagingProjects,
+    },
+    
   ];
 
   /* ---- UI handlers ---- */
@@ -525,6 +526,8 @@ export default function Portfolio() {
       window.scrollTo({ top: offsetTop, behavior: "smooth" });
     }
   };
+
+  const handleDropdownChange = (e) => handleTabClick(e.target.value);
 
   const handleLinkClick = (link) => {
     // Always try to open in modal; if the site blocks iframes, our viewer shows a fallback.
@@ -563,35 +566,45 @@ export default function Portfolio() {
       {/* Sticky sentinel */}
       <div ref={stickySentinelRef} style={{ height: 1 }} aria-hidden />
 
-      {/* Tabs (smart sticky) */}
+      {/* Tabs (sticky and always visible once you pass the sentinel) */}
       <div
         ref={tabsRef}
         className={`portfolio-tabs ${isTabsSticky ? "portfolio-tabs-sticky" : ""}`}
         aria-label="Services navigation"
-        style={{
-          transform: isTabsSticky && tabsHidden ? "translateY(-100%)" : "translateY(0)",
-        }}
       >
-        <div className="portfolio-tabs-container">
-          {services.map((service) => (
-            <button
-              key={service.slug}
-              className={`portfolio-tab ${activeTab === service.slug ? "portfolio-tab-active" : ""}`}
-              onClick={() => handleTabClick(service.slug)}
+        {/* Desktop/Tablet: Pills — Mobile: Dropdown */}
+        {isMobile ? (
+          <div className="portfolio-tabs-mobile">
+            <select
+              className="portfolio-tabs-dropdown"
+              value={activeTab}
+              onChange={handleDropdownChange}
+              aria-label="Select service"
             >
-              {service.name}
-            </button>
-          ))}
-        </div>
+              {services.map((service) => (
+                <option key={service.slug} value={service.slug}>
+                  {service.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        ) : (
+          <div className="portfolio-tabs-container">
+            {services.map((service) => (
+              <button
+                key={service.slug}
+                className={`portfolio-tab ${activeTab === service.slug ? "portfolio-tab-active" : ""}`}
+                onClick={() => handleTabClick(service.slug)}
+              >
+                {service.name}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Services */}
       <section ref={servicesRef} className="portfolio-services-section">
-        {/* <div className="portfolio-services-header" data-animate="fade-up">
-          <div className="portfolio-services-accent-bar"></div>
-          <h2 className="portfolio-services-title">OUR SERVICES</h2>
-        </div> */}
-
         <div className="portfolio-services-grid">
           {activeService && (
             <div
