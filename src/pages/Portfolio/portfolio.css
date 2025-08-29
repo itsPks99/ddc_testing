@@ -478,7 +478,7 @@
 /* responsive sticky blocks */
 @media (max-width: 768px) {
   .portfolio-fullscreen-project {
-    height: 72vh;
+    height: 55vh;
     padding: 16px;
     margin-bottom: 40vh;
   }
@@ -1537,3 +1537,203 @@
   50%  { transform: scaleX(0.65); }
   100% { transform: scaleX(0.05); }
 }
+
+
+/* === OVERRIDES: show full photos (no fixed sizes / no crop) === */
+
+/* Let items grow naturally */
+.portfolio-photography-grid {
+  /* keep your responsive columns; allow variable heights */
+  align-items: start;
+}
+
+/* Neutralize all fixed aspect-ratio layout classes */
+.portfolio-photo-item,
+.portfolio-photo-item-1,
+.portfolio-photo-item-2,
+.portfolio-photo-item-3,
+.portfolio-photo-item-4,
+.portfolio-photo-item-5,
+.portfolio-photo-item-6 {
+  aspect-ratio: auto !important;
+  grid-column: auto !important;
+  grid-row: auto !important;
+}
+
+/* Show the full image, not cropped */
+.portfolio-photo-image {
+  width: 100%;
+  height: auto !important;        /* natural height */
+  object-fit: contain !important; /* no cropping */
+  object-position: center;
+  display: block;
+  background: transparent;
+}
+
+/* Kill mobile/tablet aspect-ratio rules from earlier media queries */
+@media (max-width: 768px) {
+  .portfolio-photo-item,
+  .portfolio-photo-item-1,
+  .portfolio-photo-item-2,
+  .portfolio-photo-item-3,
+  .portfolio-photo-item-4,
+  .portfolio-photo-item-5,
+  .portfolio-photo-item-6 {
+    aspect-ratio: auto !important;
+  }
+}
+@media (max-width: 480px) {
+  .portfolio-photo-item,
+  .portfolio-photo-item-1,
+  .portfolio-photo-item-2,
+  .portfolio-photo-item-3,
+  .portfolio-photo-item-4,
+  .portfolio-photo-item-5,
+  .portfolio-photo-item-6 {
+    aspect-ratio: auto !important;
+  }
+}
+
+
+:root {
+  /* your video is portrait 9:16 */
+  --video-aspect: 9/16;
+}
+
+/* keep slides responsive + locked ratio */
+.portfolio-video-slide {
+  width: clamp(220px, 40vw, 420px);
+  aspect-ratio: var(--video-aspect);
+  height: auto;                   /* let aspect-ratio control height */
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* “center” is bigger; sides are smaller */
+/* .portfolio-video-slide.portfolio-center {
+  width: clamp(260px, 42vw, 460px);
+} */
+
+.portfolio-video-slide.portfolio-left,
+.portfolio-video-slide.portfolio-right {
+  width: clamp(160px, 28vw, 320px);
+  /* keep your translateX from before if you like the overlap */
+}
+
+/* ensure the inner wrappers fill the slide box */
+.portfolio-video-thumbnail-wrapper,
+.portfolio-video-player-container,
+.portfolio-social-player {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* KEEP RATIO: never crop; letterbox as needed */
+.portfolio-video-player,
+.portfolio-social-video-player {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;  /* no cropping */
+  background: #000;
+}
+
+/* mobile tweaks if you want slightly smaller */
+@media (max-width: 768px) {
+  .portfolio-video-slide.portfolio-center {
+    width: clamp(220px, 70vw, 360px);
+  }
+  .portfolio-video-slide.portfolio-left,
+  .portfolio-video-slide.portfolio-right {
+    width: clamp(150px, 50vw, 260px);
+  }
+}
+
+
+
+/* --- Remove black background & keep exact video box --- */
+.portfolio-video-player,
+.portfolio-social-video-player {
+  background: transparent !important;     /* kill black fill */
+}
+
+/* make wrappers transparent too */
+.portfolio-video-thumbnail-wrapper,
+.portfolio-video-player-container,
+.portfolio-social-player {
+  background: transparent !important;
+}
+
+/* ensure the slide matches the video’s aspect (9:16 unless JS detects otherwise) */
+:root { --video-aspect: 9/16; } /* fallback */
+.portfolio-video-slide,
+.portfolio-video-slide.portfolio-center,
+.portfolio-video-slide.portfolio-left,
+.portfolio-video-slide.portfolio-right {
+  aspect-ratio: var(--video-aspect) !important;
+  height: auto !important;
+}
+
+/* some earlier rules add a black bg in responsive blocks—force them off */
+@media (max-width: 1024px) {
+  .portfolio-social-video-player { background: transparent !important; }
+}
+@media (max-width: 768px) {
+  .portfolio-social-video-player { background: transparent !important; }
+}
+@media (max-width: 480px) {
+  .portfolio-social-video-player { background: transparent !important; }
+}
+
+
+/* ---------- Phone-first video fixes (no crop) ---------- */
+
+/* 1) use the JS-provided container height instead of fixed 300/350/380px */
+.portfolio-video-slides-container {
+  height: var(--container-h) !important;   /* set by VideoCarousel */
+  padding: 0 10px;
+}
+
+/* 2) the slide itself should be sized by aspect ratio (no hardcoded H) */
+.portfolio-video-slide,
+.portfolio-video-slide.portfolio-center,
+.portfolio-video-slide.portfolio-left,
+.portfolio-video-slide.portfolio-right {
+  aspect-ratio: var(--video-aspect, 9/16) !important;
+  height: auto !important;
+  background: transparent !important;
+}
+
+/* 3) responsive widths so the height derives from aspect-ratio */
+@media (max-width: 768px) {
+  .portfolio-video-slide.portfolio-center { width: min(72vw, 360px) !important; }
+  .portfolio-video-slide.portfolio-left,
+  .portfolio-video-slide.portfolio-right { width: min(52vw, 240px) !important; }
+  /* use % translate so side cards don’t crop */
+  .portfolio-video-slide.portfolio-left  { transform: translateX(-28%) scale(.85) !important; }
+  .portfolio-video-slide.portfolio-right { transform: translateX( 28%) scale(.85) !important; }
+}
+
+@media (max-width: 480px) {
+  .portfolio-video-slide.portfolio-center { width: min(82vw, 360px) !important; }
+  .portfolio-video-slide.portfolio-left,
+  .portfolio-video-slide.portfolio-right { width: min(56vw, 220px) !important; }
+  .portfolio-video-slide.portfolio-left  { transform: translateX(-30%) scale(.84) !important; }
+  .portfolio-video-slide.portfolio-right { transform: translateX( 30%) scale(.84) !important; }
+}
+
+/* 4) never crop the actual video frame */
+.portfolio-video-player,
+.portfolio-social-video-player {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;          /* key: NO CROP on phones */
+  background: transparent !important;      /* remove black fill */
+}
+
+/* make all wrappers transparent too */
+.portfolio-video-thumbnail-wrapper,
+.portfolio-video-player-container,
+.portfolio-social-player { background: transparent !important; }
+
+

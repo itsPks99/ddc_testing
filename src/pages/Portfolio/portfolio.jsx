@@ -20,7 +20,7 @@ export default function Portfolio() {
   const [activeTab, setActiveTab] = useState("website-development");
   const [isTabsSticky, setIsTabsSticky] = useState(false);
   const [tabsHidden, setTabsHidden] = useState(false);
-  
+
   const lastYRef = useRef(0);
 
   /* ---- Animate on appear + sticky slides init ---- */
@@ -173,139 +173,150 @@ export default function Portfolio() {
     ],
   };
 
-  const brandingPackagingProjects = {
-    "LUXURY BRANDS": [
-      { name: "Samsara Gin Premium Packaging", url: "https://www.behance.net/gallery/samsara-gin" },
-      { name: "Tieva Jewels Brand Identity", url: "https://www.behance.net/gallery/tieva-jewels" },
-      { name: "Geum Jewels Packaging Design", url: "https://www.behance.net/gallery/geum-jewels" },
-      { name: "Anthi Naturals Brand Kit", url: "https://www.behance.net/gallery/anthi-naturals" },
-    ],
-    "FASHION BRANDS": [
-      { name: "July Issue Brand Identity", url: "https://www.behance.net/gallery/july-issue" },
-      { name: "Manvi Daga Brand Package", url: "https://www.behance.net/gallery/manvi-daga" },
-      { name: "Label Inara Branding", url: "https://www.behance.net/gallery/label-inara" },
-      { name: "Rosatelier Brand Design", url: "https://www.behance.net/gallery/rosatelier" },
-    ],
-    "BEVERAGE BRANDS": [
-      { name: "Sitara Rum Packaging", url: "https://www.behance.net/gallery/sitara-rum" },
-      { name: "Drink Sober Brand Identity", url: "https://www.behance.net/gallery/drink-sober" },
-      { name: "Hindraj Tea Packaging", url: "https://www.behance.net/gallery/hindraj-tea" },
-    ],
-  };
+  // const brandingPackagingProjects = {
+  //   "LUXURY BRANDS": [
+  //     { name: "Samsara Gin Premium Packaging", url: "https://www.behance.net/gallery/samsara-gin" },
+  //     { name: "Tieva Jewels Brand Identity", url: "https://www.behance.net/gallery/tieva-jewels" },
+  //     { name: "Geum Jewels Packaging Design", url: "https://www.behance.net/gallery/geum-jewels" },
+  //     { name: "Anthi Naturals Brand Kit", url: "https://www.behance.net/gallery/anthi-naturals" },
+  //   ],
+  //   "FASHION BRANDS": [
+  //     { name: "July Issue Brand Identity", url: "https://www.behance.net/gallery/july-issue" },
+  //     { name: "Manvi Daga Brand Package", url: "https://www.behance.net/gallery/manvi-daga" },
+  //     { name: "Label Inara Branding", url: "https://www.behance.net/gallery/label-inara" },
+  //     { name: "Rosatelier Brand Design", url: "https://www.behance.net/gallery/rosatelier" },
+  //   ],
+  //   "BEVERAGE BRANDS": [
+  //     { name: "Sitara Rum Packaging", url: "https://www.behance.net/gallery/sitara-rum" },
+  //     { name: "Drink Sober Brand Identity", url: "https://www.behance.net/gallery/drink-sober" },
+  //     { name: "Hindraj Tea Packaging", url: "https://www.behance.net/gallery/hindraj-tea" },
+  //   ],
+  // };
 
   const photographyImages = {
-  all: [
-    // ---- existing 25 (unchanged) ----
-    { id: 1,  category: "model",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/5.jpg?v=1756384649",                alt: "Editorial fashion portrait" },
-    { id: 2,  category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08926_copy.jpg?v=1756384649",    alt: "Jewelry / product close-up" },
-    { id: 3,  category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00519_copy.jpg?v=1756384643",    alt: "Cosmetic / accessory product shot" },
-    { id: 4,  category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/4_1.jpg?v=1756384638",              alt: "Lifestyle brand shot" },
-    { id: 5,  category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC07722_copy.jpg?v=1756384636",    alt: "Product on-set / studio" },
-    { id: 6,  category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/4.jpg?v=1756384634",                alt: "Lifestyle brand imagery" },
-    { id: 7,  category: "model",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/2.jpg?v=1756384632",                alt: "Model portrait" },
-    { id: 8,  category: "model",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/3.jpg?v=1756384631",                alt: "Fashion model profile" },
-    { id: 9,  category: "event",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_2316.jpg?v=1756384622",          alt: "Event coverage photo" },
-    { id: 10, category: "model",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_8624_copy.jpg?v=1756384610",    alt: "Runway / editorial model" },
-    { id: 11, category: "event",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC09093_copy.jpg?v=1756384662",    alt: "Live event highlight" },
-    { id: 12, category: "model",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0852_copy.jpg?v=1756384659",    alt: "Editorial portrait" },
-    { id: 13, category: "event",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00367_copy.jpg?v=1756384660",    alt: "Backstage / event moment" },
-    { id: 14, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08231_copy.jpg?v=1756384658",    alt: "Lifestyle outdoor" },
-    { id: 15, category: "model",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00166_copy.jpg?v=1756384658",    alt: "Studio model portrait" },
-    { id: 16, category: "model",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0765_copy.jpg?v=1756384661",    alt: "Fashion editorial pose" },
-    { id: 17, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08740_copy.jpg?v=1756384658",    alt: "Lifestyle brand storytelling" },
-    { id: 18, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00604_copy.jpg?v=1756384658",    alt: "Product flatlay / detail" },
-    { id: 19, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08516_copy.jpg?v=1756384653",    alt: "Premium product detail" },
-    { id: 20, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC09527_copy.jpg?v=1756384651",    alt: "Packshot / product frame" },
-    { id: 21, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08551_copy.jpg?v=1756384653",    alt: "Jewelry macro detail" },
-    { id: 22, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08491_copy.jpg?v=1756384651",    alt: "Accessory product photo" },
-    { id: 23, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08926_copy_1.jpg?v=1756384652",  alt: "Cosmetic / object detail" },
-    { id: 24, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08681_copy.jpg?v=1756384652",    alt: "Styled product shot" },
-    { id: 25, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00567_copy.jpg?v=1756384650",    alt: "Minimal product composition" },
+    all: [
+      // ---- existing 25 (unchanged) ----
+      { id: 1, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/5.jpg?v=1756384649", alt: "Editorial fashion portrait" },
+      { id: 20, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC09527_copy.jpg?v=1756384651",    alt: "Packshot / product frame" },
+      { id: 2, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08926_copy.jpg?v=1756384649", alt: "Jewelry / product close-up" },
+      { id: 3, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00519_copy.jpg?v=1756384643", alt: "Cosmetic / accessory product shot" },
+      { id: 4, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/4_1.jpg?v=1756384638", alt: "Lifestyle brand shot" },
 
-    // ---- NEW items you sent now ----
-    { id: 26, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01246_copy.jpg?v=1756384674", alt: "Lifestyle outdoor scene" },
-    { id: 27, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01955_copy.jpg?v=1756384676", alt: "Styled product close-up" },
-    { id: 28, category: "model",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00321_copy.jpg?v=1756384674", alt: "Studio model portrait" },
-    { id: 29, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02595_copy.jpg?v=1756384673", alt: "Product packshot" },
-    { id: 30, category: "model",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02536_copy_1.jpg?v=1756384673", alt: "Editorial model pose" },
-    { id: 31, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01386_copy.jpg?v=1756384673", alt: "Lifestyle brand storytelling" },
-    { id: 32, category: "model",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02536_copy.jpg?v=1756384673", alt: "Fashion model portrait" },
-    { id: 33, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01158_copy.jpg?v=1756384672", alt: "Product detail / macro" },
-    { id: 34, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02436_copy.jpg?v=1756384671", alt: "Lifestyle ambience" },
-    { id: 35, category: "model",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC03250_copy.jpg?v=1756384670", alt: "Editorial model in frame" },
-    { id: 36, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC03351_copy.jpg?v=1756384669", alt: "Clean product composition" },
-    { id: 37, category: "model",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00814_copy.jpg?v=1756384671", alt: "Model candid / studio" },
-    { id: 38, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC03063_copy.jpg?v=1756384666", alt: "Lifestyle scene" },
-    { id: 39, category: "event",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08151_copy.jpg?v=1756384665", alt: "Event highlight" },
-    { id: 40, category: "model",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_1228_copy.jpg?v=1756384665", alt: "Runway / model portrait" },
-    { id: 41, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0613_copy_2.jpg?v=1756384666", alt: "Packshot / detail" },
-    { id: 42, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0497_copy_2.jpg?v=1756384665", alt: "Premium product macro" },
-    { id: 43, category: "event",     src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0839_copy.jpg?v=1756384662", alt: "Event crowd / moment" },
-  ],
+      
+      { id: 5, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC07722_copy.jpg?v=1756384636", alt: "Product on-set / studio" },
+      { id: 6, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/4.jpg?v=1756384634", alt: "Lifestyle brand imagery" },
+      { id: 7, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/2.jpg?v=1756384632", alt: "Model portrait" },
+      { id: 8, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/3.jpg?v=1756384631", alt: "Fashion model profile" },
 
-  product: [
-    // existing
-    { id: 2,  category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08926_copy.jpg?v=1756384649",   alt: "Jewelry / product close-up" },
-    { id: 3,  category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00519_copy.jpg?v=1756384643",   alt: "Cosmetic / accessory product shot" },
-    { id: 5,  category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC07722_copy.jpg?v=1756384636",   alt: "Product on-set / studio" },
-    { id: 18, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00604_copy.jpg?v=1756384658",   alt: "Product flatlay / detail" },
-    { id: 19, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08516_copy.jpg?v=1756384653",   alt: "Premium product detail" },
-    { id: 20, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC09527_copy.jpg?v=1756384651",   alt: "Packshot / product frame" },
-    { id: 21, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08551_copy.jpg?v=1756384653",   alt: "Jewelry macro detail" },
-    { id: 22, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08491_copy.jpg?v=1756384651",   alt: "Accessory product photo" },
-    { id: 23, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08926_copy_1.jpg?v=1756384652", alt: "Cosmetic / object detail" },
-    { id: 24, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08681_copy.jpg?v=1756384652",   alt: "Styled product shot" },
-    { id: 25, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00567_copy.jpg?v=1756384650",   alt: "Minimal product composition" },
-    // new
-    { id: 27, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01955_copy.jpg?v=1756384676",   alt: "Styled product close-up" },
-    { id: 29, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02595_copy.jpg?v=1756384673",   alt: "Product packshot" },
-    { id: 33, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01158_copy.jpg?v=1756384672",   alt: "Product detail / macro" },
-    { id: 36, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC03351_copy.jpg?v=1756384669",   alt: "Clean product composition" },
-    { id: 41, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0613_copy_2.jpg?v=1756384666", alt: "Packshot / detail" },
-    { id: 42, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0497_copy_2.jpg?v=1756384665", alt: "Premium product macro" },
-  ],
 
-  model: [
-    // existing
-    { id: 1,  category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/5.jpg?v=1756384649",             alt: "Editorial fashion portrait" },
-    { id: 7,  category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/2.jpg?v=1756384632",             alt: "Model portrait" },
-    { id: 8,  category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/3.jpg?v=1756384631",             alt: "Fashion model profile" },
-    { id: 10, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_8624_copy.jpg?v=1756384610", alt: "Runway / editorial model" },
-    { id: 12, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0852_copy.jpg?v=1756384659", alt: "Editorial portrait" },
-    { id: 15, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00166_copy.jpg?v=1756384658", alt: "Studio model portrait" },
-    { id: 16, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0765_copy.jpg?v=1756384661", alt: "Fashion editorial pose" },
-    // new
-    { id: 28, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00321_copy.jpg?v=1756384674", alt: "Studio model portrait" },
-    { id: 30, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02536_copy_1.jpg?v=1756384673", alt: "Editorial model pose" },
-    { id: 32, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02536_copy.jpg?v=1756384673", alt: "Fashion model portrait" },
-    { id: 35, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC03250_copy.jpg?v=1756384670", alt: "Editorial model in frame" },
-    { id: 37, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00814_copy.jpg?v=1756384671", alt: "Model candid / studio" },
-    { id: 40, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_1228_copy.jpg?v=1756384665", alt: "Runway / model portrait" },
-  ],
+      { id: 11, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC09093_copy.jpg?v=1756384662", alt: "Live event highlight" },
+      { id: 12, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0852_copy.jpg?v=1756384659", alt: "Editorial portrait" },
+      { id: 13, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00367_copy.jpg?v=1756384660", alt: "Backstage / event moment" },
+      { id: 14, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08231_copy.jpg?v=1756384658", alt: "Lifestyle outdoor" },
+      { id: 15, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00166_copy.jpg?v=1756384658", alt: "Studio model portrait" },
+      { id: 16, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0765_copy.jpg?v=1756384661", alt: "Fashion editorial pose" },
 
-  lifestyle: [
-    // existing
-    { id: 4,  category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/4_1.jpg?v=1756384638",         alt: "Lifestyle brand shot" },
-    { id: 6,  category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/4.jpg?v=1756384634",            alt: "Lifestyle brand imagery" },
-    { id: 14, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08231_copy.jpg?v=1756384658",alt: "Lifestyle outdoor" },
-    { id: 17, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08740_copy.jpg?v=1756384658",alt: "Lifestyle brand storytelling" },
-    // new
-    { id: 26, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01246_copy.jpg?v=1756384674", alt: "Lifestyle outdoor scene" },
-    { id: 31, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01386_copy.jpg?v=1756384673", alt: "Lifestyle brand storytelling" },
-    { id: 34, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02436_copy.jpg?v=1756384671", alt: "Lifestyle ambience" },
-    { id: 38, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC03063_copy.jpg?v=1756384666", alt: "Lifestyle scene" },
-  ],
+      { id: 18, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00604_copy.jpg?v=1756384658", alt: "Product flatlay / detail" },
 
-  event: [
-    // existing
-    { id: 9,  category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_2316.jpg?v=1756384622",         alt: "Event coverage photo" },
-    { id: 11, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC09093_copy.jpg?v=1756384662",    alt: "Live event highlight" },
-    { id: 13, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00367_copy.jpg?v=1756384660",    alt: "Backstage / event moment" },
-    // new
-    { id: 39, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08151_copy.jpg?v=1756384665",    alt: "Event highlight" },
-    { id: 43, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0839_copy.jpg?v=1756384662",    alt: "Event crowd / moment" },
-  ],
-};
+
+
+      { id: 22, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08491_copy.jpg?v=1756384651", alt: "Accessory product photo" },
+      { id: 23, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08926_copy_1.jpg?v=1756384652", alt: "Cosmetic / object detail" },
+      { id: 24, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08681_copy.jpg?v=1756384652", alt: "Styled product shot" },
+      { id: 25, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00567_copy.jpg?v=1756384650", alt: "Minimal product composition" },
+      { id: 10, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_8624_copy.jpg?v=1756384610", alt: "Runway / editorial model" },
+      { id: 9, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_2316.jpg?v=1756384622", alt: "Event coverage photo" },
+      { id: 17, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08740_copy.jpg?v=1756384658", alt: "Lifestyle brand storytelling" },
+      // ---- NEW items you sent now ----
+      { id: 26, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01246_copy.jpg?v=1756384674", alt: "Lifestyle outdoor scene" },
+      { id: 27, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01955_copy.jpg?v=1756384676", alt: "Styled product close-up" },
+      { id: 28, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00321_copy.jpg?v=1756384674", alt: "Studio model portrait" },
+      { id: 29, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02595_copy.jpg?v=1756384673", alt: "Product packshot" },
+      { id: 30, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02536_copy_1.jpg?v=1756384673", alt: "Editorial model pose" },
+      { id: 31, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01386_copy.jpg?v=1756384673", alt: "Lifestyle brand storytelling" },
+      { id: 32, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02536_copy.jpg?v=1756384673", alt: "Fashion model portrait" },
+      { id: 33, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01158_copy.jpg?v=1756384672", alt: "Product detail / macro" },
+      { id: 34, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02436_copy.jpg?v=1756384671", alt: "Lifestyle ambience" },
+      { id: 35, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC03250_copy.jpg?v=1756384670", alt: "Editorial model in frame" },
+      { id: 36, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC03351_copy.jpg?v=1756384669", alt: "Clean product composition" },
+      { id: 37, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00814_copy.jpg?v=1756384671", alt: "Model candid / studio" },
+      { id: 38, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC03063_copy.jpg?v=1756384666", alt: "Lifestyle scene" },
+      { id: 39, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08151_copy.jpg?v=1756384665", alt: "Event highlight" },
+      { id: 40, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_1228_copy.jpg?v=1756384665", alt: "Runway / model portrait" },
+      { id: 41, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0613_copy_2.jpg?v=1756384666", alt: "Packshot / detail" },
+      { id: 42, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0497_copy_2.jpg?v=1756384665", alt: "Premium product macro" },
+      { id: 43, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0839_copy.jpg?v=1756384662", alt: "Event crowd / moment" },
+      
+    ],
+
+    product: [
+      // existing
+      { id: 2, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08926_copy.jpg?v=1756384649", alt: "Jewelry / product close-up" },
+      { id: 3, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00519_copy.jpg?v=1756384643", alt: "Cosmetic / accessory product shot" },
+      { id: 5, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC07722_copy.jpg?v=1756384636", alt: "Product on-set / studio" },
+      { id: 42, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0497_copy_2.jpg?v=1756384665", alt: "Premium product macro" },
+      { id: 18, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00604_copy.jpg?v=1756384658", alt: "Product flatlay / detail" },
+      { id: 19, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08516_copy.jpg?v=1756384653", alt: "Premium product detail" },
+      { id: 20, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC09527_copy.jpg?v=1756384651", alt: "Packshot / product frame" },
+      { id: 21, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08551_copy.jpg?v=1756384653", alt: "Jewelry macro detail" },
+      { id: 22, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08491_copy.jpg?v=1756384651", alt: "Accessory product photo" },
+      { id: 23, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08926_copy_1.jpg?v=1756384652", alt: "Cosmetic / object detail" },
+      { id: 24, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08681_copy.jpg?v=1756384652", alt: "Styled product shot" },
+      { id: 41, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0613_copy_2.jpg?v=1756384666", alt: "Packshot / detail" },
+      { id: 25, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00567_copy.jpg?v=1756384650", alt: "Minimal product composition" },
+      // new
+      { id: 27, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01955_copy.jpg?v=1756384676", alt: "Styled product close-up" },
+      { id: 29, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02595_copy.jpg?v=1756384673", alt: "Product packshot" },
+      { id: 33, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01158_copy.jpg?v=1756384672", alt: "Product detail / macro" },
+      { id: 36, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC03351_copy.jpg?v=1756384669", alt: "Clean product composition" },
+      
+      
+    ],
+
+    model: [
+      // existing
+      { id: 1, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/5.jpg?v=1756384649", alt: "Editorial fashion portrait" },
+      { id: 7, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/2.jpg?v=1756384632", alt: "Model portrait" },
+      { id: 8, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/3.jpg?v=1756384631", alt: "Fashion model profile" },
+
+      { id: 12, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0852_copy.jpg?v=1756384659", alt: "Editorial portrait" },
+      { id: 15, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00166_copy.jpg?v=1756384658", alt: "Studio model portrait" },
+      { id: 16, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0765_copy.jpg?v=1756384661", alt: "Fashion editorial pose" },
+      // new
+      { id: 28, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00321_copy.jpg?v=1756384674", alt: "Studio model portrait" },
+      { id: 30, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02536_copy_1.jpg?v=1756384673", alt: "Editorial model pose" },
+      { id: 32, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02536_copy.jpg?v=1756384673", alt: "Fashion model portrait" },
+      { id: 35, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC03250_copy.jpg?v=1756384670", alt: "Editorial model in frame" },
+      { id: 37, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00814_copy.jpg?v=1756384671", alt: "Model candid / studio" },
+      { id: 40, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_1228_copy.jpg?v=1756384665", alt: "Runway / model portrait" },
+      { id: 10, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_8624_copy.jpg?v=1756384610", alt: "Runway / editorial model" },
+    ],
+
+    lifestyle: [
+      // existing
+      { id: 4, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/4_1.jpg?v=1756384638", alt: "Lifestyle brand shot" },
+      { id: 6, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/4.jpg?v=1756384634", alt: "Lifestyle brand imagery" },
+      { id: 14, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08231_copy.jpg?v=1756384658", alt: "Lifestyle outdoor" },
+
+      // new
+      { id: 26, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01246_copy.jpg?v=1756384674", alt: "Lifestyle outdoor scene" },
+      { id: 31, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01386_copy.jpg?v=1756384673", alt: "Lifestyle brand storytelling" },
+      { id: 34, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02436_copy.jpg?v=1756384671", alt: "Lifestyle ambience" },
+      { id: 38, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC03063_copy.jpg?v=1756384666", alt: "Lifestyle scene" },
+      { id: 17, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08740_copy.jpg?v=1756384658", alt: "Lifestyle brand storytelling" },
+    ],
+
+    event: [
+      // existing
+
+      { id: 11, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC09093_copy.jpg?v=1756384662", alt: "Live event highlight" },
+      { id: 13, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00367_copy.jpg?v=1756384660", alt: "Backstage / event moment" },
+      // new
+      { id: 39, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08151_copy.jpg?v=1756384665", alt: "Event highlight" },
+      { id: 43, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0839_copy.jpg?v=1756384662", alt: "Event crowd / moment" },
+      { id: 9, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_2316.jpg?v=1756384622", alt: "Event coverage photo" },
+    ],
+  };
 
 
 
@@ -320,14 +331,14 @@ export default function Portfolio() {
           name: "Manvi Daga",
           type: "Fashion E-commerce",
           images: [
-            "/assets/portfolioimages/manidaga/manvidagadesktop1.png",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-08-29_171302.png?v=1756467805",
             "/assets/portfolioimages/manidaga/manvidagadesktop2.png",
             "/assets/portfolioimages/manidaga/manvidagadesktop3.png",
           ],
           mobileImages: [
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XJjG8PEryZwDZQNmV5MgymQcfp85r3.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Fi1mv1WoEedWxVgL54nqyIv1ENCwWn.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kRyeCHl2ptWcMapOHLOKXTw75Cfux7.png",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-08-29_171302.png?v=1756467805",
+            "/assets/portfolioimages/manidaga/manvidagadesktop2.png",
+            "/assets/portfolioimages/manidaga/manvidagadesktop3.png",
           ],
           description: "Elegant jewelry website with premium product photography and seamless shopping experience",
         },
@@ -355,9 +366,9 @@ export default function Portfolio() {
             "/assets/portfolioimages/julyissue/julyissuedesktop3.png",
           ],
           mobileImages: [
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kRyeCHl2ptWcMapOHLOKXTw75Cfux7.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XaFAA1qAshcASBggChicWM3g1384DE.png",
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-g8VqhQZnW87FNaa7QlT2BmxdV3NQ8W.png",
+            "/assets/portfolioimages/julyissue/julyissuedesktop1.png",
+            "/assets/portfolioimages/julyissue/julyissuedesktop2.png",
+            "/assets/portfolioimages/julyissue/julyissuedesktop3.png",
           ],
           description: "Complete fashion e-commerce solution with advanced filtering and product showcase",
         },
@@ -456,8 +467,8 @@ export default function Portfolio() {
             "Premium packaging solutions that enhance product appeal and create memorable unboxing experiences for fashion, jewelry, and lifestyle brands",
         },
       ],
-      showLinks: true,
-      links: brandingPackagingProjects,
+      // showLinks: true,
+      // links: brandingPackagingProjects,
     },
     {
       id: "05",
@@ -469,36 +480,36 @@ export default function Portfolio() {
         {
           name: "Fashion Brand Campaign",
           type: "Commercial Video",
-          thumbnail: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xvwo0qWD65ihY6Q1eib4hBMccHVKWr.png",
-          videoUrl: "https://cdn.shopify.com/videos/c/o/v/aceae072656b4cd2916b8cf664338be1.mp4",
+          thumbnail: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-08-29_152744.png?v=1756461483",
+          videoUrl: "https://cdn.shopify.com/videos/c/o/v/6da3d6e46aa54257a4ad35f3e74cf1bd.mp4",
           description: "High-end fashion commercial showcasing traditional Indian wear with cinematic quality",
         },
         {
           name: "Product Showcase Reel",
           type: "Product Video",
-          thumbnail: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Fi1mv1WoEedWxVgL54nqyIv1ENCwWn.png",
-          videoUrl: "https://cdn.shopify.com/videos/c/o/v/aceae072656b4cd2916b8cf664338be1.mp4",
+          thumbnail: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-08-29_152905.png?v=1756461587",
+          videoUrl: "https://cdn.shopify.com/videos/c/o/v/f131a7be83c84f9c975a9990d7a80497.mp4",
           description: "Dynamic product showcase video highlighting jewelry collection with premium aesthetics",
         },
         {
           name: "Brand Story Video",
           type: "Brand Documentary",
-          thumbnail: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xR8vNC4a7pqhWSoFwxdD84JWnAOcvS.png",
-          videoUrl: "https://cdn.shopify.com/videos/c/o/v/aceae072656b4cd2916b8cf664338be1.mp4",
+          thumbnail: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-08-29_152932.png?v=1756461587",
+          videoUrl: "https://cdn.shopify.com/videos/c/o/v/e3a06496d4344cb880e32b61ab7e4244.mp4",
           description: "Compelling brand story video capturing the essence of luxury fashion and craftsmanship",
         },
         {
           name: "Social Media Content",
           type: "Social Video",
-          thumbnail: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-XaFAA1qAshcASBggChicWM3g1384DE.png",
-          videoUrl: "https://cdn.shopify.com/videos/c/o/v/aceae072656b4cd2916b8cf664338be1.mp4",
+          thumbnail: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-08-29_163357.png?v=1756465485",
+          videoUrl: "https://cdn.shopify.com/videos/c/o/v/37304b743a6d42739ce35ef910d1f380.mp4",
           description: "Engaging social media video content designed for maximum engagement and brand awareness",
         },
         {
           name: "Event Coverage",
           type: "Event Video",
-          thumbnail: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kRyeCHl2ptWcMapOHLOKXTw75Cfux7.png",
-          videoUrl: "https://cdn.shopify.com/videos/c/o/v/aceae072656b4cd2916b8cf664338be1.mp4",
+          thumbnail: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-08-29_163034.png?v=1756465252",
+          videoUrl: "https://cdn.shopify.com/videos/c/o/v/c38c7a9c520e4654820bb7e29d9843d1.mp4",
           description: "Professional event coverage capturing key moments with cinematic storytelling approach",
         },
       ],
@@ -615,8 +626,8 @@ export default function Portfolio() {
                       {activeService.name === "WEBSITE DEVELOPMENT"
                         ? "List Of Websites Developed By Us:"
                         : activeService.name === "BRANDING & PACKAGING"
-                        ? "List Of Branding & Packaging Projects:"
-                        : "Our Social Media Brands:"}
+                          ? "List Of Branding & Packaging Projects:"
+                          : "Our Social Media Brands:"}
                     </h4>
                     <div className="portfolio-links-categories">
                       {Object.entries(activeService.links).map(([category, links]) => (
@@ -736,7 +747,7 @@ function EmbeddedViewer({ item, onClose }) {
 
 
 /* ============================ */
-/* Video Carousel               */
+/* Video Carousel (ratio-safe)  */
 /* ============================ */
 function VideoCarousel({ videos }) {
   const [currentIndex, setCurrentIndex] = React.useState(0);
@@ -745,10 +756,24 @@ function VideoCarousel({ videos }) {
   const [touchStart, setTouchStart] = React.useState(null);
   const [touchEnd, setTouchEnd] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(false);
+
   const videoRef = React.useRef(null);
   const playPromiseRef = React.useRef(null);
 
+  // NEW: ratio + container sizing
+  const containerRef = React.useRef(null);
+  const [aspectMap, setAspectMap] = React.useState({}); // index -> ratio number
+  const DEFAULT_ASPECT = 1080 / 1920; // 9:16 portrait
+
   const minSwipeDistance = 50;
+
+  const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
+  const computeContainerHeight = (vw, aspect = DEFAULT_ASPECT) => {
+    // mirrors CSS widths (center card)
+    const centerW =
+      vw <= 768 ? clamp(vw * 0.70, 220, 360) : clamp(vw * 0.42, 260, 460);
+    return `${Math.round(centerW / aspect)}px`;
+  };
 
   const safePlay = async () => {
     if (!videoRef.current || isLoading) return;
@@ -795,6 +820,7 @@ function VideoCarousel({ videos }) {
     }
   }, [currentIndex]);
 
+  // Swipe
   const onTouchStart = (e) => {
     setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
@@ -807,9 +833,12 @@ function VideoCarousel({ videos }) {
     if (distance < -minSwipeDistance) prevSlide();
   };
 
-  const nextSlide = () => !isLoading && setCurrentIndex((p) => (p + 1) % videos.length);
-  const prevSlide = () => !isLoading && setCurrentIndex((p) => (p - 1 + videos.length) % videos.length);
-  const goToSlide = (i) => !isLoading && i !== currentIndex && setCurrentIndex(i);
+  const nextSlide = () =>
+    !isLoading && setCurrentIndex((p) => (p + 1) % videos.length);
+  const prevSlide = () =>
+    !isLoading && setCurrentIndex((p) => (p - 1 + videos.length) % videos.length);
+  const goToSlide = (i) =>
+    !isLoading && i !== currentIndex && setCurrentIndex(i);
 
   const handleVideoClick = async () => {
     if (!videoRef.current || isLoading) return;
@@ -820,6 +849,29 @@ function VideoCarousel({ videos }) {
       videoRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   };
+
+  // NEW: Record real aspect ratio from metadata
+  const handleMeta = (idx) => (e) => {
+    const v = e.currentTarget;
+    if (!v.videoWidth || !v.videoHeight) return;
+    const ratio = v.videoWidth / v.videoHeight; // e.g. 1080/1920 = 0.5625
+    setAspectMap((m) => ({ ...m, [idx]: ratio }));
+  };
+
+  // NEW: Keep container height in sync with viewport & active video ratio
+  React.useEffect(() => {
+    const setH = () => {
+      const ratio = aspectMap[currentIndex] || DEFAULT_ASPECT;
+      const h = computeContainerHeight(window.innerWidth, ratio);
+      if (containerRef.current) {
+        containerRef.current.style.setProperty("--container-h", h);
+        containerRef.current.style.setProperty("--video-aspect", ratio);
+      }
+    };
+    setH();
+    window.addEventListener("resize", setH);
+    return () => window.removeEventListener("resize", setH);
+  }, [currentIndex, aspectMap]);
 
   return (
     <div className="portfolio-videography-section">
@@ -833,25 +885,58 @@ function VideoCarousel({ videos }) {
 
       <div className="portfolio-video-carousel-wrapper portfolio-social-style">
         <div
+          ref={containerRef}
           className="portfolio-video-slides-container portfolio-social-carousel"
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
+          // safe defaults for first paint
+          style={{ "--video-aspect": 1080 / 1920, "--container-h": "70vh" }}
         >
           {videos.map((video, index) => {
             const position = index - currentIndex;
             let className = "portfolio-video-slide portfolio-social-video";
-            if (position === 0) className += " portfolio-center portfolio-active-video";
-            else if (position === -1 || (position === videos.length - 1 && currentIndex === 0)) className += " portfolio-left";
-            else if (position === 1 || (position === -(videos.length - 1) && currentIndex === videos.length - 1)) className += " portfolio-right";
+            if (position === 0)
+              className += " portfolio-center portfolio-active-video";
+            else if (
+              position === -1 ||
+              (position === videos.length - 1 && currentIndex === 0)
+            )
+              className += " portfolio-left";
+            else if (
+              position === 1 ||
+              (position === -(videos.length - 1) &&
+                currentIndex === videos.length - 1)
+            )
+              className += " portfolio-right";
             else className += " portfolio-hidden";
 
+            const ratio = aspectMap[index] || 1080 / 1920; // per-slide ratio
+
             return (
-              <div key={index} className={className} onClick={() => (position === 0 ? handleVideoClick() : goToSlide(index))}>
+              <div
+                key={index}
+                className={className}
+                style={{ "--video-aspect": ratio }}
+                onClick={() =>
+                  position === 0 ? handleVideoClick() : goToSlide(index)
+                }
+              >
                 <div className="portfolio-video-thumbnail-wrapper portfolio-social-video-wrapper">
                   {position === 0 ? (
-                    <div className="portfolio-video-player-container portfolio-social-player" onClick={handleVideoClick}>
-                      <video ref={videoRef} className="portfolio-video-player portfolio-social-video-player" loop playsInline poster={video.thumbnail}>
+                    <div
+                      className="portfolio-video-player-container portfolio-social-player"
+                      onClick={handleVideoClick}
+                    >
+                      <video
+                        ref={videoRef}
+                        className="portfolio-video-player portfolio-social-video-player"
+                        loop
+                        playsInline
+                        muted
+                        poster={video.thumbnail}
+                        onLoadedMetadata={handleMeta(index)}
+                      >
                         <source src={video.videoUrl} type="video/mp4" />
                         Your browser does not support the video tag.
                       </video>
@@ -896,30 +981,63 @@ function VideoCarousel({ videos }) {
         </div>
 
         <div className="portfolio-video-controls portfolio-social-controls">
-          <button className="portfolio-video-nav-btn portfolio-social-nav" onClick={() => setCurrentIndex((p) => (p - 1 + videos.length) % videos.length)} disabled={isLoading} aria-label="Previous">
+          <button
+            className="portfolio-video-nav-btn portfolio-social-nav"
+            onClick={prevSlide}
+            disabled={isLoading}
+            aria-label="Previous"
+          >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <path
+                d="M15 18L9 12L15 6"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </button>
+
           <div className="portfolio-video-info-center portfolio-social-info">
-            <span className="portfolio-video-counter portfolio-social-counter">{currentIndex + 1} / {videos.length}</span>
+            <span className="portfolio-video-counter portfolio-social-counter">
+              {currentIndex + 1} / {videos.length}
+            </span>
           </div>
-          <button className="portfolio-video-nav-btn portfolio-social-nav" onClick={() => setCurrentIndex((p) => (p + 1) % videos.length)} disabled={isLoading} aria-label="Next">
+
+          <button
+            className="portfolio-video-nav-btn portfolio-social-nav"
+            onClick={nextSlide}
+            disabled={isLoading}
+            aria-label="Next"
+          >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <path
+                d="M9 18L15 12L9 6"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </button>
         </div>
       </div>
 
       <div className="portfolio-video-actions">
-        <button className="portfolio-watch-videos-btn portfolio-social-action-btn" onClick={() => (isPlaying ? videoRef.current?.pause() : videoRef.current && videoRef.current.play())} disabled={isLoading}>
+        <button
+          className="portfolio-watch-videos-btn portfolio-social-action-btn"
+          onClick={async () =>
+            isPlaying ? safePause() : await safePlay()
+          }
+          disabled={isLoading}
+        >
           {isLoading ? "LOADING..." : isPlaying ? "PAUSE VIDEO" : "PLAY VIDEO"}
         </button>
       </div>
     </div>
   );
 }
+
 
 /* ============================ */
 /* Photo + Video Section        */
@@ -960,7 +1078,7 @@ function PhotoVideoSection({ service }) {
           ))}
         </div>
 
-        <div className="portfolio-photography-grid">
+        <div className="" style={{ columns: "3 100px", columnGap: '10px'}}>
           {currentImages.map((image, index) => (
             <div
               key={image.id}
@@ -971,12 +1089,13 @@ function PhotoVideoSection({ service }) {
               <img
                 src={image.src || `/placeholder.svg?height=400&width=300&query=${image.alt}`}
                 alt={image.alt}
-                className="portfolio-photo-image"
+                className=""
                 loading="lazy"
+                style={{ objectFit: "cover", width: "100%", marginTop: '10px', borderRadius: '8px' }}
               />
-              <div className="portfolio-photo-overlay">
+              {/* <div className="portfolio-photo-overlay">
                 <div className="portfolio-photo-category">{image.category.toUpperCase()}</div>
-              </div>
+              </div> */}
             </div>
           ))}
         </div>
