@@ -171,8 +171,8 @@ export default function Portfolio() {
   const photographyImages = {
     all: [
       // ---- existing 25 (unchanged) ----
-      { id: 1, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/5.jpg?v=1756384649", alt: "Editorial fashion portrait" },
       { id: 20, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC09527_copy.jpg?v=1756384651",    alt: "Packshot / product frame" },
+      { id: 1, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/5.jpg?v=1756384649", alt: "Editorial fashion portrait" },
       { id: 2, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08926_copy.jpg?v=1756384649", alt: "Jewelry / product close-up" },
       { id: 3, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00519_copy.jpg?v=1756384643", alt: "Cosmetic / accessory product shot" },
       { id: 4, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/4_1.jpg?v=1756384638", alt: "Lifestyle brand shot" },
@@ -187,6 +187,7 @@ export default function Portfolio() {
       { id: 13, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00367_copy.jpg?v=1756384660", alt: "Backstage / event moment" },
       { id: 14, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08231_copy.jpg?v=1756384658", alt: "Lifestyle outdoor" },
       { id: 15, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00166_copy.jpg?v=1756384658", alt: "Studio model portrait" },
+      
       { id: 16, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0765_copy.jpg?v=1756384661", alt: "Fashion editorial pose" },
 
       { id: 18, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00604_copy.jpg?v=1756384658", alt: "Product flatlay / detail" },
@@ -243,14 +244,18 @@ export default function Portfolio() {
 
     model: [
       // existing
+      
       { id: 1, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/5.jpg?v=1756384649", alt: "Editorial fashion portrait" },
+      
       { id: 7, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/2.jpg?v=1756384632", alt: "Model portrait" },
       { id: 8, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/3.jpg?v=1756384631", alt: "Fashion model profile" },
 
       { id: 12, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0852_copy.jpg?v=1756384659", alt: "Editorial portrait" },
       { id: 15, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00166_copy.jpg?v=1756384658", alt: "Studio model portrait" },
+      { id: 20, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC09527_copy.jpg?v=1756384651",    alt: "Packshot / product frame" },
       { id: 16, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0765_copy.jpg?v=1756384661", alt: "Fashion editorial pose" },
       // new
+      
       { id: 28, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00321_copy.jpg?v=1756384674", alt: "Studio model portrait" },
       { id: 30, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02536_copy_1.jpg?v=1756384673", alt: "Editorial model pose" },
       { id: 32, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02536_copy.jpg?v=1756384673", alt: "Fashion model portrait" },
@@ -277,11 +282,12 @@ export default function Portfolio() {
     event: [
       // existing
       { id: 11, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC09093_copy.jpg?v=1756384662", alt: "Live event highlight" },
-      { id: 13, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00367_copy.jpg?v=1756384660", alt: "Backstage / event moment" },
+      { id: 9, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_2316.jpg?v=1756384622", alt: "Event coverage photo" },
+      
       // new
       { id: 39, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08151_copy.jpg?v=1756384665", alt: "Event highlight" },
       { id: 43, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0839_copy.jpg?v=1756384662", alt: "Event crowd / moment" },
-      { id: 9, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_2316.jpg?v=1756384622", alt: "Event coverage photo" },
+      { id: 13, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00367_copy.jpg?v=1756384660", alt: "Backstage / event moment" },
     ],
   };
 
@@ -388,7 +394,7 @@ export default function Portfolio() {
     {
       id: "05",
       slug: "photography-videography",
-      name: "PHOTOGRAPHY/VIDEOGRAPHY",
+      name: "PHOTOGRAPHY & VIDEOGRAPHY",
       description: "Professional visual content creation for brands and digital marketing campaigns.",
       type: "mixed",
       videos: [
@@ -904,7 +910,7 @@ function VideoCarousel({ videos }) {
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
           // safe defaults for first paint
-          style={{ "--video-aspect": 1080 / 1920, "--container-h": "70vh" }}
+          style={{ "--video-aspect": 1080/ 1900, "--container-h": "70vh" }}
         >
           {videos.map((video, index) => {
             const position = index - currentIndex;
