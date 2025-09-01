@@ -191,12 +191,16 @@ body {
 .us-landing-page-btn-primary {
   background: #f97316;
   color: white;
-  border-radius: 20x;
+  border-radius: 22px;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .us-landing-page-btn-primary:hover {
   background: black;
   color: white;
+  transform: scale(1.05);
   
 }
 
@@ -211,8 +215,8 @@ body {
 }
 
 .us-landing-page-btn-lg {
-  /* padding: 1rem 2rem;
-  font-size: 1.125rem; */
+  /* padding: 1rem 2rem; */
+  /* font-size: 1.125rem; */
   border-radius: 20px;
 }
 
@@ -236,7 +240,7 @@ body {
 }
 
 .us-landing-page-hero-title {
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: bold;
   margin-bottom: 1.5rem;
   line-height: 1.1;
@@ -268,9 +272,10 @@ body {
   font-size: 0.875rem;
   font-weight: 500;
   margin-bottom: 1.5rem;
+  display: none;
 }
 
-.us-landing-page-badge-primary {
+/* .us-landing-page-badge-primary {
   background: #fbbf24;
   color: #111827;
 }
@@ -278,7 +283,7 @@ body {
 .us-landing-page-badge-white {
   background: white;
   color: #111827;
-}
+} */
 
 /* Metrics Section */
 .us-landing-page-metrics {
@@ -765,11 +770,13 @@ body {
   width: 12rem;
   height: 12rem;
   border-radius: 50%;
-  background: #fce7f3;
+  background: white;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 15px 3px, rgba(0, 0, 0, 0.05) 0px 0px 6px 2px;
+
 }
 
 .us-landing-page-comparison-logo {
@@ -976,11 +983,11 @@ body {
 }
 
 /* Responsive Design */
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .us-landing-page-hero-title {
     font-size: 3rem;
   }
-}
+} */
 
 @media (max-width: 767px) {
   .us-landing-page-nav-links {
@@ -992,7 +999,7 @@ body {
   }
 
   .us-landing-page-hero-title {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 
   .us-landing-page-features-container {

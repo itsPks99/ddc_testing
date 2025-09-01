@@ -20,7 +20,7 @@ export default function Footer() {
     // { label: "Case Studies", selector: ".us-landing-page-case-studies" }, // your brands slider
     // { label: "Why Landing Pages?", selector: ".us-landing-page-why-landing-pages" },
     { label: "Featured Case Study", selector: ".us-landing-page-case-studies" },
-    { label: "World Class Brand Rely On Us", selector: ".us-landing-page-world-brands" },
+    { label: "World Class Brands Rely On Us", selector: ".us-landing-page-world-brands" },
     { label: "Reviews", selector: ".us-landing-page-testimonials" },
   ]
 

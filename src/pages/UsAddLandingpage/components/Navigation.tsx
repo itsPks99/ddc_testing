@@ -32,7 +32,7 @@ export default function Navigation() {
             FAQs
           </button>
         </div>
-        <div className="us-landing-page-nav-logo">Delhi Digital Co.</div>
+        <a href="/us-landing-page"><img className="us-landing-page-nav-logo" src="/assets/all_logos/ddc logo/ddc logo 2 cropped.png" alt="Delhi Digital Co." style={{ maxWidth: "100px", height: "auto" }} /></a>
         <div className="us-landing-page-nav-actions">
           <button className="us-landing-page-btn us-landing-page-btn-primary" >
            <a href="https://wa.me/919205110208" style={{ color: "white", textDecoration: "none" }}> Contact Us</a>

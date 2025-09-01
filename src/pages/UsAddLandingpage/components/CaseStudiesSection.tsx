@@ -69,7 +69,7 @@ export default function CaseStudiesSection() {
         {/* Keep the title EXACTLY like earlier */}
         <header>
           <div className="cs-kicker">Featured Case Study</div>
-          <h2 className="cs-title">The Good Stuff’s Flawless Gummies</h2>
+          {/* <h2 className="cs-title">The Good Stuff’s Flawless Gummies</h2> */}
         </header>
 
         <div className={`cs-list ${isVisible ? "visible" : ""}`}>

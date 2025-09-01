@@ -234,7 +234,7 @@ export default function WorldClassBrands() {
               className={`us-landing-page-world-brands-title us-landing-page-animate-fade-up us-landing-page-animate-delay-2 ${visibleElements[1] ? "visible" : ""
                 }`}
             >
-              World Class Brand <span className="us-landing-page-text-orange">Rely</span>{" "}
+              World Class Brands <span className="us-landing-page-text-orange">Rely</span>{" "}
               <span className="us-landing-page-text-pink">On Us</span>
             </h2>
           </div>

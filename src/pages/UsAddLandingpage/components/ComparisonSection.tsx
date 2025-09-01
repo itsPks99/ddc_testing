@@ -90,10 +90,9 @@ export default function ComparisonSection() {
           {/* Center logo */}
           <div className="us-landing-page-comparison-center">
             <div className="us-landing-page-comparison-circle">
-              <div className="us-landing-page-comparison-logo">
-                <div>Delhi</div>
-                <div>Digital Co.</div>
-              </div>
+              <img className="us-landing-page-comparison-logo" src="/assets/all_logos/ddc logo/ddc logo 2 cropped.png" alt="Delhi Digital Co." style={{ maxWidth: "140px", height: "auto", color: "white" }} />
+              {/* <div>Delhi</div>
+              <div>Digital Co.</div> */}
             </div>
           </div>
 
