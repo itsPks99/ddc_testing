@@ -489,14 +489,14 @@ export default function Portfolio() {
           name: "Brand Identity Suite",
           type: "Complete Brand Package",
           images: [
-            "/assets/portfolioimages/Branding/branding1.png",
-            "/assets/portfolioimages/Branding/branding2.png",
-            "/assets/portfolioimages/Branding/branding3.png",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_121250.png?v=1756709106",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_121408.png?v=1756709106",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_120918.png?v=1756709107",
           ],
           mobileImages: [
-            "/assets/portfolioimages/Branding/branding1.png",
-            "/assets/portfolioimages/Branding/branding2.png",
-            "/assets/portfolioimages/Branding/branding3.png",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_121250.png?v=1756709106",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_121408.png?v=1756709106",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_120918.png?v=1756709107",
           ],
           description:
             "Comprehensive brand identity development including logo design, color palette, typography, and brand guidelines for luxury and lifestyle brands",
@@ -505,14 +505,14 @@ export default function Portfolio() {
           name: "Packaging Design",
           type: "Product Packaging",
           images: [
-            "/assets/portfolioimages/Packaging/packaging1.png",
-            "/assets/portfolioimages/Packaging/packaging2.png",
-            "/assets/portfolioimages/Packaging/packaging3.png",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_120951.png?v=1756709107",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_120901.png?v=1756709107",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_120700.png?v=1756709107",
           ],
           mobileImages: [
-            "/assets/portfolioimages/Packaging/packaging1.png",
-            "/assets/portfolioimages/Packaging/packaging2.png",
-            "/assets/portfolioimages/Packaging/packaging3.png",
+           "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_120951.png?v=1756709107",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_120901.png?v=1756709107",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_120700.png?v=1756709107",
           ],
           description:
             "Premium packaging solutions that enhance product appeal and create memorable unboxing experiences for fashion, jewelry, and lifestyle brands",
