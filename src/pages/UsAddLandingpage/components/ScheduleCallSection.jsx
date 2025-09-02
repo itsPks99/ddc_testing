@@ -26,17 +26,18 @@ export default function ScheduleCallSection() {
             <Callout
               title="On boarding Call"
               avatars={[
-                "https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=128",
-                "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=128",
-                "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?q=80&w=128",
+                // swapped images (you can replace with your own)
+                "https://images.unsplash.com/photo-1531123414780-f7422ead5769?q=80&w=128", // team huddle
+                "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=128",
+                "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=128",
               ]}
             />
             <Callout
               title="Discovery Call"
               avatars={[
-                "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=128",
-                "https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=128",
                 "https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?q=80&w=128",
+                "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=128",
+                "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=128",
               ]}
             />
           </div>
@@ -47,22 +48,23 @@ export default function ScheduleCallSection() {
               <img
                 className="stage-card__poster"
                 alt="Host in a discovery call"
-                src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=1600"
+                /* swapped poster (replace with your brand image if you prefer) */
+                src="https://cdn.shopify.com/s/files/1/0596/9965/8889/files/young-women-enjoy-freedom-on-the-beach-on-a-sunny-2023-11-27-05-28-54-utc-770x513.webp?v=1756804219"
               />
 
               {/* Floating participants */}
               <div className="stage-card__peers">
                 <Peer
                   name="Anushka Gupta"
-                  src="https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=320"
+                  src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=320"
                 />
                 <Peer
                   name="Kavita Upadhyay"
-                  src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=320"
+                  src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=320"
                 />
               </div>
 
-              {/* CTAs */}
+              {/* CTAs (auto-move below on phones via CSS) */}
               <div className="stage-card__actions">
                 <a href="tel:+919205110208" className="btn btn--light" aria-label="Call us now">
                   <PhoneIcon />
@@ -70,7 +72,14 @@ export default function ScheduleCallSection() {
                 </a>
                 <button className="btn btn--primary" type="button">
                   <ChatIcon />
-                  <span><a href="https://wa.me/919205110208" style={{ color: "white", textDecoration: "none" }}> Get In Touch</a></span>
+                  <span>
+                    <a
+                      href="https://wa.me/919205110208"
+                      style={{ color: "white", textDecoration: "none" }}
+                    >
+                      {" "}Get In Touch
+                    </a>
+                  </span>
                 </button>
               </div>
             </div>
@@ -82,18 +91,18 @@ export default function ScheduleCallSection() {
               right
               title="Regular Catchup"
               avatars={[
-                "https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?q=80&w=128",
-                "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=128",
-                "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=128",
+                "https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=128",
+                "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=128",
+                "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?q=80&w=128",
               ]}
             />
             <Callout
               right
               title="Final Delivery Call"
               avatars={[
-                "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?q=80&w=128",
-                "https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=128",
                 "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=128",
+                "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=128",
+                "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=128",
               ]}
             />
           </div>

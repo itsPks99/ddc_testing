@@ -16,7 +16,7 @@ export default function Footer() {
 
   // Map labels -> target CSS class (add these classes to your section wrappers)
   const links = [
-    { label: "Our Client", selector: ".trustedClient_section" },
+    { label: "Our Client", selector: ".tb-section" },
     // { label: "Case Studies", selector: ".us-landing-page-case-studies" }, // your brands slider
     // { label: "Why Landing Pages?", selector: ".us-landing-page-why-landing-pages" },
     { label: "Featured Case Study", selector: ".us-landing-page-case-studies" },

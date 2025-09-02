@@ -210,7 +210,7 @@ export default function WorldClassBrands() {
         }
         .wcb-head { display:flex; align-items:center; justify-content:space-between; gap:12px; }
         .wcb-name { font-weight:800; font-size:clamp(18px,2vw,18px); }
-        .wcb-stars { color:#ff6b00; display:inline-flex; gap:4px; }
+        .wcb-stars { color:#ff6b00; display:inline-flex; gap:4px;display:none }
         .wcb-desc { color:#4b5563; font-size:14px; line-height:1.55; }
         .wcb-stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(12px,1.6vw,18px); }
         .wcb-stat { display:grid; justify-items:center; gap:6px; position:relative; }
@@ -285,7 +285,7 @@ export default function WorldClassBrands() {
                     <p className="us-landing-page-brand-description wcb-desc">{study.description}</p>
 
                     {/* metrics */}
-                    <div className="us-landing-page-brand-metrics wcb-stats">
+                    <div className="us-landing-page-brand-metrics ">
                       {Object.entries(study.metrics).map(([key, value]) => (
                         <div key={key} className="us-landing-page-metric wcb-stat">
                           <div className="us-landing-page-metric-label wcb-pill">{key}</div>

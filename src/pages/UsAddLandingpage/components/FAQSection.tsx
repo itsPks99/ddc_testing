@@ -32,47 +32,58 @@ export default function FAQSection() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null)
 
   const faqs = [
-    {
-      question: "What is the difference between landing pages and product pages?",
-      answer:
-        "Landing pages are designed for specific campaigns and conversions, while product pages showcase individual products in your catalog.",
-    },
-    {
-      question: "Will my website have both the landing page and the product page?",
-      answer:
-        "Yes, we can create both landing pages and product pages that work together seamlessly to maximize your conversion rates.",
-    },
-    {
-      question: "What if I have 100 products and want custom treatment for all of them?",
-      answer:
-        "We offer scalable solutions and can work with you to prioritize the most important products and create templates for others.",
-    },
-    {
-      question: "Will you create my entire website if asked?",
-      answer:
-        "Yes, we offer complete website development services beyond just landing pages, including full e-commerce solutions.",
-    },
-    {
-      question: "Do you work with platforms other than Shopify?",
-      answer:
-        "While we specialize in Shopify, we also work with other platforms like WooCommerce, Magento, and custom solutions.",
-    },
-    {
-      question: "How will these landing pages work better than my current pages?",
-      answer:
-        "Our landing pages are optimized for conversion using proven psychology principles, A/B testing, and data-driven design decisions.",
-    },
-    {
-      question: "What increase in the conversion rate should I expect?",
-      answer:
-        "While results vary, our clients typically see 20-100% improvement in conversion rates within the first month.",
-    },
-    {
-      question: "Are you the right strategists for my brand?",
-      answer:
-        "We work best with growth-focused D2C brands that value data-driven results and are committed to long-term success.",
-    },
-  ]
+  {
+    question: "What does your agency specialize in?",
+    answer:
+      "We are a full-service digital agency focused on Shopify development, custom builds, digital marketing campaigns, photography, product shoots, and social media management.",
+  },
+  {
+    question: "Do you only work on Shopify projects?",
+    answer:
+      "Shopify is our core expertise, but we also provide custom development solutions and can integrate with other platforms when required.",
+  },
+  {
+    question: "Can you build my entire website, not just landing pages?",
+    answer:
+      "Yes, we handle complete end-to-end website development — from Shopify storefronts and landing pages to full custom e-commerce solutions.",
+  },
+  {
+    question: "Do you also manage digital marketing?",
+    answer:
+      "Absolutely. We run data-driven ad campaigns across Meta, Google, and other platforms, focused on driving measurable growth for your brand.",
+  },
+  {
+    question: "Do you provide product photography and shoots?",
+    answer:
+      "Yes, we offer professional product photography and creative shoots to showcase your brand and products in the best light.",
+  },
+  {
+    question: "Can you handle our social media accounts?",
+    answer:
+      "Yes, we provide end-to-end social media management including content creation, scheduling, engagement, and growth strategies.",
+  },
+  {
+    question: "What if I have a large product catalog?",
+    answer:
+      "We design scalable solutions that handle hundreds of products efficiently, with custom strategies for your top-performing items.",
+  },
+  {
+    question: "How do your landing pages perform better?",
+    answer:
+      "Our landing pages are optimized for conversions using proven design psychology, A/B testing, and performance-focused strategies.",
+  },
+  {
+    question: "What kind of results can I expect?",
+    answer:
+      "While results vary, our clients typically see significant improvements in sales, engagement, and conversions within the first few weeks.",
+  },
+  {
+    question: "Who do you work best with?",
+    answer:
+      "We work best with growth-focused D2C brands looking for premium Shopify builds, creative marketing, photography, and complete social media support.",
+  },
+]
+
 
   return (
     <div id="faqs" ref={ref} className="us-landing-page-faq">

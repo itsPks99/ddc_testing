@@ -223,12 +223,34 @@
   .callout--right { align-items: flex-start; text-align: left; }
   .stage-card__peers { right: 10px; top: 10px; }
 }
+
+/* ===== Phone: put CTAs BELOW the video area ===== */
 @media (max-width: 640px) {
+  /* let content flow, so actions can sit under the media */
+  .stage-card {
+    aspect-ratio: auto;
+    overflow: visible;
+    padding-bottom: 0;
+  }
+  .stage-card__poster {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    display: block;
+    border-radius: var(--radius);
+  }
   .peer { grid-template-columns: 44px 1fr; }
   .peer img { width: 44px; height: 40px; }
-  .stage-card__actions { bottom: 10px; gap: 8px; }
+
+  .stage-card__actions {
+    position: static;
+    transform: none;
+    margin-top: 12px;            /* spacing below the poster */
+    justify-content: center;     /* center the two buttons */
+  }
   .btn { --padY: 9px; --padX: 12px; font-size: 13px; }
 }
+
 @media (prefers-reduced-motion: reduce) {
   .btn { transition: none; }
 }
