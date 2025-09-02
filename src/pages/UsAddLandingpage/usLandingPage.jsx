@@ -14,7 +14,7 @@ import ScheduleCallSection from "./components/ScheduleCallSection.jsx"
 import ComparisonSection from "./components/ComparisonSection"
 import FAQSection from "./components/FAQSection"
 import Footer from "./components/Footer"
-import OurClients from "../Home/OurClients/ourClients"
+import OurClients from "../UsAddLandingpage/components/TrustedBrands.jsx"
 
 
 export default function LandingPage() {
@@ -23,13 +23,14 @@ export default function LandingPage() {
       <Navigation />
       <HeroSection />
       <AutoSlidingBrands />
-      <OurClients />
+      
       {/* <FeaturesSection /> */}
       <IncludedServicesSection />
       <CaseStudiesSection />
       <MetricsSection />
       <WorldClassBrands />
       <TestimonialsSection />
+      <OurClients />
       <ScheduleCallSection />
       <ComparisonSection />
       <FAQSection />

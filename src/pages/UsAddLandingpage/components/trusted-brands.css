@@ -1,0 +1,97 @@
+/* ---------- Section shell ---------- */
+.tb-section {
+  padding: 64px 16px;
+  background: #ffffff;
+}
+
+.tb-container {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+/* ---------- Heading ---------- */
+.tb-eyebrow {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #6b7280;           /* slate-500 tone, like the reference */
+  margin: 0 0 28px;
+}
+
+/* ---------- Grid (each row is its own grid for layout control) ---------- */
+.tb-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 22px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px 24px;            /* row gap, column gap */
+  align-items: center;
+}
+
+/* Responsive columns */
+@media (max-width: 1100px) {
+  .tb-grid { grid-template-columns: repeat(5, 1fr); }
+}
+@media (max-width: 900px) {
+  .tb-grid { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 700px) {
+  .tb-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 480px) {
+  .tb-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ---------- Each logo cell ---------- */
+.tb-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Clickable area without visible borders (like the screenshot) */
+.tb-card {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  /* height: 90px;              */
+  /* padding: 8px 12px; */
+  text-decoration: none;
+  transition: transform 160ms ease, opacity 160ms ease;
+  opacity: 0.9;
+}
+
+.tb-card:hover {
+  transform: translateY(-1px);
+  opacity: 1;
+}
+
+/* ---------- Logo image handling ---------- */
+.tb-logo {
+  max-width: 180px;         /* prevents super wide logos from dominating */
+  max-height: 44px;         /* matches the visual scale in the reference */
+  width: auto;
+  height: auto;
+  object-fit: cover;      /* never stretch or crop */
+  display: block;
+}
+
+/* Fine-tune sizes on smaller screens so everything fits neatly */
+@media (max-width: 900px) {
+  .tb-card { height: 80px; }
+  .tb-logo { max-height: 40px; }
+}
+@media (max-width: 700px) {
+  /* .tb-card { height: 72px; } */
+  .tb-logo { max-height: 36px; }
+}
+@media (max-width: 480px) {
+  /* .tb-card { height: 66px; } */
+  .tb-logo { max-height: 32px; }
+}
+
+/* Optional: subtle separation between rows, like the breathing space in the image */
+.tb-grid + .tb-grid {
+  margin-top: 6px;
+}

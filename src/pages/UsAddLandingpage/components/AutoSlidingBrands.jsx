@@ -62,7 +62,7 @@ const styles = `
 /*.portfolio-strip:hover .track--rtl { animation-play-state: paused; }*/
 
 .us-landing-card { margin: 0; width: var(--cardW); height: var(--cardH); flex: 0 0 auto; border-radius: var(--radius); overflow: hidden; background: transparent; box-shadow: none; border: none; display: grid; place-items: center; }
-.us-landing-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
 
 @keyframes slideLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 

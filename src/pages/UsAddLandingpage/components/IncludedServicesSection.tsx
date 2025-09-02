@@ -1,8 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { FaShopify, FaLaptopCode, FaPalette } from "react-icons/fa"
-
+import { FaLaptopCode, FaPalette } from "react-icons/fa"
 
 function useScrollAnimation() {
   const [isVisible, setIsVisible] = useState(false)
@@ -27,7 +26,13 @@ export default function IncludedServicesSection() {
 
   const services = [
     {
-      icon: <FaShopify size={32} />,
+      icon: (
+        <img
+          src="/assets/all_logos/ddc logo/ShopifyPlus_Secondary.png"
+          alt="Shopify Development"
+          style={{ width: "130px", height: "32px", objectFit: "contain" }}
+        />
+      ),
       title: "Shopify Development",
       description:
         "High-performance Shopify storefronts and landing pages built for speed, SEO, and conversions.",
@@ -50,6 +55,7 @@ export default function IncludedServicesSection() {
     <div id="included-services" ref={ref} className="us-landing-page-features">
       <div className="us-landing-page-container">
         <div className="us-landing-page-features-container">
+          {/* CTA CARD */}
           <div className="us-landing-page-features-cta">
             <div className="us-landing-page-card us-landing-page-card-gray">
               <h3 className="us-landing-page-features-title">
@@ -58,12 +64,22 @@ export default function IncludedServicesSection() {
                 We Build High Converting Stores.
               </h3>
 
-              <button className="us-landing-page-btn us-landing-page-btn-primary"><a href="https://wa.me/919205110208" style={{ color: "white", textDecoration: "none" }}>Get In Touch</a></button>
+              <button className="us-landing-page-btn us-landing-page-btn-primary">
+                <a
+                  href="https://wa.me/919205110208"
+                  style={{ color: "white", textDecoration: "none" }}
+                >
+                  Get In Touch
+                </a>
+              </button>
             </div>
           </div>
 
+          {/* SERVICES SECTION */}
           <div className="us-landing-page-features-content">
-            <div className="us-landing-page-badge">Shopify &amp; Custom Development</div>
+            <div className="us-landing-page-badge">
+              Shopify &amp; Custom Development
+            </div>
 
             <h2 className="us-landing-page-features-title">
               <span className="us-landing-page-text-orange">Included</span> in Every
@@ -91,6 +107,25 @@ export default function IncludedServicesSection() {
           </div>
         </div>
       </div>
+
+      {/* ✅ Mobile Centering */}
+      <style >{`
+        @media (max-width: 768px) {
+          .us-landing-page-features-content,
+          .us-landing-page-features-grid,
+          .us-landing-page-feature-item {
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .us-landing-page-features-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+          }
+        }
+      `}</style>
     </div>
   )
 }

@@ -35,7 +35,7 @@ export default function Footer() {
         <div className="us-landing-page-footer-grid">
           <div className="us-landing-page-footer-section">
             <h3>Let's Schedule Call.</h3>
-            <p>You are one step away from making more revenue from the same ad spend.</p>
+            <p style={{ paddingBottom: "1.5rem" }}>You are one step away from making more revenue from the same ad spend.</p>
             <div className="us-landing-page-footer-buttons">
               <button
                 className="us-landing-page-btn us-landing-page-btn-primary"
@@ -75,18 +75,19 @@ export default function Footer() {
 
           <div className="us-landing-page-footer-section">
             <h4>Office Address</h4>
-            <p>4th Floor, F42, Saidulajab, Saiyad Ul Ajaib Village, Saket, New Delhi, Delhi 110030</p>
-            <p>+91 92051 10208</p>
+            <p>Saket, New Delhi, Delhi 110030</p>
+            <a href="tel:+919205110208" style={{ textDecoration: "none" }}><p >+91 92051 10208</p></a>
+            <a href="mailto:hello@delhidigital.co" style={{ textDecoration: "none" }}><p>hello@delhidigital.co</p></a>
           </div>
         </div>
 
         <div className="us-landing-page-footer-bottom">
-          <p>© Delhi Digita Co., Inc. 2025</p>
+          <p>&copy; 2025 Delhi Digital Co. All rights reserved.</p>
           <p>
-            Made with love ❤️ by{" "}
+            Made by{" "}
             <span className="us-landing-page-text-orange">
               <a href="https://delhidigital.co/" style={{ color: "#9ca3af", textDecoration: "none" }}>
-                Delhi Digita Co.
+                Delhi Digital Co.
               </a>
             </span>
           </p>

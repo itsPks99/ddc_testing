@@ -1,4 +1,3 @@
-"use client";
 
 import React, { useEffect, useRef, useState } from "react";
 
@@ -42,7 +41,7 @@ export default function CaseStudiesSection() {
         .cs-wrap { display: grid; gap: clamp(20px, 3vw, 32px); }
 
         /* Header (kept exactly like before) */
-        .cs-kicker { font-weight: 900; font-size: clamp(22px, 3.8vw, 40px); line-height: 1.05; background: linear-gradient(90deg, #ff7a59, #ff66b3, #a855f7); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -0.02em; }
+        .cs-kicker { font-weight: 900; font-size: clamp(32px, 3.8vw, 48px); line-height: 1.05; background: linear-gradient(90deg, #ff7a59, #ff66b3, #a855f7); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -0.02em; }
         .cs-title { margin: 6px 0 0 0; font-weight: 800; font-size: clamp(30px, 5.8vw, 64px); line-height: 1.08; letter-spacing: -0.02em; color:#fff; }
 
         /* Two cards */

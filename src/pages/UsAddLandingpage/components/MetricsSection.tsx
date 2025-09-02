@@ -21,7 +21,6 @@ function useScrollAnimation() {
 export default function MetricsSection() {
   const { ref, isVisible } = useScrollAnimation()
 
-  // Copy matches your screenshot
   const metrics = [
     { label: "CAC",  value: "-20%", desc: "New Customer" },
     { label: "CRO",  value: "+45%", desc: "Conversion Rate" },
@@ -32,17 +31,16 @@ export default function MetricsSection() {
 
   return (
     <section ref={ref} className="us-landing-page-metrics metrics">
-      {/* Local styles to match the uploaded layout */}
       <style>{`
         .metrics {
-          background: #111213; /* deep charcoal */
+          background: #111213;
           color: #fff;
         }
 
         .metrics-grid {
           display: grid;
           grid-template-columns: repeat(5, minmax(0, 1fr));
-          gap: 0; /* no gaps so the single-side divider is clean */
+          gap: 0;
           opacity: 0;
           transform: translateY(6px);
           transition: opacity .45s ease, transform .45s ease;
@@ -61,7 +59,6 @@ export default function MetricsSection() {
         }
         .metrics-grid.visible .metric { opacity: 1; transform: none; }
 
-        /* Single-side divider (right side only) */
         .metric:not(:last-child)::after {
           content: "";
           position: absolute;
@@ -94,12 +91,17 @@ export default function MetricsSection() {
           font-size: 14px;
         }
 
-        /* Mobile: stack items and drop the divider */
-        @media (max-width: 720px) {
+        /* Mobile + Tablet: center align items */
+        @media (max-width: 1024px) {
           .metrics-grid { grid-template-columns: 1fr; }
-          .metric:not(:last-child)::after { display: none; }
-          .metric { padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,.12); }
+          .metric {
+            justify-items: center;
+            text-align: center;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255,255,255,.12);
+          }
           .metric:last-child { border-bottom: none; }
+          .metric:not(:last-child)::after { display: none; }
         }
       `}</style>
 

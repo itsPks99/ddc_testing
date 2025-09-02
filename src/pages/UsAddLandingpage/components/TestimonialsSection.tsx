@@ -32,28 +32,32 @@ export default function TestimonialsSection() {
 
   const testimonials = [
     {
-      name: "Manvi Tejpal",
+      name: "Manvi",
       role: "Founder - Manvi Daga",
       rating: 5,
-      text: "Delhi Digital Co. transformed our fashion brand's online presence with a stunning Shopify store. The mobile-first approach resulted in a 60% increase in mobile conversions and significantly improved our customer experience.",
+      text: "This team transformed our outdated store into a modern, high-converting Shopify storefront. The design is sleek, mobile-friendly, and lightning fast. Since launch, our sales and engagement have improved dramatically. Truly Shopify experts!",
+      avatar: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/gettyimages-1764821779-612x612.jpg?v=1756761795",
     },
     {
-      name: "Tieva Jewels Team",
+      name: "Suhail Bajpai",
       role: "Founder - Tieva Jewels",
       rating: 5,
-      text: "Working with Delhi Digital Co. was a game-changer for our jewelry business. Their custom Shopify development increased our average order value by 45% and streamlined our entire sales process.",
+      text: "From theme customization to advanced integrations, they handled our entire Shopify build flawlessly. They also optimized our checkout flow which boosted conversions right away. I highly recommend them for anyone serious about scaling on Shopify.",
+      avatar: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/gettyimages-1540766473-612x612.jpg?v=1756761794",
     },
     {
-      name: "Nauvab Team",
+      name: "Gautam Bali",
       role: "Founder - Nauvab Footwear",
       rating: 5,
-      text: "The team at Delhi Digital Co. delivered an exceptional Shopify store that perfectly showcases our footwear collection. Our conversion rate improved by 35% within the first month of launch.",
+      text: "We needed a partner who understood Shopify inside out—and that’s exactly what we found. They built custom features, streamlined our product pages, and connected us with marketing tools that doubled our ROI. Outstanding Shopify development team.",
+      avatar: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/gettyimages-2183082245-612x612.jpg?v=1756761794",
     },
     {
-      name: "Senthera World",
+      name: "Margarita",
       role: "Founder - Senthera World",
       rating: 5,
-      text: "Delhi Digital Co.'s expertise in e-commerce development helped us create a beautiful, high-performing Shopify store for our wellness products. The results exceeded our expectations with improved user engagement and sales.",
+      text: "Our Shopify store is now a real asset to our business thanks to this agency. They combined beautiful design with smart functionality and supported it with solid marketing. Everything works seamlessly—from product uploads to order tracking.",
+      avatar: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/gettyimages-1987655119-612x612.jpg?v=1756761795",
     },
   ]
 
@@ -62,14 +66,21 @@ export default function TestimonialsSection() {
       <div className="us-landing-page-container">
         <div className="us-landing-page-testimonials-header">
           <div className="us-landing-page-testimonials-avatars">
-            {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="us-landing-page-avatar"></div>
+            {testimonials.map((t, i) => (
+              <img
+                key={i}
+                src={t.avatar}
+                alt={t.name}
+                className="us-landing-page-avatar"
+              />
             ))}
           </div>
           <h2 className="us-landing-page-testimonials-title">
             <span className="us-landing-page-text-orange">50+</span> Happy Clients
           </h2>
-          <p className="us-landing-page-testimonials-subtitle">Trusted by growing e-commerce brands</p>
+          <p className="us-landing-page-testimonials-subtitle">
+            Trusted by growing e-commerce brands
+          </p>
         </div>
 
         <div className="us-landing-page-testimonials-grid">
@@ -80,7 +91,11 @@ export default function TestimonialsSection() {
             >
               <p className="us-landing-page-testimonial-text">{testimonial.text}</p>
               <div className="us-landing-page-testimonial-author">
-                <div className="us-landing-page-author-avatar"></div>
+                <img
+                  src={testimonial.avatar}
+                  alt={testimonial.name}
+                  className="us-landing-page-author-avatar"
+                />
                 <div className="us-landing-page-author-info">
                   <div className="us-landing-page-author-name">{testimonial.name}</div>
                   <div className="us-landing-page-author-role">{testimonial.role}</div>

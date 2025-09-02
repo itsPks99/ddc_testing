@@ -113,8 +113,8 @@ body {
 .us-landing-page-mobile-menu-label {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #f97316;
-  margin-bottom: 1rem;
+  color: #0e0d0d;
+  /* margin-bottom: 1rem; */
   letter-spacing: 0.05em;
   transform: translateY(20px);
   opacity: 0;
@@ -146,8 +146,14 @@ body {
 }
 
 .us-landing-page-mobile-menu-link:hover {
-  color: #f97316;
+  color: #111111;
   transform: translateX(5px);
+}
+
+
+.us-landing-page-mobile-menu-link.active {
+  color: #f97316;
+  font-weight: 600;
 }
 
 /* Mobile menu animation keyframes */
@@ -192,7 +198,7 @@ body {
   background: #f97316;
   color: white;
   border-radius: 22px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   padding: 10px 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
@@ -205,13 +211,16 @@ body {
 }
 
 .us-landing-page-btn-outline {
-  background: transparent;
+
   border: 1px solid #d1d5db;
   color: #374151;
 }
 
-.us-landing-page-btn-outline:hover {
-  background: #f9fafb;
+@media (hover: hover) {
+  .us-landing-page-btn-outline:hover {
+    background: #f9fafb;
+    background: transparent;
+  }
 }
 
 .us-landing-page-btn-lg {
@@ -389,9 +398,14 @@ body {
 }
 
 .us-landing-page-features-title {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: bold;
   margin-bottom: 1.5rem;
+}
+@media (min-width: 768px) {
+  .us-landing-page-features-title {
+    font-size: 2.5rem;
+  }
 }
 
 .us-landing-page-features-description {
@@ -503,8 +517,13 @@ body {
 
 /* World Class Brands */
 .us-landing-page-world-brands {
-  padding: 5rem 0;
+  padding: 4rem 0;
   background: white;
+}
+@media screen and (max-width: 768px) {
+  .us-landing-page-world-brands {
+   display: none;
+  }
 }
 
 .us-landing-page-world-brands-title {
@@ -593,23 +612,29 @@ body {
   margin-bottom: 1rem;
 }
 
+/* header avatar chips (now using <img>) */
 .us-landing-page-avatar {
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  background: #d1d5db;
+  object-fit: cover;
   margin-left: -0.5rem;
-  border: 2px solid white;
+  border: 2px solid #fff;
+  display: inline-block;
 }
-
 .us-landing-page-avatar:first-child {
   margin-left: 0;
 }
 
 .us-landing-page-testimonials-title {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
+}
+@media (max-width: 768px) {
+  .us-landing-page-testimonials-title {
+    font-size: 2rem;
+  }
 }
 
 .us-landing-page-testimonials-subtitle {
@@ -620,34 +645,44 @@ body {
   display: grid;
   gap: 1.5rem;
 }
-
 @media (min-width: 768px) {
   .us-landing-page-testimonials-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
 @media (min-width: 1024px) {
   .us-landing-page-testimonials-grid {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
+/* animation */
 .us-landing-page-testimonial-card {
   transform: translateY(2.5rem);
   opacity: 0;
   transition: all 0.7s ease-out;
+  height: auto;              /* ensure auto height */
+  overflow: visible;         /* allow content to grow */
 }
-
 .us-landing-page-testimonial-card.visible {
   transform: translateY(0);
   opacity: 1;
 }
 
+/* NEVER truncate testimonial text */
 .us-landing-page-testimonial-text {
   font-size: 0.875rem;
   color: #6b7280;
   margin-bottom: 1rem;
+
+  /* anti-ellipsis overrides */
+  display: block;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  /* -webkit-line-clamp: unset; */
+  -webkit-box-orient: unset;
+  word-break: break-word;    /* long words won’t push layout */
 }
 
 .us-landing-page-testimonial-author {
@@ -655,23 +690,25 @@ body {
   align-items: center;
 }
 
+/* author avatar (now using <img>) */
 .us-landing-page-author-avatar {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
-  background: #d1d5db;
+  object-fit: cover;
+  background: #d1d5db;      /* fallback if image fails */
   margin-right: 0.75rem;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,.06);
 }
 
 .us-landing-page-author-info {
   flex: 1;
 }
-
 .us-landing-page-author-name {
   font-weight: 600;
   font-size: 0.875rem;
 }
-
 .us-landing-page-author-role {
   font-size: 0.75rem;
   color: #6b7280;
@@ -682,12 +719,12 @@ body {
   display: flex;
   align-items: center;
 }
-
 .us-landing-page-rating-number {
   font-size: 0.875rem;
   font-weight: bold;
   margin-right: 0.25rem;
 }
+
 
 /* Comparison Section */
 .us-landing-page-comparison {
@@ -697,14 +734,18 @@ body {
 
 .us-landing-page-comparison-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
 
 .us-landing-page-comparison-title {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: bold;
 }
-
+@media (max-width: 768px) {
+  .us-landing-page-comparison-title {
+    font-size: 2rem;
+  }
+}
 .us-landing-page-comparison-grid {
   display: grid;
   gap: 2rem;
@@ -846,6 +887,11 @@ body {
   font-size: 2.5rem;
   font-weight: bold;
 }
+@media (min-width: 768px) {
+  .us-landing-page-faq-title {
+    font-size: 3rem;
+  }
+}
 
 .us-landing-page-faq-content {
   max-width: 64rem;
@@ -888,6 +934,7 @@ body {
   font-weight: 500;
   color: #111827;
   cursor: pointer;
+  font-size: 1rem;
 }
 
 .us-landing-page-faq-icon {
@@ -907,11 +954,12 @@ body {
 
 .us-landing-page-faq-answer p {
   color: #6b7280;
+  font-size: 0.875rem;
 }
 
 /* Footer */
 .us-landing-page-footer {
-  background: #1f2937;
+  background: black;
   color: white;
   padding: 4rem 0;
 }
@@ -941,7 +989,7 @@ body {
 
 .us-landing-page-footer-section p {
   color: #9ca3af;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.6rem;
 }
 
 .us-landing-page-footer-buttons {
@@ -1011,9 +1059,9 @@ body {
   }
 
   .us-landing-page-footer-buttons {
-    flex-direction: column;
+    background: #000 !important;
+    color: white !important;
   }
-
   /* Mobile specific styles for World Class Brands sticky scroll */
   .us-landing-page-world-brands-container {
     scroll-snap-type: x mandatory;
@@ -1139,4 +1187,18 @@ body {
   gap: 1rem;
   /* margin-top: 0.5rem; */
   justify-content: center;
+}
+
+
+.us-landing-card img {
+   width: 100%; 
+   height: 100%; 
+   object-fit: contain; 
+   display: block; 
+}
+
+@media screen and (max-width: 767px) and (min-width: 1200px) {
+  .us-landing-card img {
+    object-fit: contain;
+  } 
 }
