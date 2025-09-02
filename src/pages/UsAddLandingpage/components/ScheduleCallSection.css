@@ -125,7 +125,7 @@
   aspect-ratio: 16 / 9;
   border-radius: var(--radius);
   overflow: hidden;
-  background: #ddd;
+  background: #ffffff33;
   box-shadow: var(--shadow);
   border: 1px solid var(--ring);
 }
@@ -231,7 +231,7 @@
   .stage-card {
     aspect-ratio: auto;
     overflow: visible;
-    padding-bottom: 0;
+    padding-bottom: 15px;
   }
   .stage-card__poster {
     width: 100%;

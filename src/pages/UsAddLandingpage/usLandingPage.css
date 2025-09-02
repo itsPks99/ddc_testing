@@ -962,6 +962,7 @@ body {
   background: black;
   color: white;
   padding: 3rem 0;
+  
 }
 
 .us-landing-page-footer-grid {
@@ -974,6 +975,7 @@ body {
   .us-landing-page-footer-grid {
     grid-template-columns: repeat(3, 1fr);
   }
+
 }
 
 .us-landing-page-footer-section h3 {
