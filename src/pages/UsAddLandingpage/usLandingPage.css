@@ -493,7 +493,7 @@ body {
 .us-landing-page-case-studies-grid {
   display: grid;
   gap: 2rem;
-  margin-top: 4rem;
+  margin-top: 3rem;
   transform: translateY(2.5rem);
   opacity: 0;
   transition: all 1s ease-out;
@@ -603,7 +603,7 @@ body {
 
 .us-landing-page-testimonials-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
 
 .us-landing-page-testimonials-avatars {
@@ -838,7 +838,7 @@ body {
 
 .us-landing-page-schedule-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 
 .us-landing-page-schedule-title {
@@ -880,7 +880,7 @@ body {
 
 .us-landing-page-faq-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 
 .us-landing-page-faq-title {
@@ -961,7 +961,7 @@ body {
 .us-landing-page-footer {
   background: black;
   color: white;
-  padding: 4rem 0;
+  padding: 3rem 0;
 }
 
 .us-landing-page-footer-grid {
@@ -1201,4 +1201,14 @@ body {
   .us-landing-card img {
     object-fit: contain;
   } 
+}
+
+.portfolio-strip{
+  height: 600px;
+}
+
+@media (max-width: 768px) {
+   .portfolio-strip {
+     height: 480px !important;
+   }
 }

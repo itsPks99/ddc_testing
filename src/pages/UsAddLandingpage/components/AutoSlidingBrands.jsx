@@ -27,7 +27,6 @@ export default function PortfolioStrip() {
         "--radius": "10px",
         "--duration": "36s",
         "height": "600px",
-    
       }}
     >
       <style>{styles}</style>
