@@ -12,7 +12,7 @@ import WorldClassBrands from "./components/WorldClassBrands"
 import TestimonialsSection from "./components/TestimonialsSection"
 import ScheduleCallSection from "./components/ScheduleCallSection.jsx"
 import ComparisonSection from "./components/ComparisonSection"
-import FAQSection from "./components/FAQSection"
+import FAQSection from "./components/FAQSection.jsx"
 import Footer from "./components/Footer"
 import OurClients from "../UsAddLandingpage/components/TrustedBrands.jsx"
 

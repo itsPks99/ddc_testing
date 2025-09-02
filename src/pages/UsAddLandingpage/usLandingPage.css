@@ -906,22 +906,30 @@ body {
   opacity: 1;
 }
 
-.us-landing-page-faq-grid {
-  display: grid;
-  gap: 1rem;
+/* Two independent columns on desktop */
+.us-landing-page-faq-columns {
+  display: block;            /* mobile: single column */
+  gap: 2rem;
 }
-
 @media (min-width: 768px) {
-  .us-landing-page-faq-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .us-landing-page-faq-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
   }
 }
+.us-landing-page-faq-col {
+  display: flex;
+  flex-direction: column;
+}
 
+/* Items */
 .us-landing-page-faq-item {
   border-bottom: 1px solid #e5e7eb;
   padding-bottom: 1rem;
 }
 
+/* Question */
 .us-landing-page-faq-question {
   display: flex;
   justify-content: space-between;
@@ -937,25 +945,49 @@ body {
   font-size: 1rem;
 }
 
+/* Icon */
 .us-landing-page-faq-icon {
   width: 1.25rem;
   height: 1.25rem;
   transform: rotate(0deg);
-  transition: transform 0.3s;
+  transition: transform 300ms ease;
 }
-
 .us-landing-page-faq-icon.rotated {
   transform: rotate(45deg);
 }
 
+/* Smooth accordion outer (height animation) */
 .us-landing-page-faq-answer {
-  padding-bottom: 1rem;
+  overflow: hidden;
+  max-height: 0; /* animated */
+  transition:
+    max-height 600ms cubic-bezier(.22,.61,.36,1),
+    opacity 420ms ease;
+  opacity: 0;
+}
+
+/* Inner content fade + slight slide for extra smoothness */
+.faq-answer-inner {
+  transform: translateY(-4px);
+  transition: transform 600ms cubic-bezier(.22,.61,.36,1), opacity 420ms ease;
+  opacity: 0;
+  padding-bottom: 1rem; /* keep spacing when expanded */
+}
+.faq-answer-inner.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* When open, we only flip styles; the height is set inline from JS */
+.us-landing-page-faq-answer.open {
+  opacity: 1;
 }
 
 .us-landing-page-faq-answer p {
   color: #6b7280;
   font-size: 0.875rem;
 }
+
 
 /* Footer */
 .us-landing-page-footer {
