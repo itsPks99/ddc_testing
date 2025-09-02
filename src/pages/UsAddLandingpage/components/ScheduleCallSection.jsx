@@ -49,7 +49,7 @@ export default function ScheduleCallSection() {
                 className="stage-card__poster"
                 alt="Host in a discovery call"
                 /* swapped poster (replace with your brand image if you prefer) */
-                src="https://cdn.shopify.com/s/files/1/0596/9965/8889/files/young-women-enjoy-freedom-on-the-beach-on-a-sunny-2023-11-27-05-28-54-utc-770x513.webp?v=1756804219"
+                src="https://cdn.shopify.com/s/files/1/0596/9965/8889/files/bggetintouch.png?v=1756816810"
               />
 
               {/* Floating participants */}

@@ -1,7 +1,8 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { FaLaptopCode, FaPalette } from "react-icons/fa"
+import { FaLaptopCode ,    } from "react-icons/fa"
+import { MdDesignServices ,    } from "react-icons/md"
 
 function useScrollAnimation() {
   const [isVisible, setIsVisible] = useState(false)
@@ -44,7 +45,7 @@ export default function IncludedServicesSection() {
         "Headless/React builds, custom APIs, and integrations tailored to your workflows and business logic.",
     },
     {
-      icon: <FaPalette size={32} />,
+      icon: <MdDesignServices size={32} />,
       title: "UI/UX Design",
       description:
         "Clean, conversion-focused design that looks premium and guides shoppers to checkout.",

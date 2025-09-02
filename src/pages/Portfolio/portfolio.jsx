@@ -2,6 +2,7 @@
 
 import "./portfolio.css";
 import React, { useEffect, useRef, useState } from "react";
+import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 /* ============================ */
 /* Main Component               */
@@ -111,7 +112,7 @@ export default function Portfolio() {
       { name: "Nauvab", url: "https://nauvab.com" },
       { name: "Meko Studio", url: "https://meko-studio.com" },
     ],
-    "Fashion & Apparel": [
+    "Fashion And Apparel": [
       { name: "July Issue", url: "https://julyissue.com" },
       { name: "Manvi Daga", url: "https://manvidaga.com" },
       { name: "Clothes On My Mind", url: "https://clothesonmymind.com" },
@@ -119,7 +120,7 @@ export default function Portfolio() {
       { name: "Fllae", url: "https://fllae.com" },
       { name: "Rosatelier", url: "https://xn--rosatelier-d7a.com" },
     ],
-    "Natural Beauty & Wellness": [
+    "Natural Beauty And Wellness": [
       { name: "Anthi Naturals", url: "https://anthinaturals.com" },
       { name: "Senthera World", url: "https://sentheraworld.com" },
       { name: "Style Aroma", url: "https://stylearoma.in" },
@@ -171,7 +172,7 @@ export default function Portfolio() {
   const photographyImages = {
     all: [
       // ---- existing 25 (unchanged) ----
-      { id: 20, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC09527_copy.jpg?v=1756384651",    alt: "Packshot / product frame" },
+      { id: 20, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC09527_copy.jpg?v=1756384651", alt: "Packshot / product frame" },
       { id: 1, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/5.jpg?v=1756384649", alt: "Editorial fashion portrait" },
       { id: 2, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08926_copy.jpg?v=1756384649", alt: "Jewelry / product close-up" },
       { id: 3, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00519_copy.jpg?v=1756384643", alt: "Cosmetic / accessory product shot" },
@@ -187,7 +188,7 @@ export default function Portfolio() {
       { id: 13, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00367_copy.jpg?v=1756384660", alt: "Backstage / event moment" },
       { id: 14, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08231_copy.jpg?v=1756384658", alt: "Lifestyle outdoor" },
       { id: 15, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00166_copy.jpg?v=1756384658", alt: "Studio model portrait" },
-      
+
       { id: 16, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0765_copy.jpg?v=1756384661", alt: "Fashion editorial pose" },
 
       { id: 18, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00604_copy.jpg?v=1756384658", alt: "Product flatlay / detail" },
@@ -244,18 +245,18 @@ export default function Portfolio() {
 
     model: [
       // existing
-      
+
       { id: 1, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/5.jpg?v=1756384649", alt: "Editorial fashion portrait" },
-      
+
       { id: 7, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/2.jpg?v=1756384632", alt: "Model portrait" },
       { id: 8, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/3.jpg?v=1756384631", alt: "Fashion model profile" },
 
       { id: 12, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0852_copy.jpg?v=1756384659", alt: "Editorial portrait" },
       { id: 15, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00166_copy.jpg?v=1756384658", alt: "Studio model portrait" },
-      { id: 20, category: "product",   src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC09527_copy.jpg?v=1756384651",    alt: "Packshot / product frame" },
+      { id: 20, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC09527_copy.jpg?v=1756384651", alt: "Packshot / product frame" },
       { id: 16, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0765_copy.jpg?v=1756384661", alt: "Fashion editorial pose" },
       // new
-      
+
       { id: 28, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00321_copy.jpg?v=1756384674", alt: "Studio model portrait" },
       { id: 30, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02536_copy_1.jpg?v=1756384673", alt: "Editorial model pose" },
       { id: 32, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02536_copy.jpg?v=1756384673", alt: "Fashion model portrait" },
@@ -283,7 +284,7 @@ export default function Portfolio() {
       // existing
       { id: 11, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC09093_copy.jpg?v=1756384662", alt: "Live event highlight" },
       { id: 9, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_2316.jpg?v=1756384622", alt: "Event coverage photo" },
-      
+
       // new
       { id: 39, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08151_copy.jpg?v=1756384665", alt: "Event highlight" },
       { id: 43, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0839_copy.jpg?v=1756384662", alt: "Event crowd / moment" },
@@ -510,7 +511,7 @@ export default function Portfolio() {
             "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_120700.png?v=1756709107",
           ],
           mobileImages: [
-           "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_120951.png?v=1756709107",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_120951.png?v=1756709107",
             "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_120901.png?v=1756709107",
             "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_120700.png?v=1756709107",
           ],
@@ -521,7 +522,7 @@ export default function Portfolio() {
       // showLinks: true,
       // links: brandingPackagingProjects,
     },
-    
+
   ];
 
   /* ---- UI handlers ---- */
@@ -651,7 +652,7 @@ export default function Portfolio() {
                     <div className="portfolio-links-categories">
                       {Object.entries(activeService.links).map(([category, links]) => (
                         <div key={`${activeService.slug}-${category}`} className="portfolio-links-category-section">
-                          <h5 className="portfolio-category-heading">{category}</h5>
+                          <h5 className="portfolio-category-heading">{category} <br /></h5>
                           <div className="portfolio-links-list">
                             {links.map((link, linkIndex) => (
                               <button
@@ -673,6 +674,37 @@ export default function Portfolio() {
                   </div>
                 )}
               </div>
+              <div style={{ textAlign: "center", paddingTop: "50px" }}>
+                <h1 style={{paddingBottom:"20px"}}>Connect With Us</h1>
+                <p>We would love to hear from you! Reach out to us through any of the platforms below:</p>
+                <ul
+                  style={{
+                    listStyleType: "none",
+                    padding: 0,
+                    display: "flex",
+                    gap: "20px",
+                    justifyContent: "center", // centers the icons horizontally
+                    marginTop: "20px",
+                  }}
+                >
+                  <li>
+                    <a href="https://www.facebook.com/yourpage" target="_blank" rel="noopener noreferrer">
+                      <FaFacebook size={40} color="#1877F2" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://wa.me/yourphonenumber" target="_blank" rel="noopener noreferrer">
+                      <FaWhatsapp size={40} color="#25D366" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.instagram.com/yourpage" target="_blank" rel="noopener noreferrer">
+                      <FaInstagram size={40} color="#C13584" />
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
             </div>
           )}
         </div>
@@ -815,7 +847,7 @@ function VideoCarousel({ videos }) {
     try {
       videoRef.current.pause();
       setIsPlaying(false);
-    } catch {}
+    } catch { }
   };
 
   React.useEffect(() => {
@@ -910,7 +942,7 @@ function VideoCarousel({ videos }) {
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
           // safe defaults for first paint
-          style={{ "--video-aspect": 1080/ 1900, "--container-h": "70vh" }}
+          style={{ "--video-aspect": 1080 / 1900, "--container-h": "70vh" }}
         >
           {videos.map((video, index) => {
             const position = index - currentIndex;
@@ -1097,7 +1129,7 @@ function PhotoVideoSection({ service }) {
           ))}
         </div>
 
-        <div className="" style={{ columns: "3 100px", columnGap: '10px'}}>
+        <div className="" style={{ columns: "3 100px", columnGap: '10px' }}>
           {currentImages.map((image, index) => (
             <div
               key={image.id}

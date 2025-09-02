@@ -1,6 +1,6 @@
 /* ---------- Section shell ---------- */
 .tb-section {
-  padding: 64px 16px;
+  padding: 3rem 16px;
   background: #ffffff;
 }
 
@@ -70,9 +70,9 @@
 /* ---------- Logo image handling ---------- */
 .tb-logo {
   max-width: 180px;         /* prevents super wide logos from dominating */
-  max-height: 44px;         /* matches the visual scale in the reference */
-  width: auto;
-  height: auto;
+  max-height: 110px;         /* matches the visual scale in the reference */
+  width: 127;
+  /* height: auto; */
   object-fit: cover;      /* never stretch or crop */
   display: block;
 }
@@ -88,7 +88,8 @@
 }
 @media (max-width: 480px) {
   /* .tb-card { height: 66px; } */
-  .tb-logo { max-height: 32px; }
+  .tb-logo { max-height: 80px;
+        max-width: 150px; }
 }
 
 /* Optional: subtle separation between rows, like the breathing space in the image */

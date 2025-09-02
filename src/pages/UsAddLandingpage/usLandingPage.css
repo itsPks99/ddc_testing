@@ -232,7 +232,7 @@ body {
 /* Hero Section */
 .us-landing-page-hero {
   padding-top: 6rem;
-  padding-bottom: 4rem;
+  padding-bottom: 3rem;
   background: #f9fafb;
   text-align: center;
 }
@@ -517,7 +517,7 @@ body {
 
 /* World Class Brands */
 .us-landing-page-world-brands {
-  padding: 4rem 0;
+  padding: 3rem 0;
   background: white;
 }
 @media screen and (max-width: 768px) {
@@ -597,7 +597,7 @@ body {
 
 /* Testimonials */
 .us-landing-page-testimonials {
-  padding: 5rem 0;
+  padding: 3rem 0;
   background: #f9fafb;
 }
 
@@ -728,7 +728,7 @@ body {
 
 /* Comparison Section */
 .us-landing-page-comparison {
-  padding: 1rem 0;
+  padding: 3rem 0;
   background: white;
 }
 
@@ -874,7 +874,7 @@ body {
 
 /* FAQ Section */
 .us-landing-page-faq {
-  padding: 5rem 0;
+  padding: 3rem 0;
   background: white;
 }
 

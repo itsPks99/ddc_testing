@@ -1,4 +1,4 @@
-"use client"
+
 
 import { useState, useEffect } from "react"
 import { Menu, X } from "lucide-react"
@@ -118,7 +118,7 @@ export default function Navigation() {
                   activeSection === "faqs" ? "active" : ""
                 }`}
               >
-                Faqs
+                FAQs
               </button>
             </div>
           </div>
