@@ -2,7 +2,7 @@
 
 import "./portfolio.css";
 import React, { useEffect, useRef, useState } from "react";
-import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 
 /* ============================ */
 /* Main Component               */
@@ -12,10 +12,6 @@ export default function Portfolio() {
   const tabsRef = useRef(null);
   const servicesRef = useRef(null);
   const stickySentinelRef = useRef(null);
-
-  // Viewer (embed) state
-  const [viewerOpen, setViewerOpen] = useState(false);
-  const [viewerItem, setViewerItem] = useState({ name: "", url: "" });
 
   // Tabs state
   const [activeTab, setActiveTab] = useState("website-development");
@@ -171,7 +167,6 @@ export default function Portfolio() {
 
   const photographyImages = {
     all: [
-      // ---- existing 25 (unchanged) ----
       { id: 20, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC09527_copy.jpg?v=1756384651", alt: "Packshot / product frame" },
       { id: 1, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/5.jpg?v=1756384649", alt: "Editorial fashion portrait" },
       { id: 2, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08926_copy.jpg?v=1756384649", alt: "Jewelry / product close-up" },
@@ -200,7 +195,7 @@ export default function Portfolio() {
       { id: 10, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_8624_copy.jpg?v=1756384610", alt: "Runway / editorial model" },
       { id: 9, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_2316.jpg?v=1756384622", alt: "Event coverage photo" },
       { id: 17, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08740_copy.jpg?v=1756384658", alt: "Lifestyle brand storytelling" },
-      // ---- NEW items you sent now ----
+      // ---- NEW items ----
       { id: 26, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01246_copy.jpg?v=1756384674", alt: "Lifestyle outdoor scene" },
       { id: 27, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01955_copy.jpg?v=1756384676", alt: "Styled product close-up" },
       { id: 28, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00321_copy.jpg?v=1756384674", alt: "Studio model portrait" },
@@ -222,7 +217,6 @@ export default function Portfolio() {
     ],
 
     product: [
-      // existing
       { id: 2, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08926_copy.jpg?v=1756384649", alt: "Jewelry / product close-up" },
       { id: 3, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00519_copy.jpg?v=1756384643", alt: "Cosmetic / accessory product shot" },
       { id: 5, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC07722_copy.jpg?v=1756384636", alt: "Product on-set / studio" },
@@ -236,7 +230,6 @@ export default function Portfolio() {
       { id: 24, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08681_copy.jpg?v=1756384652", alt: "Styled product shot" },
       { id: 41, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0613_copy_2.jpg?v=1756384666", alt: "Packshot / detail" },
       { id: 25, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00567_copy.jpg?v=1756384650", alt: "Minimal product composition" },
-      // new
       { id: 27, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01955_copy.jpg?v=1756384676", alt: "Styled product close-up" },
       { id: 29, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02595_copy.jpg?v=1756384673", alt: "Product packshot" },
       { id: 33, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01158_copy.jpg?v=1756384672", alt: "Product detail / macro" },
@@ -244,8 +237,6 @@ export default function Portfolio() {
     ],
 
     model: [
-      // existing
-
       { id: 1, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/5.jpg?v=1756384649", alt: "Editorial fashion portrait" },
 
       { id: 7, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/2.jpg?v=1756384632", alt: "Model portrait" },
@@ -255,7 +246,6 @@ export default function Portfolio() {
       { id: 15, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00166_copy.jpg?v=1756384658", alt: "Studio model portrait" },
       { id: 20, category: "product", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC09527_copy.jpg?v=1756384651", alt: "Packshot / product frame" },
       { id: 16, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0765_copy.jpg?v=1756384661", alt: "Fashion editorial pose" },
-      // new
 
       { id: 28, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00321_copy.jpg?v=1756384674", alt: "Studio model portrait" },
       { id: 30, category: "model", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02536_copy_1.jpg?v=1756384673", alt: "Editorial model pose" },
@@ -267,12 +257,10 @@ export default function Portfolio() {
     ],
 
     lifestyle: [
-      // existing
       { id: 4, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/4_1.jpg?v=1756384638", alt: "Lifestyle brand shot" },
       { id: 6, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/4.jpg?v=1756384634", alt: "Lifestyle brand imagery" },
       { id: 14, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08231_copy.jpg?v=1756384658", alt: "Lifestyle outdoor" },
 
-      // new
       { id: 26, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01246_copy.jpg?v=1756384674", alt: "Lifestyle outdoor scene" },
       { id: 31, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC01386_copy.jpg?v=1756384673", alt: "Lifestyle brand storytelling" },
       { id: 34, category: "lifestyle", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC02436_copy.jpg?v=1756384671", alt: "Lifestyle ambience" },
@@ -281,11 +269,9 @@ export default function Portfolio() {
     ],
 
     event: [
-      // existing
       { id: 11, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC09093_copy.jpg?v=1756384662", alt: "Live event highlight" },
       { id: 9, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_2316.jpg?v=1756384622", alt: "Event coverage photo" },
 
-      // new
       { id: 39, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC08151_copy.jpg?v=1756384665", alt: "Event highlight" },
       { id: 43, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC_0839_copy.jpg?v=1756384662", alt: "Event crowd / moment" },
       { id: 13, category: "event", src: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/DSC00367_copy.jpg?v=1756384660", alt: "Backstage / event moment" },
@@ -308,9 +294,9 @@ export default function Portfolio() {
             "/assets/portfolioimages/manidaga/manvidagadesktop3.png",
           ],
           mobileImages: [
-            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-08-29_171302.png?v=1756467805",
-            "/assets/portfolioimages/manidaga/manvidagadesktop2.png",
-            "/assets/portfolioimages/manidaga/manvidagadesktop3.png",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/IMG-20250903-WA0006.jpg?v=1756884660",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/IMG-20250903-WA0008.jpg?v=1756884660",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/WhatsApp_Image_2025-09-03_at_13.08.43_eb488f6a.jpg?v=1756885161",
           ],
           description: "Elegant jewelry website with premium product photography and seamless shopping experience",
         },
@@ -323,9 +309,9 @@ export default function Portfolio() {
             "/assets/portfolioimages/Inara/inaradesktop3.png",
           ],
           mobileImages: [
-            "/assets/portfolioimages/Inara/inaradesktop1.png",
-            "/assets/portfolioimages/Inara/inaradesktop2.png",
-            "/assets/portfolioimages/Inara/inaradesktop3.png",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/IMG-20250903-WA0009.jpg?v=1756893629",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/IMG-20250903-WA0007.jpg?v=1756893631",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/IMG-20250903-WA0010.jpg?v=1756893631",
           ],
           description: "Vibrant traditional Indian fashion website with mobile-responsive design",
         },
@@ -338,9 +324,9 @@ export default function Portfolio() {
             "/assets/portfolioimages/julyissue/julyissuedesktop3.png",
           ],
           mobileImages: [
-            "/assets/portfolioimages/julyissue/julyissuedesktop1.png",
-            "/assets/portfolioimages/julyissue/julyissuedesktop2.png",
-            "/assets/portfolioimages/julyissue/julyissuedesktop3.png",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/IMG-20250903-WA0009.jpg?v=1756893629",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/IMG-20250903-WA0007.jpg?v=1756893631",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/IMG-20250903-WA0010.jpg?v=1756893631",
           ],
           description: "Complete fashion e-commerce solution with advanced filtering and product showcase",
         },
@@ -363,9 +349,9 @@ export default function Portfolio() {
             "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/3.png?v=1756474838",
           ],
           mobileImages: [
-            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/6.png?v=1756474836",
-            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/2_334cc44c-cbcf-4e40-8088-8692a3dfd445.png?v=1756474838",
-            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/3.png?v=1756474838",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/5_d86d4031-a37a-46de-9baf-14ed67a395bc.png?v=1756901594",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/1_083a66a5-a29a-46a3-a409-31bebb8a7789.png?v=1756901594",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/2_57483164-1871-4987-8243-a1536ce8a362.png?v=1756901593",
           ],
           description:
             "Managing the social presence and content strategy for luxury fashion and lifestyle brands including Samsaragin, DrinkSober, and 121Couture",
@@ -381,9 +367,9 @@ export default function Portfolio() {
           ],
 
           mobileImages: [
-            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/4.png?v=1756474837",
-            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/5.png?v=1756474838",
-            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/1_d123606c-48be-4981-9c5a-6d8133165758.png?v=1756474838",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/4_874522fa-4242-4182-a7dc-81efac564450.png?v=1756901591",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/3_7da84734-3d25-4001-833c-f475314b717f.png?v=1756901588",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/website_6_grid_1.png?v=1756895606",
           ],
           description:
             "Creating and curating visually stunning content that tells a story and engages audiences across platforms.",
@@ -453,29 +439,12 @@ export default function Portfolio() {
             "/assets/portfolioimages/Performance/perfonrmance3.png",
           ],
           mobileImages: [
-            "/assets/portfolioimages/Performance/perfonrmance1.png",
-            "/assets/portfolioimages/Performance/perfonrmance2.png",
-            "/assets/portfolioimages/Performance/perfonrmance3.png",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-03_182636.png?v=1756904322",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-03_182548.png?v=1756904321",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-03_182658.png?v=1756904320",
           ],
           description:
             "₹125,558.40 revenue generated with 85% conversion rate improvement and comprehensive performance tracking",
-        },
-
-        {
-          name: "Ad Campaigns",
-          type: "Targeted Ad Strategies",
-          images: [
-            "/assets/portfolioimages/Performance/perfonrmance4.png",
-            "/assets/portfolioimages/Performance/perfonrmance5.png",
-            "/assets/portfolioimages/Performance/perfonrmance6.png",
-          ],
-          mobileImages: [
-            "/assets/portfolioimages/Performance/perfonrmance4.png",
-            "/assets/portfolioimages/Performance/perfonrmance5.png",
-            "/assets/portfolioimages/Performance/perfonrmance6.png",
-          ],
-          description:
-            "Strategically crafted ad campaigns across Google, Facebook, and Instagram driving high engagement and conversions",
         },
       ],
     },
@@ -492,12 +461,12 @@ export default function Portfolio() {
           images: [
             "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_121250.png?v=1756709106",
             "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_121408.png?v=1756709106",
-            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_120918.png?v=1756709107",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/WhatsApp_Image_2025-09-03_at_18.50.30_20b42e97.jpg?v=1756905685",
           ],
           mobileImages: [
-            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_121250.png?v=1756709106",
-            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_121408.png?v=1756709106",
-            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_120918.png?v=1756709107",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/WhatsApp_Image_2025-09-03_at_18.50.31_13aec277.jpg?v=1756905685",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/WhatsApp_Image_2025-09-03_at_18.50.31_3fe92019.jpg?v=1756905685",
+            // "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_120918.png?v=1756709107",
           ],
           description:
             "Comprehensive brand identity development including logo design, color palette, typography, and brand guidelines for luxury and lifestyle brands",
@@ -511,9 +480,9 @@ export default function Portfolio() {
             "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_120700.png?v=1756709107",
           ],
           mobileImages: [
-            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_120951.png?v=1756709107",
-            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_120901.png?v=1756709107",
-            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_120700.png?v=1756709107",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/WhatsApp_Image_2025-09-03_at_18.39.39_a9a81175.jpg?v=1756905296",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/IMG-20250903-WA0018_1.jpg?v=1756905296",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/WhatsApp_Image_2025-09-03_at_18.39.40_f04423c6.jpg?v=1756905296",
           ],
           description:
             "Premium packaging solutions that enhance product appeal and create memorable unboxing experiences for fashion, jewelry, and lifestyle brands",
@@ -524,7 +493,7 @@ export default function Portfolio() {
     },
 
   ];
-
+  
   /* ---- UI handlers ---- */
   const handleTabClick = (slug) => {
     setActiveTab(slug);
@@ -535,12 +504,6 @@ export default function Portfolio() {
   };
 
   const handleDropdownChange = (e) => handleTabClick(e.target.value);
-
-  const handleLinkClick = (link) => {
-    // Always try to open in modal; if the site blocks iframes, our viewer shows a fallback.
-    setViewerItem(link);
-    setViewerOpen(true);
-  };
 
   const activeService = services.find((s) => s.slug === activeTab);
 
@@ -627,6 +590,7 @@ export default function Portfolio() {
                   <h3 className="portfolio-service-title">{activeService.name}</h3>
                 </div>
                 <p className="portfolio-service-description">{activeService.description}</p>
+                
 
                 {activeService.type === "video" ? (
                   <VideoCarousel key={`video-${activeService.slug}`} videos={activeService.videos} />
@@ -655,17 +619,18 @@ export default function Portfolio() {
                           <h5 className="portfolio-category-heading">{category} <br /></h5>
                           <div className="portfolio-links-list">
                             {links.map((link, linkIndex) => (
-                              <button
+                              <a
                                 key={`${activeService.slug}-${category}-${linkIndex}`}
-                                type="button"
+                                href={link.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="portfolio-service-link as-button"
                                 data-animate="fade-up"
-                                style={{ animationDelay: `${linkIndex * 0.1}s` }}
-                                onClick={() => handleLinkClick(link)}
-                                aria-label={`Open ${link.name} in viewer`}
+                                style={{ animationDelay: `${linkIndex * 0.1}s`,textDecoration:"none" }}
+                                aria-label={`Open ${link.name} in new tab`}
                               >
                                 {link.name}
-                              </button>
+                              </a>
                             ))}
                           </div>
                         </div>
@@ -674,8 +639,10 @@ export default function Portfolio() {
                   </div>
                 )}
               </div>
+
+              {/* Connect With Us */}
               <div style={{ textAlign: "center", paddingTop: "50px" }}>
-                <h1 style={{paddingBottom:"20px"}}>Connect With Us</h1>
+                <h1 style={{ paddingBottom: "20px" }}>Connect With Us</h1>
                 <p>We would love to hear from you! Reach out to us through any of the platforms below:</p>
                 <ul
                   style={{
@@ -683,23 +650,28 @@ export default function Portfolio() {
                     padding: 0,
                     display: "flex",
                     gap: "20px",
-                    justifyContent: "center", // centers the icons horizontally
+                    justifyContent: "center",
                     marginTop: "20px",
                   }}
                 >
                   <li>
-                    <a href="https://www.facebook.com/yourpage" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.facebook.com/delhidigitalco/" target="_blank" rel="noopener noreferrer">
                       <FaFacebook size={40} color="#1877F2" />
                     </a>
                   </li>
                   <li>
-                    <a href="https://wa.me/yourphonenumber" target="_blank" rel="noopener noreferrer">
+                    <a href="https://wa.me/+919205110208" target="_blank" rel="noopener noreferrer">
                       <FaWhatsapp size={40} color="#25D366" />
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.instagram.com/yourpage" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.instagram.com/delhidigitalco/?hl=en" target="_blank" rel="noopener noreferrer">
                       <FaInstagram size={40} color="#C13584" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://in.linkedin.com/company/delhidigitalco" target="_blank" rel="noopener noreferrer">
+                      <FaLinkedin size={40} />
                     </a>
                   </li>
                 </ul>
@@ -709,93 +681,9 @@ export default function Portfolio() {
           )}
         </div>
       </section>
-
-      {/* Embedded Site Viewer (Modal) */}
-      {viewerOpen && (
-        <EmbeddedViewer
-          item={viewerItem}
-          onClose={() => setViewerOpen(false)}
-        />
-      )}
     </div>
   );
 }
-
-/* ============================ */
-/* Embedded Viewer (fixes embed issue) */
-/* ============================ */
-function EmbeddedViewer({ item, onClose }) {
-  const [loaded, setLoaded] = useState(false);
-  const [showFallback, setShowFallback] = useState(false);
-
-  // Close with ESC
-  useEffect(() => {
-    const onKey = (e) => e.key === "Escape" && onClose();
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [onClose]);
-
-  // If the iframe never loads, show fallback (covers X-Frame-Options / frame-ancestors cases)
-  useEffect(() => {
-    setLoaded(false);
-    setShowFallback(false);
-    const t = setTimeout(() => {
-      if (!loaded) setShowFallback(true);
-    }, 2500); // a little grace period for slower sites
-    return () => clearTimeout(t);
-  }, [item.url, loaded]);
-
-  return (
-    <div className="portfolio-viewer-overlay" role="dialog" aria-modal="true" aria-label={item.name}>
-      <div className="portfolio-viewer">
-        <div className="portfolio-viewer-header">
-          <span className="portfolio-viewer-title">{item.name}</span>
-          <div className="portfolio-viewer-actions">
-            <a
-              className="portfolio-open-new"
-              href={item.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Open in new tab"
-            >
-              Open in New Tab
-            </a>
-            <button className="portfolio-viewer-close" onClick={onClose} aria-label="Close viewer">
-              ✕
-            </button>
-          </div>
-        </div>
-
-        <div className="portfolio-iframe-container">
-          {/* IMPORTANT: no sandbox attribute, no contentDocument probing */}
-          <iframe
-            className="portfolio-viewer-iframe"
-            src={item.url}
-            loading="lazy"
-            title={item.name}
-            allow="clipboard-write; encrypted-media; picture-in-picture; fullscreen"
-            referrerPolicy="no-referrer-when-downgrade"
-            onLoad={() => setLoaded(true)}
-          />
-          <div className={`portfolio-iframe-fallback ${showFallback ? "show" : ""}`}>
-            <div className="portfolio-cors-message">
-              <div className="portfolio-cors-icon">🔒</div>
-              <h3>Site Protection Active</h3>
-              <p>
-                This website prevents embedding inside other sites (X-Frame-Options / frame-ancestors policy).
-                You can still visit it directly in a new tab.
-              </p>
-              <a href={item.url} target="_blank" rel="noopener noreferrer" className="portfolio-fallback-link">
-                Visit {item.name} →
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 
 /* ============================ */
 /* Video Carousel (ratio-safe)  */
@@ -1049,7 +937,7 @@ function VideoCarousel({ videos }) {
             </svg>
           </button>
 
-          <div className="portfolio-video-info-center portfolio-social-info">
+        <div className="portfolio-video-info-center portfolio-social-info">
             <span className="portfolio-video-counter portfolio-social-counter">
               {currentIndex + 1} / {videos.length}
             </span>
@@ -1088,7 +976,6 @@ function VideoCarousel({ videos }) {
     </div>
   );
 }
-
 
 /* ============================ */
 /* Photo + Video Section        */
@@ -1206,6 +1093,10 @@ function FullScreenProject({ project }) {
               key={index}
               className={`portfolio-project-image-slide ${index === currentImageIndex ? "portfolio-active-slide" : ""}`}
             >
+              {/* <div style={{padding:"15px"}}>
+                <h2 style={{padding:"10px"}}>{project.name}</h2>
+                
+              </div> */}
               <img src={image || "/placeholder.svg"} alt={`${project.name} - Image ${index + 1}`} className="portfolio-fullscreen-project-image" />
             </div>
           ))}
