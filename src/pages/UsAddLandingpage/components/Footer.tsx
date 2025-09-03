@@ -47,7 +47,7 @@ export default function Footer() {
               <button className="us-landing-page-btn us-landing-page-btn-outline">
                 <Phone className="us-landing-page-comparison-icon" />
                 <a
-                  style={{ color: "#9ca3af", textDecoration: "none" }}
+                  style={{ color: "#959da4ff", textDecoration: "none" }}
                   href="tel:+919205110208"
                 >
                   Call Us Now

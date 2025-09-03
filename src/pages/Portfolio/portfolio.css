@@ -428,6 +428,7 @@
 .portfolio-fullscreen-project-info {
   text-align: left;
   z-index: 2;
+  display: none;
 }
 .portfolio-fullscreen-project-name {
   font-size: 2.2rem;
@@ -452,9 +453,9 @@
 }
 
 .portfolio-fullscreen-project-images {
-  position: relative;
+  /* position: relative;
   height: 70vh;
-  width: 100%;
+  width: 100%; */
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(2, 132, 199, 0.12);

@@ -56,7 +56,7 @@ export default function TestimonialsSection() {
       name: "Margarita",
       role: "Founder - Senthera World",
       rating: 5,
-      text: "Our Shopify store is now a real asset to our business thanks to this agency. They combined beautiful design with smart functionality and supported it with solid marketing. Everything works seamlessly—from product uploads to order tracking.",
+      text: "Our Shopify store is now a real asset to our growing business thanks to this agency. They combined beautiful design with smart functionality and supported it with solid marketing. Everything works seamlessly from product uploads to order tracking.",
       avatar: "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/gettyimages-1987655119-612x612.jpg?v=1756761795",
     },
   ]

@@ -27,7 +27,7 @@ export default function ScheduleCallSection() {
               title="On boarding Call"
               avatars={[
                 // swapped images (you can replace with your own)
-                "https://images.unsplash.com/photo-1531123414780-f7422ead5769?q=80&w=128", // team huddle
+                "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/1-min.jpg?v=1756878971", // team huddle
                 "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=128",
                 "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=128",
               ]}
@@ -49,7 +49,7 @@ export default function ScheduleCallSection() {
                 className="stage-card__poster"
                 alt="Host in a discovery call"
                 /* swapped poster (replace with your brand image if you prefer) */
-                src="https://cdn.shopify.com/s/files/1/0596/9965/8889/files/bggetintouch.png?v=1756816810"
+                src="https://cdn.shopify.com/s/files/1/0596/9965/8889/files/callus.jpg?v=1756879876"
               />
 
               {/* Floating participants */}
