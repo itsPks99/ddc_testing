@@ -4,6 +4,7 @@ import "./portfolio.css";
 import React, { useEffect, useRef, useState } from "react";
 import { FaFacebook, FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 
+
 /* ============================ */
 /* Main Component               */
 /* ============================ */
@@ -550,6 +551,7 @@ export default function Portfolio() {
               value={activeTab}
               onChange={handleDropdownChange}
               aria-label="Select service"
+              style={{fontSize: "1.1rem" , backgroundPosition: "right 1rem center"}}
             >
               {services.map((service) => (
                 <option key={service.slug} value={service.slug}>
@@ -642,7 +644,7 @@ export default function Portfolio() {
 
               {/* Connect With Us */}
               <div style={{ textAlign: "center", paddingTop: "50px" }}>
-                <h1 style={{ paddingBottom: "20px" }}>Connect With Us</h1>
+                <h1 style={{ paddingBottom: "20px",fontSize:"1.2rem"  }}>CONNECT WITH US</h1>
                 <p>We would love to hear from you! Reach out to us through any of the platforms below:</p>
                 <ul
                   style={{
@@ -655,23 +657,24 @@ export default function Portfolio() {
                   }}
                 >
                   <li>
-                    <a href="https://www.facebook.com/delhidigitalco/" target="_blank" rel="noopener noreferrer">
-                      <FaFacebook size={40} color="#1877F2" />
+                    <a href="https://wa.me/+919205110208" target="_blank" rel="noopener noreferrer">
+                      <FaWhatsapp size={40} color="#0e0e0eff" />
                     </a>
                   </li>
                   <li>
-                    <a href="https://wa.me/+919205110208" target="_blank" rel="noopener noreferrer">
-                      <FaWhatsapp size={40} color="#25D366" />
+                    <a href="https://www.facebook.com/delhidigitalco/" target="_blank" rel="noopener noreferrer">
+                      <FaFacebook size={40} color="#0e0e0eff" />
                     </a>
                   </li>
+                  
                   <li>
                     <a href="https://www.instagram.com/delhidigitalco/?hl=en" target="_blank" rel="noopener noreferrer">
-                      <FaInstagram size={40} color="#C13584" />
+                      <FaInstagram size={40} color="#0e0e0eff" />
                     </a>
                   </li>
                   <li>
                     <a href="https://in.linkedin.com/company/delhidigitalco" target="_blank" rel="noopener noreferrer">
-                      <FaLinkedin size={40} />
+                      <FaLinkedin size={40} color="#0e0e0eff" />
                     </a>
                   </li>
                 </ul>
