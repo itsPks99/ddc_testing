@@ -9,10 +9,10 @@
 }
 
 :root {
-  --brand-1: #0a0b0b; /* sky-500 */
-  --brand-2: #1d2021; /* sky-600 */
-  --brand-3: #27343b; /* sky-700 */
-  --text: #0b0f17;
+  --brand-1: #1a2121; /* sky-500 */
+  --brand-2: #4e5153; /* sky-600 */
+  --brand-3: #323334; /* sky-700 */
+  --text: #070a0f;
   --muted: #121213; /* gray-500 */
   --border: #e5e7eb; /* gray-200 */
   --panel: #f8fafc; /* slate-50 */
@@ -148,6 +148,7 @@
   box-shadow: none;
   white-space: nowrap;
   flex-shrink: 0;
+  box-shadow: 4px 4px 4px 4px rgba(239, 241, 241, 0.3);
 }
 .portfolio-tab:hover {
   border-color: var(--brand-1);
@@ -160,7 +161,7 @@
   background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
   color: white;
   border-color: var(--brand-2);
-  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+  box-shadow: 4px 4px 4px 4px rgba(149, 148, 148, 0.3);
 }
 
 .portfolio-tab-active:hover {
@@ -580,8 +581,8 @@
   transform: scale(1.1);
 }
 .portfolio-image-dots-desktop .portfolio-dot-active {
-  background: var(--brand-1);
-  border-color: var(--brand-1);
+  background:rgb(76, 75, 76) ;
+  border-color: rgb(70, 69, 70);
 }
 @media (max-width: 768px) {
   .portfolio-image-dots {
@@ -1762,3 +1763,58 @@
 .portfolio-video-player-container,
 .portfolio-social-player { background: transparent !important; }
 
+
+/* ===== Photography shimmer loader (YouTube-like) — fixed ===== */
+.portfolio-photo-imgwrap {
+  position: relative;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 10px;           /* keep same spacing you had on the old <img> */
+  min-height: 220px;          /* reserve space so grid doesn’t jump */
+}
+.portfolio-photo-imgwrap.is-loaded {
+  min-height: 0;              /* release the reserved space after load */
+}
+
+.portfolio-photo-skeleton {
+  position: absolute;         /* <-- overlay ON TOP of the image */
+  inset: 0;
+  background: #e9eef3;
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.portfolio-photo-shimmer {
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.6) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  animation: portfolioPhotoShimmer 1.3s infinite;
+}
+@keyframes portfolioPhotoShimmer {
+  100% { transform: translateX(100%); }
+}
+
+.portfolio-photo-meta {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 3;
+}
+.portfolio-photo-line {
+  height: 10px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.6);
+}
+.portfolio-photo-line.short { width: 60%; }

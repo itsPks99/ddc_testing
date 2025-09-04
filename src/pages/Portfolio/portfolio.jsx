@@ -467,7 +467,7 @@ export default function Portfolio() {
           mobileImages: [
             "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/WhatsApp_Image_2025-09-03_at_18.50.31_13aec277.jpg?v=1756905685",
             "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/WhatsApp_Image_2025-09-03_at_18.50.31_3fe92019.jpg?v=1756905685",
-            // "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_120918.png?v=1756709107",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/WhatsApp_Image_2025-09-03_at_18.50.30_20b42e97.jpg?v=1756905685",
           ],
           description:
             "Comprehensive brand identity development including logo design, color palette, typography, and brand guidelines for luxury and lifestyle brands",
@@ -494,7 +494,7 @@ export default function Portfolio() {
     },
 
   ];
-  
+
   /* ---- UI handlers ---- */
   const handleTabClick = (slug) => {
     setActiveTab(slug);
@@ -551,7 +551,7 @@ export default function Portfolio() {
               value={activeTab}
               onChange={handleDropdownChange}
               aria-label="Select service"
-              style={{fontSize: "1.1rem" , backgroundPosition: "right 1rem center"}}
+              style={{ fontSize: "1.1rem", backgroundPosition: "right 1rem center" }}
             >
               {services.map((service) => (
                 <option key={service.slug} value={service.slug}>
@@ -592,7 +592,7 @@ export default function Portfolio() {
                   <h3 className="portfolio-service-title">{activeService.name}</h3>
                 </div>
                 <p className="portfolio-service-description">{activeService.description}</p>
-                
+
 
                 {activeService.type === "video" ? (
                   <VideoCarousel key={`video-${activeService.slug}`} videos={activeService.videos} />
@@ -628,7 +628,7 @@ export default function Portfolio() {
                                 rel="noopener noreferrer"
                                 className="portfolio-service-link as-button"
                                 data-animate="fade-up"
-                                style={{ animationDelay: `${linkIndex * 0.1}s`,textDecoration:"none" }}
+                                style={{ animationDelay: `${linkIndex * 0.1}s`, textDecoration: "none" }}
                                 aria-label={`Open ${link.name} in new tab`}
                               >
                                 {link.name}
@@ -644,7 +644,7 @@ export default function Portfolio() {
 
               {/* Connect With Us */}
               <div style={{ textAlign: "center", paddingTop: "50px" }}>
-                <h1 style={{ paddingBottom: "20px",fontSize:"1.2rem"  }}>CONNECT WITH US</h1>
+                <h1 style={{ paddingBottom: "20px", fontSize: "1.2rem" }}>CONNECT WITH US</h1>
                 <p>We would love to hear from you! Reach out to us through any of the platforms below:</p>
                 <ul
                   style={{
@@ -666,7 +666,7 @@ export default function Portfolio() {
                       <FaFacebook size={40} color="#0e0e0eff" />
                     </a>
                   </li>
-                  
+
                   <li>
                     <a href="https://www.instagram.com/delhidigitalco/?hl=en" target="_blank" rel="noopener noreferrer">
                       <FaInstagram size={40} color="#0e0e0eff" />
@@ -940,7 +940,7 @@ function VideoCarousel({ videos }) {
             </svg>
           </button>
 
-        <div className="portfolio-video-info-center portfolio-social-info">
+          <div className="portfolio-video-info-center portfolio-social-info">
             <span className="portfolio-video-counter portfolio-social-counter">
               {currentIndex + 1} / {videos.length}
             </span>
@@ -981,6 +981,66 @@ function VideoCarousel({ videos }) {
 }
 
 /* ============================ */
+/* Photo Loader shimmer       */
+
+function PhotoSkeletonImage({ src, alt, minDurationMs = 180 }) {
+  const [loaded, setLoaded] = React.useState(false);
+  const imgRef = React.useRef(null);
+  const startRef = React.useRef(performance.now());
+
+  // Reset shimmer every time the src changes (so it appears on each load)
+  React.useEffect(() => {
+    setLoaded(false);
+    startRef.current = performance.now();
+  }, [src]);
+
+  const settle = React.useCallback(() => {
+    const elapsed = performance.now() - startRef.current;
+    const left = Math.max(0, minDurationMs - elapsed);
+    // Ensure shimmer is visible at least minDurationMs
+    const id = setTimeout(() => setLoaded(true), left);
+    return () => clearTimeout(id);
+  }, [minDurationMs]);
+
+  const handleLoad = React.useCallback(() => { settle(); }, [settle]);
+  const handleError = React.useCallback(() => { settle(); }, [settle]);
+
+  return (
+    <div className={`portfolio-photo-imgwrap ${loaded ? "is-loaded" : ""}`} aria-busy={!loaded}>
+      {/* Real image (renders immediately under shimmer) */}
+      <img
+        ref={imgRef}
+        src={src}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+        onLoad={handleLoad}
+        onError={handleError}
+        style={{
+          width: "100%",
+          height: "auto",
+          objectFit: "cover",
+          borderRadius: "8px",
+          opacity: loaded ? 1 : 0.01,   // keep in flow, avoid layout shifts
+          transition: "opacity .25s ease"
+        }}
+      />
+      {/* Shimmer overlay (always shown while loading, even if cached) */}
+      {!loaded && (
+        <div className="portfolio-photo-skeleton" role="status" aria-label="Loading image">
+          <div className="portfolio-photo-shimmer" />
+          <div className="portfolio-photo-meta">
+            <span className="portfolio-photo-line" />
+            <span className="portfolio-photo-line short" />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+
+
 /* Photo + Video Section        */
 /* ============================ */
 function PhotoVideoSection({ service }) {
@@ -1019,7 +1079,8 @@ function PhotoVideoSection({ service }) {
           ))}
         </div>
 
-        <div className="" style={{ columns: "3 100px", columnGap: '10px' }}>
+        {/* masonry via CSS columns (unchanged) */}
+        <div className="" style={{ columns: "3 100px", columnGap: "10px" }}>
           {currentImages.map((image, index) => (
             <div
               key={image.id}
@@ -1027,16 +1088,8 @@ function PhotoVideoSection({ service }) {
               data-animate="fade-up"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <img
-                src={image.src || `/placeholder.svg?height=400&width=300&query=${image.alt}`}
-                alt={image.alt}
-                className=""
-                loading="lazy"
-                style={{ objectFit: "cover", width: "100%", marginTop: '10px', borderRadius: '8px' }}
-              />
-              {/* <div className="portfolio-photo-overlay">
-                <div className="portfolio-photo-category">{image.category.toUpperCase()}</div>
-              </div> */}
+
+              <PhotoSkeletonImage src={image.src} alt={image.alt} />
             </div>
           ))}
         </div>
@@ -1044,6 +1097,7 @@ function PhotoVideoSection({ service }) {
     </div>
   );
 }
+
 
 /* ============================ */
 /* Sticky Project Section       */
@@ -1076,18 +1130,7 @@ function FullScreenProject({ project }) {
           <p className="portfolio-fullscreen-project-type">{project.type}</p>
           <p className="portfolio-fullscreen-project-description">{project.description}</p>
 
-          {isMobile && images.length > 1 && (
-            <div className="portfolio-image-dots">
-              {images.map((_, index) => (
-                <button
-                  key={index}
-                  className={`portfolio-dot ${index === currentImageIndex ? "portfolio-dot-active" : ""}`}
-                  onClick={() => setCurrentImageIndex(index)}
-                  aria-label={`Go to image ${index + 1}`}
-                />
-              ))}
-            </div>
-          )}
+
         </div>
 
         <div className="portfolio-fullscreen-project-images">
@@ -1100,6 +1143,18 @@ function FullScreenProject({ project }) {
                 <h2 style={{padding:"10px"}}>{project.name}</h2>
                 
               </div> */}
+              {isMobile && images.length > 1 && (
+                <div style={{paddingBottom:"10px"}} className="portfolio-image-dots">
+                  {images.map((_, index) => (
+                    <button
+                      key={index}
+                      className={`portfolio-dot ${index === currentImageIndex ? "portfolio-dot-active" : ""}`}
+                      onClick={() => setCurrentImageIndex(index)}
+                      aria-label={`Go to image ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              )}
               <img src={image || "/placeholder.svg"} alt={`${project.name} - Image ${index + 1}`} className="portfolio-fullscreen-project-image" />
             </div>
           ))}
