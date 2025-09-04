@@ -17,7 +17,7 @@
   --border: #e5e7eb; /* gray-200 */
   --panel: #f8fafc; /* slate-50 */
   --panel-strong: #f1f5f9; /* slate-100 */
-  --shadow: 0 10px 30px rgba(2, 132, 199, 0.08);
+  --shadow: 0 10px 30px rgba(66, 67, 67, 0.08);
 }
 
 
@@ -69,7 +69,7 @@
 .portfolio-logo-image {
   width: 320px;
   height: auto;
-  filter: drop-shadow(0 10px 20px rgba(2, 132, 199, 0.15));
+  filter: drop-shadow(0 10px 20px rgba(37, 37, 37, 0.15));
 }
 
 @media (max-width: 1024px) {
@@ -148,7 +148,7 @@
   box-shadow: none;
   white-space: nowrap;
   flex-shrink: 0;
-  box-shadow: 4px 4px 4px 4px rgba(239, 241, 241, 0.3);
+  /* box-shadow: 4px 4px 4px 4px rgba(239, 241, 241, 0.3); */
 }
 .portfolio-tab:hover {
   border-color: var(--brand-1);
@@ -161,12 +161,12 @@
   background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
   color: white;
   border-color: var(--brand-2);
-  box-shadow: 4px 4px 4px 4px rgba(149, 148, 148, 0.3);
+  /* box-shadow: 4px 4px 4px 4px rgba(149, 148, 148, 0.3); */
 }
 
 .portfolio-tab-active:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.4);
+  /* box-shadow: 0 6px 16px rgba(2, 132, 199, 0.4); */
 }
 
 /* Responsive sticky tabs */
@@ -348,7 +348,7 @@
 }
 .portfolio-links-category-section:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(2, 132, 199, 0.1);
+  box-shadow: 0 12px 30px rgba(63, 63, 63, 0.1);
 }
 .portfolio-category-heading {
   font-size: 0.95rem;
@@ -387,7 +387,7 @@
   border-color: var(--brand-1);
   color: var(--brand-3);
   transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(2, 132, 199, 0.12);
+  box-shadow: 0 8px 18px rgba(68, 69, 69, 0.12);
 }
 
 /* ===== Projects (sticky slides) ===== */
@@ -472,7 +472,7 @@
   width: 100%; */
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(2, 132, 199, 0.12);
+  box-shadow: 0 20px 40px rgba(74, 74, 74, 0.12);
 }
 .portfolio-project-image-slide {
   position: absolute;
@@ -658,7 +658,7 @@
   border-radius: 14px;
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.12);
+  box-shadow: 0 10px 30px rgba(50, 50, 50, 0.12);
 }
 .portfolio-video-slide.portfolio-center {
   width: 300px;
@@ -688,7 +688,7 @@
 }
 .portfolio-video-slide:hover {
   transform: translateX(0) scale(1.04);
-  box-shadow: 0 15px 40px rgba(2, 132, 199, 0.18);
+  box-shadow: 0 15px 40px rgba(60, 61, 61, 0.18);
 }
 .portfolio-video-thumbnail-wrapper {
   position: relative;
@@ -793,12 +793,12 @@
   font-weight: 700;
   cursor: pointer;
   transition: all .2s ease;
-  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.25);
+  box-shadow: 0 6px 16px rgba(55, 55, 55, 0.25);
   letter-spacing: .03em;
 }
 .portfolio-watch-videos-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 24px rgba(2, 132, 199, 0.3);
+  box-shadow: 0 10px 24px rgba(60, 60, 60, 0.3);
 }
 
 /* Enhanced video carousel mobile responsiveness - fixed cropping and improved fit */
@@ -1256,7 +1256,10 @@
   background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
   color: white;
   border-color: var(--brand-2);
-  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+  box-shadow: 0 4px 12px rgba(38, 38, 38, 0.3);
+}
+.portfolio-photo-tab-active:hover{
+  color:  white;
 }
 
 /* Photography grid - responsive masonry layout */
@@ -1529,7 +1532,7 @@
 /* When we *force* unstick near the end sentinel */
 .portfolio-tabs-unstick {
   position: relative !important;
-  box-shadow: none !important;
+  /* box-shadow: none !important; */
   background: transparent !important;
   transform: none !important;
 }

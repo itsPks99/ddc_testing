@@ -462,7 +462,7 @@ export default function Portfolio() {
           images: [
             "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_121250.png?v=1756709106",
             "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_121408.png?v=1756709106",
-            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/WhatsApp_Image_2025-09-03_at_18.50.30_20b42e97.jpg?v=1756905685",
+            "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/Screenshot_2025-09-01_120918.png?v=1756709107",
           ],
           mobileImages: [
             "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/WhatsApp_Image_2025-09-03_at_18.50.31_13aec277.jpg?v=1756905685",
@@ -1136,6 +1136,7 @@ function FullScreenProject({ project }) {
         <div className="portfolio-fullscreen-project-images">
           {images.map((image, index) => (
             <div
+              style={{paddingBottom:"30px"}}
               key={index}
               className={`portfolio-project-image-slide ${index === currentImageIndex ? "portfolio-active-slide" : ""}`}
             >
