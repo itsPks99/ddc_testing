@@ -22,12 +22,12 @@ export default function CaseStudiesSection() {
 
   // EXACTLY six images → displayed as 2 cards (3 per card on desktop, 2 per card on phones)
   const images = [
-    "/assets/us-landing-page/Casestudies-1/Casestudies-1(1).png",
-    "/assets/us-landing-page/Casestudies-1/Casestudies-1(2).png",
-    "/assets/us-landing-page/Casestudies-1/Casestudies-1(3).png", // replace if needed
-    "/assets/us-landing-page/Casestudies-2/Casestudies-2(1).png",
-    "/assets/us-landing-page/Casestudies-2/Casestudies-2(2).png",
-    "/assets/us-landing-page/Casestudies-2/Casestudies-2(3).png", // replace if needed
+    "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/IMG-20250904-WA0006.jpg?v=1756986849",
+    "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/IMG-20250904-WA0010_291e1182-d2fe-4082-8104-d38e12a1e62e.jpg?v=1756987566",
+    "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/IMG-20250904-WA0011.jpg?v=1756986923", // replace if needed
+    "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/IMG-20250904-WA0007.jpg?v=1756986922",
+    "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/IMG-20250904-WA0007.jpg?v=1756986922",
+    "https://cdn.shopify.com/s/files/1/0596/9965/8889/files/IMG-20250904-WA0009.jpg?v=1756986922", // replace if needed
   ].filter(Boolean);
 
   // Split into two groups of three
@@ -52,7 +52,7 @@ export default function CaseStudiesSection() {
         /* Phone frames inside each card */
         .cs-images { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 1.8vw, 24px); align-items: start; justify-items: stretch; }
         .phone {aspect-ratio: 9 / 19; background:#fff; border-radius: 20px; padding: clamp(10px, 1.2vw, 14px); border: 1px solid rgba(2,6,23,.08); box-shadow: 0 12px 28px rgba(2,6,23,.18); display: flex; align-items: flex-start; justify-content: center; }
-        .phone__img { max-height: 100%; width: 100%; height: 100%; object-fit: contain; object-position: top center; border-radius: 12px; display:block; }
+        .phone__img { max-height: 100%; width: 100%; height: 100%; object-fit: fill; object-position: top center; border-radius: 12px; display:block; }
         .cs-hide-mobile { display:block; }
 
         /* Responsive: stack the two cards, and show only 2 images per card */

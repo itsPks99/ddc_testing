@@ -270,7 +270,67 @@ body {
 
 .us-landing-page-text-pink {
   color: #ec4899;
+}  
+
+
+/*for the foem embad*?
+
+/* --- NEW: hero form styles --- */
+.us-landing-page-hero-form {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 30px rgba(2, 6, 23, .06);
+  border-radius: 14px;
+  padding: 16px;
+  margin: 0 auto 16px auto;
+  max-width: 760px;
+  text-align: left;
 }
+
+.hero-form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+@media (min-width: 768px) {
+  .hero-form-row:first-child {
+    grid-template-columns: 1fr 1fr; /* name + email side by side on md+ */
+  }
+}
+
+.hero-input,
+.hero-textarea {
+  width: 100%;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color .2s ease;
+}
+
+.hero-input:focus,
+.hero-textarea:focus {
+  border-color: #d1d5db;
+}
+
+.hero-form-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hero-form-status {
+  font-size: 0.9rem;
+}
+
+.hero-form-status.ok { color: #16a34a; }
+.hero-form-status.err { color: #dc2626; }
+
 
 /* Badge */
 .us-landing-page-badge {
@@ -311,7 +371,7 @@ body {
 
 @media (min-width: 768px) {
   .us-landing-page-metrics-grid {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -1053,7 +1113,7 @@ body {
 .us-landing-page-footer-bottom {
   border-top: 1px solid #374151;
   padding-top: 2rem;
-  display: flex;
+  /* display: flex; */
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
@@ -1062,6 +1122,7 @@ body {
 
 .us-landing-page-footer-bottom p {
   color: #9ca3af;
+  align-items: center;
 }
 
 /* Responsive Design */

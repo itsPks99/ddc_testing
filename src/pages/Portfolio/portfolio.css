@@ -291,11 +291,16 @@
   color: #0f0f0f;
   margin: 0;
   letter-spacing: 0.05em;
+  /* font-family: 'Gilroy-Bold', sans-serif !important; */
 }
 @media screen and (max-width: 768px) {
   .portfolio-service-title {
     font-size: 1.5rem;
   }
+  .portfolio-service-title-bar {
+  padding: 2px 6px;
+  margin: 0 auto 8px;
+}
   
 }
 .portfolio-service-description {

@@ -45,7 +45,7 @@ export default function Footer() {
               </button>
 
               <button className="us-landing-page-btn us-landing-page-btn-outline">
-                <Phone className="us-landing-page-comparison-icon" />
+                {/* <Phone className="us-landing-page-comparison-icon" /> */}
                 <a
                   style={{ color: "#959da4ff", textDecoration: "none" }}
                   href="tel:+919205110208"
@@ -82,15 +82,15 @@ export default function Footer() {
         </div>
 
         <div className="us-landing-page-footer-bottom">
-          <p>&copy; 2025 Delhi Digital Co. All rights reserved.</p>
-          <p>
+          <p style={{textAlign:"center"}}>&copy; 2025 Delhi Digital Co. All rights reserved.</p>
+          {/* <p>
             Made by{" "}
             <span className="us-landing-page-text-orange">
               <a href="https://delhidigital.co/" style={{ color: "#9ca3af", textDecoration: "none" }}>
                 Delhi Digital Co.
               </a>
             </span>
-          </p>
+          </p> */}
         </div>
       </div>
     </footer>

@@ -24,8 +24,8 @@ export default function MetricsSection() {
   const metrics = [
     { label: "CAC",  value: "-20%", desc: "New Customer" },
     { label: "CRO",  value: "+45%", desc: "Conversion Rate" },
-    { label: "ROAS", value: "+20%", desc: "Profitable Ad Spend" },
-    { label: "CAC",  value: "-30%", desc: "Old Customer" },
+    { label: "ROAS", value: "+60%", desc: "Profitable Ad Spend" },
+    // { label: "CAC",  value: "-30%", desc: "Old Customer" },
     { label: "LP",   value: "+20%", desc: "LP > ATC%" },
   ]
 
@@ -39,7 +39,7 @@ export default function MetricsSection() {
 
         .metrics-grid {
           display: grid;
-          grid-template-columns: repeat(5, minmax(0, 1fr));
+          grid-template-columns: repeat(4, minmax(0, 1fr));
           gap: 0;
           opacity: 0;
           transform: translateY(6px);
